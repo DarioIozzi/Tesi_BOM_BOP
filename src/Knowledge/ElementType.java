@@ -1,4 +1,7 @@
 package Knowledge;
 
-public class ElementType {
+import java.util.List;
+
+public class ElementType extends ProductType{
+    private List<FeatureType> features;
 }

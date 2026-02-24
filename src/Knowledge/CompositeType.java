@@ -1,4 +1,7 @@
 package Knowledge;
 
-public class CompositeType {
+import java.util.List;
+
+public class CompositeType extends ProductType{
+    private List<ProductType> children;
 }
