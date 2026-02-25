@@ -1,17 +1,17 @@
 package Knowledge;
 
 public class ResourceType {
-    private String family;
+    private int family;
 
-    public ResourceType(String family) {
+    public ResourceType(int family) {
         this.family = family;
     }
 
-    public String getFamily() {
+    public int getFamily() {
         return family;
     }
 
-    public void setFamily(String family) {
+    public void setFamily(int family) {
         this.family = family;
     }
 }
