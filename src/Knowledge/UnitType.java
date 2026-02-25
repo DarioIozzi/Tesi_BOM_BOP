@@ -1,11 +1,18 @@
 package Knowledge;
 
-public interface UnitType {
-    String getName();
-    Class<?> getUnitClass();
-    String getUnitOfMeasure();
+public abstract class UnitType {
+    protected String name;
+    protected Class<?> unitClass;
+    protected String unitOfMeasure;
 
-    void setName(String name);
-    void setUnitClass(Class<?> unitClass);
-    void setUnitOfMeasure(String unitOfMeasure);
+    public String getName(){
+        return name;
+    }
+    public Class<?> getUnitClass(){
+        return unitClass;
+    }
+
+    public String getUnitOfMeasure(){
+        return unitOfMeasure;
+    }
 }

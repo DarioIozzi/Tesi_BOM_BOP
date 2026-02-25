@@ -1,18 +1,18 @@
 package Knowledge;
 
 public abstract class ProductType {
-    int id;
-    String family;
 
-    public void addProductType(ProductType pt) {
-
+    public void addProductType(ProductType pt){
+        throw new UnsupportedOperationException("Not a composite");
     }
 
-    public boolean removeProductType(int id) {
-
-        return false;
+    public boolean removeProductType(int id){
+        throw new UnsupportedOperationException("Not a compositeType");
     }
 
     public ProductType getChild(int id) {
+        return null;
     }
+
+    public abstract int getId();
 }
