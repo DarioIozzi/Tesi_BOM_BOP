@@ -12,6 +12,11 @@ public class CompositeType extends ProductType{
     }
 
     @Override
+    public boolean isThere(FeatureType ft){
+        throw new UnsupportedOperationException("Not an elementType");
+    }
+
+    @Override
     public void addProductType(ProductType pt) {
         if (pt instanceof ElementType) {
             children.put(pt.getId(), pt);

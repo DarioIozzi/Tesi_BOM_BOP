@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FeatureType {
+
     private final int id;
     private String name;
     private Map<String, UnitType> unitsType = new HashMap<>();
@@ -31,5 +32,13 @@ public class FeatureType {
 
     public UnitType getUnitType(String name) {
         return unitsType.get(name);
+    }
+
+    public void addUnitType(UnitType unitType) {
+        unitsType.put(unitType.getName(), unitType);
+    }
+
+    public boolean removeUnitType(String type) {
+        return unitsType.remove(type) != null;
     }
 }

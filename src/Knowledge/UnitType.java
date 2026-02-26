@@ -1,6 +1,7 @@
 package Knowledge;
 
 public abstract class UnitType {
+
     protected String name;
     protected Class<?> unitClass;
     protected String unitOfMeasure;

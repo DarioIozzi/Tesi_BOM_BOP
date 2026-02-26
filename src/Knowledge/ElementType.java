@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElementType extends ProductType{
-    private List<FeatureType> features = new ArrayList<>();
+
+    private List<FeatureType> featureTypes = new ArrayList<>();
     private final int id;
     private final String family;
 
@@ -23,22 +24,30 @@ public class ElementType extends ProductType{
     }
 
     public FeatureType getFeatureType(int id){
-        for(FeatureType f : features){
+        for(FeatureType f : featureTypes){
             if (f.getId() == id)
                     return f;
         }
         return null;
     }
 
-    public List<FeatureType> getFeatures(){
-        return features;
+    public List<FeatureType> getFeatureTypes(){
+        return featureTypes;
     }
 
     public void addFeatureType(FeatureType f){
-        features.add(f);
+        featureTypes.add(f);
     }
 
     public boolean removeFeatureType(int id){
-        return features.remove(id) != null;
+        return featureTypes.remove(id) != null;
+    }
+
+    public boolean isThere(FeatureType ft){
+        for(FeatureType f : featureTypes){
+            if(f.getId() == ft.getId())
+                return true;
+        }
+        return false;
     }
 }

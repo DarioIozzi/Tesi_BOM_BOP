@@ -3,7 +3,7 @@ package Knowledge;
 public abstract class ProductType {
 
     public void addProductType(ProductType pt){
-        throw new UnsupportedOperationException("Not a composite");
+        throw new UnsupportedOperationException("Not a compositeType");
     }
 
     public boolean removeProductType(int id){
@@ -15,4 +15,6 @@ public abstract class ProductType {
     }
 
     public abstract int getId();
+
+    public abstract boolean isThere(FeatureType ft);
 }
