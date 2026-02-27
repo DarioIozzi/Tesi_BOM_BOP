@@ -7,21 +7,18 @@ import java.util.List;
 
 public class ProcessType {
 
-    private int id;
+    private final int id;
     private String family;
     private List<ProductType> productTypes = new ArrayList<>();
 
-    public ProcessType(int id, String family) {
+    public ProcessType(int id, String family, List<ProductType> pts) {
         this.id = id;
         this.family = family;
+        this.productTypes = new ArrayList<>(pts);
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFamily() {

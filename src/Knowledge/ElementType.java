@@ -9,9 +9,10 @@ public class ElementType extends ProductType{
     private final int id;
     private final String family;
 
-    public ElementType(int id, String family) {
+    public ElementType(int id, String family, List<FeatureType> fts) {
         this.id = id;
         this.family = family;
+        this.featureTypes = new ArrayList<>(fts);
     }
 
     @Override

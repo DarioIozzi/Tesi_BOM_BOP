@@ -9,9 +9,10 @@ public class FeatureType {
     private String name;
     private Map<String, UnitType> unitsType = new HashMap<>();
 
-    public FeatureType(int id, String name) {
+    public FeatureType(int id, String name, Map<String, UnitType> uts) {
         this.id = id;
         this.name = name;
+        this.unitsType = new HashMap<>(uts);
     }
 
     public int getId() {
