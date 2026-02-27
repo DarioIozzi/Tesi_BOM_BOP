@@ -8,8 +8,8 @@ import java.util.List;
 public class Feature {
 
     private final int id;
-    FeatureType type;
-    List<Unit> units = new ArrayList<Unit>();
+    private FeatureType type;
+    private List<Unit> units = new ArrayList<Unit>();
 
     public Feature(int id, FeatureType type) {
         this.id = id;

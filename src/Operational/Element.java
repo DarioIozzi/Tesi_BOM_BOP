@@ -8,10 +8,10 @@ import java.util.List;
 public class Element extends Product{
 
     private int id;
-    ProductType type;
-    Resource resource;
+    private ProductType type;
+    private Resource resource;
 
-    List<Feature> features = new ArrayList<>();
+    private List<Feature> features = new ArrayList<>();
 
     public Element(int id, ProductType type, Resource resource) {
         this.id = id;

@@ -48,7 +48,7 @@ public class Resource {
     }
 
     public boolean addFeature(Feature feature){
-        if (type.isThere(feature.type))
+        if (type.isThere(feature.getType()))
             return features.add(feature);
         return false;
     }

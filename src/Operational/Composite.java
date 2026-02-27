@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Composite extends Product{
 
-    Map<Integer, Product> children = new HashMap<>();
+    private Map<Integer, Product> children = new HashMap<>();
 
     @Override
     public int getId(){
