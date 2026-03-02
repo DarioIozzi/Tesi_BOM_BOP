@@ -1,6 +1,7 @@
 package Knowledge;
 
 public class ObservationType {
+
     private String family;
 
     public ObservationType(String f){

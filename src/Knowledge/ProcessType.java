@@ -7,12 +7,13 @@ import java.util.List;
 
 public class ProcessType {
 
+    private static int counter = 0;
     private final int id;
     private String family;
     private List<ProductType> productTypes = new ArrayList<>();
 
-    public ProcessType(int id, String family, List<ProductType> pts) {
-        this.id = id;
+    public ProcessType(String family, List<ProductType> pts) {
+        this.id = counter++;
         this.family = family;
         this.productTypes = new ArrayList<>(pts);
     }

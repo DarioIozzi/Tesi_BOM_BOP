@@ -1,5 +1,6 @@
 package ConfigurationJSON;
 
+import Knowledge.ElementType;
 import Knowledge.FeatureType;
 import Knowledge.ProcessType;
 import Knowledge.ProductType;
@@ -17,14 +18,14 @@ public class TypeBuilder {
     }
 
     public ProcessType buildProcessType(){
-        return new ProcessType(, processtd.getFamily(), processtd.getProductTypes());
+        return new ProcessType(processtd.getFamily(), processtd.getProductTypes());
     }
 
     public ProductType buildProductType(){
-        return new ProductType(, producttd.getFamily(), producttd.getFeatureTypes());            //TODO generazione automatica di id
+        return new ElementType(producttd.getFamily(), producttd.getFeatureTypes());
     }
 
     public FeatureType buildFeatureType(){
-        return new FeatureType(, ftd.getName(), ftd.getUnitsType());
+        return new FeatureType(ftd.getName(), ftd.getUnitsType());
     }
 }

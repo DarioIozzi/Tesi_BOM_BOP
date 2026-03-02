@@ -7,14 +7,15 @@ import java.util.List;
 
 public class Element extends Product{
 
+    private static int counter = 0;
     private int id;
     private ProductType type;
     private Resource resource;
 
     private List<Feature> features = new ArrayList<>();
 
-    public Element(int id, ProductType type, Resource resource) {
-        this.id = id;
+    public Element(ProductType type, Resource resource) {
+        this.id = counter++;
         this.type = type;
         this.resource = resource;
     }

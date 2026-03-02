@@ -4,12 +4,13 @@ import Knowledge.ObservationType;
 
 public class Observation {
 
+    private static int counter = 0;
     private ObservationType type;
     private final int id;
     private String text;
 
-    Observation(int id, ObservationType type) {
-        this.id = id;
+    Observation(ObservationType type) {
+        this.id = counter++;
         this.type = type;
     }
 

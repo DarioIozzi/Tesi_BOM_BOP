@@ -5,12 +5,13 @@ import java.util.List;
 
 public class ElementType extends ProductType{
 
+    private static int counter = 0;
     private List<FeatureType> featureTypes = new ArrayList<>();
     private final int id;
     private final String family;
 
-    public ElementType(int id, String family, List<FeatureType> fts) {
-        this.id = id;
+    public ElementType(String family, List<FeatureType> fts) {
+        this.id = counter++;
         this.family = family;
         this.featureTypes = new ArrayList<>(fts);
     }

@@ -7,14 +7,15 @@ import java.util.List;
 
 public class Resource {
 
+    private static int counter = 0;
     private final int id;
     private int lotto;
     private ResourceType type;
 
     private List<Feature> features = new ArrayList<Feature>();
 
-    public Resource(int id, int lotto, ResourceType type) {
-        this.id = id;
+    public Resource(int lotto, ResourceType type) {
+        this.id = counter++;
         this.lotto = lotto;
         this.type = type;
     }

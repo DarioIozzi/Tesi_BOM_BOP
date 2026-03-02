@@ -4,16 +4,19 @@ import Knowledge.UnitType;
 
 public class Unit {
 
+    private static int counter = 0;
     private final int id;
     private UnitType unittype;
     private Object value;
 
-    public Unit(int id, UnitType unittype, Object value) {
-        this.id = id;
+    public Unit(UnitType unittype, Object value) {
+        this.id = counter++;
         this.unittype = unittype;
 
         if(isValid(value))
-            this.value = value;         //TODO if value not valid?
+            this.value = value;
+        else
+            throw new IllegalArgumentException("Invalid value");
     }
 
     public int getId() {
@@ -25,11 +28,20 @@ public class Unit {
     }
 
     public void setValue(Object value) {
-        this.value = value;
+        if(isValid(value))
+            this.value = value;
+        else
+            throw new IllegalArgumentException("Invalid value");
     }
 
     public UnitType getUnittype() {
+        if (unittype == null)
+            //TODO gestisci con eccezione
         return unittype;
+    }
+
+    public void setUnittype(UnitType unittype) {
+        this.unittype = unittype;
     }
 
     public boolean isValid(Object v){
@@ -41,6 +53,4 @@ public class Unit {
 
         return false;
     }
-
-                //TODO add check on types
 }

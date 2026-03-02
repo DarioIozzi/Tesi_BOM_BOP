@@ -7,12 +7,13 @@ import java.util.List;
 
 public class Feature {
 
+    private static int counter = 0;
     private final int id;
     private FeatureType type;
     private List<Unit> units = new ArrayList<Unit>();
 
-    public Feature(int id, FeatureType type) {
-        this.id = id;
+    public Feature(FeatureType type) {
+        this.id = counter++;
         this.type = type;
     }
 
