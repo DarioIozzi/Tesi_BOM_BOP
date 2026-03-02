@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Order {
 
+    private static int counter = 0;
     private final int id;
     private List<Product> productslist = new ArrayList<>();
 
-     public Order(int id) {
-         this.id = id;
+     public Order() {
+         this.id = counter++;
      }
 
     public void addProduct(Product p) {

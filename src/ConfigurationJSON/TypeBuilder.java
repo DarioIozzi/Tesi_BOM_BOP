@@ -5,16 +5,19 @@ import Knowledge.FeatureType;
 import Knowledge.ProcessType;
 import Knowledge.ProductType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TypeBuilder {
 
     private final ProcessTypeDTO processtd;
     private final ProductTypeDTO producttd;
-    private final FeatureTypeDTO ftd;
+    private List<FeatureTypeDTO> ftd = new ArrayList<>();
 
-    TypeBuilder(ProcessTypeDTO processtd, ProductTypeDTO producttd, FeatureTypeDTO ftd){
+    TypeBuilder(ProcessTypeDTO processtd, ProductTypeDTO producttd, List<FeatureTypeDTO> ftd){
         this.processtd = processtd;
         this.producttd = producttd;
-        this.ftd = ftd;
+        this.ftd = new ArrayList<>(ftd);
     }
 
     public ProcessType buildProcessType(){
@@ -25,7 +28,12 @@ public class TypeBuilder {
         return new ElementType(producttd.getFamily(), producttd.getFeatureTypes());
     }
 
-    public FeatureType buildFeatureType(){
-        return new FeatureType(ftd.getName(), ftd.getUnitsType());
+    public List<FeatureType> buildFeatureType(){
+
+        List<FeatureType> ftds = new ArrayList<>();
+        for(FeatureTypeDTO f: ftd){
+            ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
+        }
+        return ftds;
     }
 }

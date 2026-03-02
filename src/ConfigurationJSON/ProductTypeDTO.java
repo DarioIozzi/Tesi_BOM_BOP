@@ -2,6 +2,7 @@ package ConfigurationJSON;
 
 import Knowledge.FeatureType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductTypeDTO {
@@ -13,7 +14,15 @@ public class ProductTypeDTO {
         return family;
     }
 
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
     public List<FeatureType> getFeatureTypes() {
         return featureTypes;
+    }
+
+    public void setFeatureTypes(List<FeatureType> featureTypes) {
+        this.featureTypes = new ArrayList<>(featureTypes);
     }
 }

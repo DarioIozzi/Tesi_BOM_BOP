@@ -2,6 +2,8 @@ package Operational;
 
 import Knowledge.UnitType;
 
+import java.time.Duration;
+
 public class Unit {
 
     private static int counter = 0;
@@ -10,13 +12,14 @@ public class Unit {
     private Object value;
 
     public Unit(UnitType unittype, Object value) {
-        this.id = counter++;
         this.unittype = unittype;
 
         if(isValid(value))
             this.value = value;
         else
             throw new IllegalArgumentException("Invalid value");
+
+        this.id = counter++;
     }
 
     public int getId() {
@@ -36,7 +39,7 @@ public class Unit {
 
     public UnitType getUnittype() {
         if (unittype == null)
-            //TODO gestisci con eccezione
+            throw new IllegalStateException("Unit type is null, it must be set");
         return unittype;
     }
 
@@ -49,7 +52,8 @@ public class Unit {
             return true;
         else if (v instanceof Number && ((Number) v).doubleValue() >= 0 && unittype.getUnitClass() == Number.class)
             return true;
-        else if (v instanceof )        //TODO Time
+        else if (v instanceof Duration && !((Duration) v).isNegative())
+            return true;
 
         return false;
     }
