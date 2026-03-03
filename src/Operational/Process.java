@@ -10,7 +10,7 @@ public class Process {
     private static int counter = 0;
     private final int id;
     private ProcessType type;
-    private List<Product> products = new ArrayList<>();             //TODO da definire
+    private final List<Product> products = new ArrayList<>();             //TODO da definire
     private Resource resource;
 
     public Process(ProcessType type, Resource resource) {

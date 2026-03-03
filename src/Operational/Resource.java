@@ -12,7 +12,7 @@ public class Resource {
     private int lotto;
     private ResourceType type;
 
-    private List<Feature> features = new ArrayList<Feature>();
+    private final List<Feature> features = new ArrayList<>();
 
     public Resource(int lotto, ResourceType type) {
         this.id = counter++;

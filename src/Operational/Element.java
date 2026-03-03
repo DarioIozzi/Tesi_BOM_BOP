@@ -12,7 +12,7 @@ public class Element extends Product{
     private ProductType type;
     private Resource resource;
 
-    private List<Feature> features = new ArrayList<>();
+    private final List<Feature> features = new ArrayList<>();
 
     public Element(ProductType type, Resource resource) {
         this.id = counter++;

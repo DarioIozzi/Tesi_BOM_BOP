@@ -10,7 +10,7 @@ public class Feature {
     private static int counter = 0;
     private final int id;
     private FeatureType type;
-    private List<Unit> units = new ArrayList<Unit>();
+    private final List<Unit> units = new ArrayList<>();
 
     public Feature(FeatureType type) {
         this.id = counter++;
@@ -23,6 +23,10 @@ public class Feature {
 
     public FeatureType getType() {
         return type;
+    }
+
+    public void setType(FeatureType type) {
+        this.type = type;
     }
 
     public List<Unit> getUnits() {
