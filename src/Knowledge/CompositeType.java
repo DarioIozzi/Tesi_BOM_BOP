@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CompositeType extends ProductType{
-    private final Map<Integer, ProductType> children = new HashMap<>();
+    private final Map<Integer, ProductType> children = new HashMap<>();      //TODO mettere un id ai composite? come accedo ad un composite in un composite altrimenti?
 
     @Override
     public int getId(){
@@ -18,7 +18,7 @@ public class CompositeType extends ProductType{
 
     @Override
     public void addProductType(ProductType pt) {
-        if (pt instanceof ElementType) {
+        if (pt instanceof ElementType) {        //TODO posso aggiungere solo elementi o altri composite?
             children.put(pt.getId(), pt);
         }
     }
