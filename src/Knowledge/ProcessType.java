@@ -46,4 +46,12 @@ public class ProcessType {
         }
         return false;
     }
+
+    public void addFeatureType(FeatureType featureType) {
+        featureTypes.add(featureType);
+    }
+
+    public List<FeatureType> getFeatureTypes() {
+        return featureTypes;
+    }
 }

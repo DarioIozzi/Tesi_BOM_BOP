@@ -12,12 +12,13 @@ public class TypeBuilder {
 
     private final ProcessTypeDTO processtd;
     private final ProductTypeDTO producttd;
-    private List<FeatureTypeDTO> ftd = new ArrayList<>();
+    private List<FeatureTypeDTO> ftd;
 
     TypeBuilder(ProcessTypeDTO processtd, ProductTypeDTO producttd, List<FeatureTypeDTO> ftd){
         this.processtd = processtd;
         this.producttd = producttd;
-        this.ftd = new ArrayList<>(ftd);
+        if(ftd != null)
+            this.ftd = new ArrayList<>(ftd);
     }
 
     public ProcessType buildProcessType(){

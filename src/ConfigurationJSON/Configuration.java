@@ -30,4 +30,8 @@ public class Configuration {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(getClass().getResourceAsStream(path), ProcessTypeDTO.class);
     }
+
+    public FeatureTypeDTO readFeatureJSON(String path) throws IOException {
+        //TODO
+    }
 }
