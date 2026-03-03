@@ -31,3 +31,7 @@ bin/
 .idea/
 
 *.iml
+
+lib
+
+src/Resources
