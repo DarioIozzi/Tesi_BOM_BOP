@@ -6,7 +6,7 @@ import java.util.List;
 public class ElementType extends ProductType{
 
     private static int counter = 0;
-    private List<FeatureType> featureTypes = new ArrayList<>();
+    private final List<FeatureType> featureTypes;
     private final int id;
     private final String family;
 

@@ -6,10 +6,11 @@ import java.util.List;
 public class ResourceType {
 
     private int family;
-    List<FeatureType> featureTypes = new ArrayList<FeatureType>();
+    private final List<FeatureType> featureTypes;
 
-    public ResourceType(int family) {
+    public ResourceType(int family, List<FeatureType> featureTypes) {
         this.family = family;
+        this.featureTypes = new ArrayList<>(featureTypes);
     }
 
     public int getFamily() {

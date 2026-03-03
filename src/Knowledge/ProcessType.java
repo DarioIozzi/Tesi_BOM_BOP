@@ -8,8 +8,8 @@ public class ProcessType {
     private static int counter = 0;
     private final int id;
     private String family;
-    private List<FeatureType> featureTypes = new ArrayList<>();
-    private List<ProductType> productTypes = new ArrayList<>();
+    private final List<FeatureType> featureTypes;
+    private final List<ProductType> productTypes;
 
     public ProcessType(String family, List<FeatureType> ft ,List<ProductType> pts) {
         this.id = counter++;

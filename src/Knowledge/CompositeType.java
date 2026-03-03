@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CompositeType extends ProductType{
-    private Map<Integer, ProductType> children = new HashMap<>();
+    private final Map<Integer, ProductType> children = new HashMap<>();
 
     @Override
     public int getId(){

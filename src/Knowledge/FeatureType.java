@@ -8,7 +8,7 @@ public class FeatureType {
     private static int counter = 0;
     private final int id;
     private String name;
-    private Map<String, UnitType> unitsType = new HashMap<>();
+    private final Map<String, UnitType> unitsType;
 
     public FeatureType(String name, Map<String, UnitType> uts) {
         this.id = counter++;

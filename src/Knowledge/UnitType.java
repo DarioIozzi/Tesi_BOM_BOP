@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 
 @JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,   // salva il tipo come nome
-        include = JsonTypeInfo.As.PROPERTY, // aggiunge un campo nel JSON
-        property = "type"             // il campo che indica la sottoclasse
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
 )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Length.class, name = "Length"),
