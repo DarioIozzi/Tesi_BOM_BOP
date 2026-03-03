@@ -10,6 +10,8 @@ public class FeatureTypeDTO {
     private String name;
     private Map<String, UnitType> unitsType;
 
+    public FeatureTypeDTO() {}
+
     public String getName() {
         return name;
     }

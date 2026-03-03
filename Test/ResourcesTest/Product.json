@@ -1,0 +1,12 @@
+{
+  "family": "vetro",
+  "featureTypes": [
+    {
+      "name": "perimetro",
+      "unitsType": {
+        "Length": {"type": "Length"},
+        "Width": {"type":  "Width"}
+      }
+    }
+  ]
+}

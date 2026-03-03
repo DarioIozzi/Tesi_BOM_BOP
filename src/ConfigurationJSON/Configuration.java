@@ -1,29 +1,33 @@
 package ConfigurationJSON;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Configuration {
 
-    public void readProductJSON(){
+    public ProductTypeDTO readProductJSON(String path) throws IOException {
+
+        InputStream is = getClass().getResourceAsStream(path);
+
+        if (is == null) {
+            throw new IllegalArgumentException("Resource not found: " + path);
+        }
 
         ObjectMapper mapper = new ObjectMapper();
-
-        try{
-            ProductTypeDTO ptd = mapper.readValue(new File("Product.json"), ProductTypeDTO.class);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+        return mapper.readValue(is, ProductTypeDTO.class);
     }
 
-    public void readProcessJSON(){
-        ObjectMapper mapper = new ObjectMapper();
+    public ProcessTypeDTO readProcessJSON(String path) throws IOException {
 
-        try{
-            ProcessTypeDTO ptd = mapper.readValue(new File("Process.json"), ProcessTypeDTO.class);
-        } catch (IOException e){
-            e.printStackTrace();
+        InputStream is = getClass().getResourceAsStream(path);
+
+        if (is == null) {
+            throw new IllegalArgumentException("Resource not found: " + path);
         }
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(getClass().getResourceAsStream(path), ProcessTypeDTO.class);
     }
 }

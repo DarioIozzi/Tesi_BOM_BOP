@@ -7,8 +7,10 @@ import java.util.List;
 
 public class ProductTypeDTO {
 
-    private List<FeatureType> featureTypes;
+    private List<FeatureTypeDTO> featureTypes;
     private String family;
+
+    public ProductTypeDTO() {}
 
     public String getFamily() {
         return family;
@@ -18,11 +20,11 @@ public class ProductTypeDTO {
         this.family = family;
     }
 
-    public List<FeatureType> getFeatureTypes() {
+    public List<FeatureTypeDTO> getFeatureTypes() {
         return featureTypes;
     }
 
-    public void setFeatureTypes(List<FeatureType> featureTypes) {
+    public void setFeatureTypes(List<FeatureTypeDTO> featureTypes) {
         this.featureTypes = new ArrayList<>(featureTypes);
     }
 }

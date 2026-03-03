@@ -1,7 +1,5 @@
 package Knowledge;
 
-import Operational.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +8,13 @@ public class ProcessType {
     private static int counter = 0;
     private final int id;
     private String family;
+    private List<FeatureType> featureTypes = new ArrayList<>();
     private List<ProductType> productTypes = new ArrayList<>();
 
-    public ProcessType(String family, List<ProductType> pts) {
+    public ProcessType(String family, List<FeatureType> ft ,List<ProductType> pts) {
         this.id = counter++;
         this.family = family;
+        this.featureTypes = new ArrayList<>(ft);
         this.productTypes = new ArrayList<>(pts);
     }
 

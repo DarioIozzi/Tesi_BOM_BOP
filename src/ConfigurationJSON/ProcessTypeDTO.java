@@ -8,7 +8,10 @@ import java.util.List;
 public class ProcessTypeDTO {
 
     private String family;
-    private List<ProductType> productTypes;
+    private List<ProductTypeDTO> productTypes;
+    private List<FeatureTypeDTO> featureTypes;
+
+    public ProcessTypeDTO() {}
 
     public String getFamily() {
         return family;
@@ -18,11 +21,19 @@ public class ProcessTypeDTO {
         this.family = family;
     }
 
-    public List<ProductType> getProductTypes() {
+    public List<ProductTypeDTO> getProductTypes() {
         return productTypes;
     }
 
-    public void setProductTypes(List<ProductType> productTypes) {
+    public void setProductTypes(List<ProductTypeDTO> productTypes) {
         this.productTypes = new ArrayList<>(productTypes);
+    }
+
+    public List<FeatureTypeDTO> getFeatureTypes() {
+        return featureTypes;
+    }
+
+    public void setFeatureTypes(List<FeatureTypeDTO> featureTypes) {
+        this.featureTypes = new ArrayList<>(featureTypes);
     }
 }

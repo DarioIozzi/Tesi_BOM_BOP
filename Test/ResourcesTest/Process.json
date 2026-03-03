@@ -1,0 +1,13 @@
+{
+  "family": "assemblare",
+  "productTypes": [
+  ],
+  "featureTypes": [
+    {
+      "name": "descrizione",
+      "unitsType": {
+        "Text": {"type":  "Text"}
+      }
+    }
+  ]
+}
