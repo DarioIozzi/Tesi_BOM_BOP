@@ -12,13 +12,12 @@ public class TypeBuilder {
 
     private final ProcessTypeDTO processtd;
     private final ProductTypeDTO producttd;
-    private List<FeatureTypeDTO> ftd;
+    private final FeatureTypeDTO ftd;
 
-    TypeBuilder(ProcessTypeDTO processtd, ProductTypeDTO producttd, List<FeatureTypeDTO> ftd){
+    TypeBuilder(ProcessTypeDTO processtd, ProductTypeDTO producttd, FeatureTypeDTO ftd){
         this.processtd = processtd;
         this.producttd = producttd;
-        if(ftd != null)
-            this.ftd = new ArrayList<>(ftd);
+        this.ftd = ftd;
     }
 
     public ProcessType buildProcessType(){
@@ -50,12 +49,8 @@ public class TypeBuilder {
         return new ElementType(producttd.getFamily(), ftds);
     }
 
-    public List<FeatureType> buildFeatureType(){
+    public FeatureType buildFeatureType(){
 
-        List<FeatureType> ftds = new ArrayList<>();
-        for(FeatureTypeDTO f: ftd){
-            ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
-        }
-        return ftds;
+        return new FeatureType(ftd.getName(), ftd.getUnitsType());
     }
 }

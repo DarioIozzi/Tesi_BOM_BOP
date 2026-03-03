@@ -1,6 +1,7 @@
 package ConfigurationJSON;
 
 import Knowledge.ElementType;
+import Knowledge.FeatureType;
 import Knowledge.ProcessType;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -37,9 +38,13 @@ public class TypeBuilderTest {
     }
 
     @Test
-    public void buildFeatureTypeTest(){
+    public void buildFeatureTypeTest() throws IOException {
         Configuration config = new Configuration();
-        FeatureTypeDTO ftd = config.readFeatureJSON();
-
+        FeatureTypeDTO ftd = config.readFeatureJSON("/Feature.json");
+        FeatureType ft = new TypeBuilder(null, null, ftd).buildFeatureType();
+        assertNotNull(ft);
+        assertEquals("specifiche fisiche", ft.getName());
+        assertEquals(1, ft.getUnitsType().size());
+        assertEquals("Weight", ft.getUnitsType().get("Weight").getName());
     }
 }

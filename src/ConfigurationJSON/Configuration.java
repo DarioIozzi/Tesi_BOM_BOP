@@ -28,10 +28,18 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(getClass().getResourceAsStream(path), ProcessTypeDTO.class);
+        return mapper.readValue(is, ProcessTypeDTO.class);
     }
 
     public FeatureTypeDTO readFeatureJSON(String path) throws IOException {
-        //TODO
+
+        InputStream is = getClass().getResourceAsStream(path);
+
+        if (is == null) {
+            throw new IllegalArgumentException("Resource not found: " + path);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(is, FeatureTypeDTO.class);
     }
 }

@@ -1,0 +1,6 @@
+{
+  "name": "specifiche fisiche",
+  "unitsType": {
+    "Weight": {"type": "Weight"}
+  }
+}
