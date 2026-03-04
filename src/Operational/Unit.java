@@ -37,20 +37,20 @@ public class Unit {
             throw new IllegalArgumentException("Invalid value");
     }
 
-    public UnitType getUnittype() {
+    public UnitType getUnitType() {
         if (unittype == null)
             throw new IllegalStateException("Unit type is null, it must be set");
         return unittype;
     }
 
-    public void setUnittype(UnitType unittype) {
+    public void setUnitType(UnitType unittype) {
         this.unittype = unittype;
     }
 
     public boolean isValid(Object v){
         if (v != null && unittype.getUnitClass() == String.class)
             return true;
-        else if (v instanceof Number && ((Number) v).doubleValue() >= 0 && unittype.getUnitClass() == Number.class)
+        else if (v instanceof Number && ((Number) v).doubleValue() >= 0 && unittype.getUnitClass() == Double.class)
             return true;
         else if (v instanceof Duration && !((Duration) v).isNegative())
             return true;
