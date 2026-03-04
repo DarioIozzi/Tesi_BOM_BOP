@@ -5,20 +5,33 @@ import java.util.List;
 
 public class ResourceType {
 
-    private int family;
-    private final List<FeatureType> featureTypes;
+    private static int counter = 0;
+    private final int id;
+    private String family;
+    private List<FeatureType> featureTypes = new ArrayList<>();
 
-    public ResourceType(int family, List<FeatureType> featureTypes) {
+    public ResourceType(String family, List<FeatureType> featureTypes) {
         this.family = family;
-        this.featureTypes = new ArrayList<>(featureTypes);
+        if(featureTypes != null)
+            this.featureTypes = new ArrayList<>(featureTypes);
+        id = counter++;
     }
 
-    public int getFamily() {
+    public ResourceType(String family) {
+        this.family = family;
+        id = counter++;
+    }
+
+    public String getFamily() {
         return family;
     }
 
-    public void setFamily(int family) {
+    public void setFamily(String family) {
         this.family = family;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public void addFeatureType(FeatureType featureType) {

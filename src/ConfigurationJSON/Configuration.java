@@ -42,4 +42,16 @@ public class Configuration {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(is, FeatureTypeDTO.class);
     }
+
+    public ResourceTypeDTO readResourceJSON(String path) throws IOException {
+
+        InputStream is = getClass().getResourceAsStream(path);
+
+        if (is == null) {
+            throw new IllegalArgumentException("Resource not found: " + path);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(is, ResourceTypeDTO.class);
+    }
 }

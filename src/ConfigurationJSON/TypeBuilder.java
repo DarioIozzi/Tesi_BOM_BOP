@@ -1,9 +1,6 @@
 package ConfigurationJSON;
 
-import Knowledge.ElementType;
-import Knowledge.FeatureType;
-import Knowledge.ProcessType;
-import Knowledge.ProductType;
+import Knowledge.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +10,34 @@ public class TypeBuilder {
     private final ProcessTypeDTO processtd;
     private final ProductTypeDTO producttd;
     private final FeatureTypeDTO ftd;
+    private final ResourceTypeDTO rtd;
 
-    TypeBuilder(ProcessTypeDTO processtd, ProductTypeDTO producttd, FeatureTypeDTO ftd){
+    TypeBuilder(ProcessTypeDTO processtd){
         this.processtd = processtd;
+        this.producttd = null;
+        this.ftd = null;
+        this.rtd = null;
+    }
+
+    TypeBuilder(ProductTypeDTO producttd){
+        this.processtd = null;
         this.producttd = producttd;
+        this.ftd = null;
+        this.rtd = null;
+    }
+
+    TypeBuilder(FeatureTypeDTO ftd){
+        this.processtd = null;
+        this.producttd = null;
         this.ftd = ftd;
+        this.rtd = null;
+    }
+
+    TypeBuilder(ResourceTypeDTO rtd){
+        this.processtd = null;
+        this.producttd = null;
+        this.ftd = null;
+        this.rtd = rtd;
     }
 
     public ProcessType buildProcessType(){
@@ -52,5 +72,14 @@ public class TypeBuilder {
     public FeatureType buildFeatureType(){
 
         return new FeatureType(ftd.getName(), ftd.getUnitsType());
+    }
+
+    public ResourceType buildResourceType(){
+
+        List<FeatureType> ftds = new ArrayList<>();
+        for (FeatureTypeDTO f: rtd.getFeatureTypes()){
+            ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
+        }
+        return new ResourceType(rtd.getFamily(), ftds);
     }
 }
