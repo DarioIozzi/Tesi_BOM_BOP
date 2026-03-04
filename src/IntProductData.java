@@ -1,5 +1,7 @@
 import Operational.Product;
 
+import java.util.Objects;
+
 public class IntProductData {
 
     private int quantity;
@@ -28,5 +30,18 @@ public class IntProductData {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (!(obj instanceof IntProductData)) return false;
+        IntProductData other = (IntProductData) obj;
+        return quantity == other.getQuantity() && product == other.getProduct();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(quantity, product);
     }
 }

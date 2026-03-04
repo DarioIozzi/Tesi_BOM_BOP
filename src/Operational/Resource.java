@@ -36,6 +36,10 @@ public class Resource {
         return type.getFamily();
     }
 
+    public ResourceType getType(){
+        return this.type;
+    }
+
     public void setType(ResourceType type) {
         this.type = type;
     }
