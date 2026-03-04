@@ -2,7 +2,7 @@ package Knowledge.Units;
 
 import Knowledge.UnitType;
 
-public class Density extends UnitType {
+public class Density extends UnitType {         //TODO singleton?
 
     public Density() {
         this.unitOfMeasure = "kg/m^3";

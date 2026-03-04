@@ -3,8 +3,8 @@ import java.util.Map;
 
 import Operational.Resource;
 
-public class Warehouse {
-    private Map<IntKeys, Resource> resources = new HashMap<>();
+public class Warehouse {            //TODO Singleton?
+    private final Map<IntKeys, Resource> resources = new HashMap<>();
 
     public void addResource(Resource resource) {
         resources.put(new IntKeys(resource.getId(), resource.getId()), resource);

@@ -7,17 +7,17 @@ public class Order {
 
     private static int counter = 0;
     private final int id;
-    private List<Product> productslist = new ArrayList<>();
+    private final List<IntProductData> productslist = new ArrayList<>();
 
      public Order() {
          this.id = counter++;
      }
 
-    public void addProduct(Product p) {
-         productslist.add(p);
+    public void addProduct(IntProductData ipd) {
+         productslist.add(ipd);
     }
 
-    public List<Product> getProductslist() {
+    public List<IntProductData> getProductslist() {
          return productslist;
     }
 
@@ -25,7 +25,7 @@ public class Order {
          return id;
     }
 
-    public void removeProduct(Product p) {
-         productslist.remove(p);
+    public void removeProduct(IntProductData ipd) {
+         productslist.remove(ipd);
     }
 }
