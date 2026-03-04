@@ -3,6 +3,7 @@ package Operational;
 import Knowledge.ProductType;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Element extends Product{
@@ -50,6 +51,7 @@ public class Element extends Product{
     }
 
     public List<Feature> getFeatures() {
+        typeCheck();
         return features;
     }
 
@@ -61,19 +63,12 @@ public class Element extends Product{
         return null;
     }
 
-    public boolean removeFeature(int i) {
-        for (Feature f : features) {
-            if (f.getId() == i)
-                return features.remove(f);
-        }
-        return false;
+    public void removeFeature(int i) {
+        features.removeIf(f -> f.getId() == i);
     }
 
-    public void typeCheck(){
-        for(Feature feature : features){
-            if(!type.isThere(feature.getType())){
-                removeFeature(feature.getId());
-            }
-        }
+    public void typeCheck() {
+
+        features.removeIf(feature -> !type.isThere(feature.getType()));
     }
 }
