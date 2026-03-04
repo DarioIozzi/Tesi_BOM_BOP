@@ -54,4 +54,8 @@ public class ResourceType {
         }
         return false;
     }
+
+    public List<FeatureType> getFeatureTypes() {
+        return featureTypes;
+    }
 }

@@ -7,12 +7,15 @@ import java.util.List;
 
 public class TypeBuilder {
 
-    private final ProcessTypeDTO processtd;
-    private final ProductTypeDTO producttd;
-    private final FeatureTypeDTO ftd;
-    private final ResourceTypeDTO rtd;
+    private ProcessTypeDTO processtd;
+    private ProductTypeDTO producttd;
+    private FeatureTypeDTO ftd;
+    private ResourceTypeDTO rtd;
 
     TypeBuilder(ProcessTypeDTO processtd){
+        if (processtd == null) {
+            throw new IllegalStateException("ResourceTypeDTO is null");
+        }
         this.processtd = processtd;
         this.producttd = null;
         this.ftd = null;
@@ -20,6 +23,9 @@ public class TypeBuilder {
     }
 
     TypeBuilder(ProductTypeDTO producttd){
+        if (producttd == null) {
+            throw new IllegalStateException("ResourceTypeDTO is null");
+        }
         this.processtd = null;
         this.producttd = producttd;
         this.ftd = null;
@@ -27,6 +33,9 @@ public class TypeBuilder {
     }
 
     TypeBuilder(FeatureTypeDTO ftd){
+        if (ftd == null) {
+            throw new IllegalStateException("ResourceTypeDTO is null");
+        }
         this.processtd = null;
         this.producttd = null;
         this.ftd = ftd;
@@ -34,6 +43,9 @@ public class TypeBuilder {
     }
 
     TypeBuilder(ResourceTypeDTO rtd){
+        if (rtd == null) {
+            throw new IllegalStateException("ResourceTypeDTO is null");
+        }
         this.processtd = null;
         this.producttd = null;
         this.ftd = null;
@@ -43,6 +55,7 @@ public class TypeBuilder {
     public ProcessType buildProcessType(){
 
         List<FeatureType> ftds = new ArrayList<>();
+
         for(FeatureTypeDTO f: processtd.getFeatureTypes()){
             ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
         }
@@ -63,6 +76,7 @@ public class TypeBuilder {
     public ElementType buildProductType(){
 
         List<FeatureType> ftds = new ArrayList<>();
+
         for(FeatureTypeDTO f: producttd.getFeatureTypes()){
             ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
         }
@@ -77,6 +91,7 @@ public class TypeBuilder {
     public ResourceType buildResourceType(){
 
         List<FeatureType> ftds = new ArrayList<>();
+
         for (FeatureTypeDTO f: rtd.getFeatureTypes()){
             ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
         }

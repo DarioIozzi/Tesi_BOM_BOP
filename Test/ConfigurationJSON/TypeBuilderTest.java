@@ -55,6 +55,39 @@ public class TypeBuilderTest {
         ResourceTypeDTO rtd = config.readResourceJSON("/Resource.json");
         ResourceType rt = new TypeBuilder(rtd).buildResourceType();
         assertNotNull(rt);
-        //TODO finire
+        assertEquals("asse", rt.getFamily());
+        assertEquals(1, rt.getFeatureTypes().size());
+        assertEquals("perimetro", rt.getFeatureTypes().get(0).getName());
+        assertEquals(2, rt.getFeatureTypes().get(0).getUnitsType().size());
+        assertEquals("Length", rt.getFeatureTypes().get(0).getUnitsType().get("Length").getName());
+        assertEquals("Width", rt.getFeatureTypes().get(0).getUnitsType().get("Width").getName());
+    }
+
+    @Test
+    public void buildProductType_missingDTO() throws IOException {
+
+        ProductTypeDTO ptd = null;
+        assertThrows(IllegalStateException.class, () -> new TypeBuilder(ptd).buildProductType());
+    }
+
+    @Test
+    public void buildProcessType_missingDTO() throws IOException {
+
+        ProcessTypeDTO ptd = null;
+        assertThrows(IllegalStateException.class, () -> new TypeBuilder(ptd).buildProcessType());
+    }
+
+    @Test
+    public void buildFeatureType_missingDTO() throws IOException {
+
+        FeatureTypeDTO ftd = null;
+        assertThrows(IllegalStateException.class, () -> new TypeBuilder(ftd).buildFeatureType());
+    }
+
+    @Test
+    public void buildResourceType_missingDTO() throws IOException {
+
+        ResourceTypeDTO rtd = null;
+        assertThrows(IllegalStateException.class, () -> new TypeBuilder(rtd).buildResourceType());
     }
 }

@@ -7,7 +7,7 @@ public class Warehouse {
     private Map<IntKeys, Resource> resources = new HashMap<>();
 
     public void addResource(Resource resource) {
-        resources.put(new IntKeys(resource.getFamily(), resource.getId()), resource);
+        resources.put(new IntKeys(resource.getId(), resource.getId()), resource);
     }
 
     public boolean removeResource(int fam, int id) {
