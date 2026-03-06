@@ -1,6 +1,7 @@
 package Operational;
 
-import Knowledge.ProductType;
+
+import java.util.List;
 
 public abstract class Product {
 
@@ -13,6 +14,10 @@ public abstract class Product {
     }
 
     public Product getChild(int id){
+        return null;
+    }
+
+    public List<Product> getChildren(){
         return null;
     }
 

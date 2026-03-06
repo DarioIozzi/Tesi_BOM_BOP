@@ -3,7 +3,6 @@ package Operational;
 import Knowledge.ProductType;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Element extends Product{
@@ -19,6 +18,11 @@ public class Element extends Product{
         this.id = counter++;
         this.type = type;
         this.resource = resource;
+    }
+
+    @Override
+    public List<Product> getChildren() {
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
     @Override

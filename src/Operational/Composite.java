@@ -1,11 +1,11 @@
 package Operational;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Composite extends Product{
 
-    private final Map<Integer, Product> children = new HashMap<>();
+    private final List<Product> children = new ArrayList<>();
 
     @Override
     public int getId(){
@@ -14,7 +14,7 @@ public class Composite extends Product{
 
     @Override
     public void addProduct(Product product){
-        children.put(product.getId(), product);
+        children.add(product.getId(), product);
     }
 
     @Override
@@ -24,6 +24,25 @@ public class Composite extends Product{
 
     @Override
     public Product getChild(int id){
-        return children.get(id);
+        for (Product child : children) {
+            if (child instanceof Element) {
+                if (child.getId() == id)
+                    return child;
+            } else if (child instanceof Composite) {
+                Product res;
+                for (Product c : child.getChildren()) {
+                    res = c.getChild(id);
+                    if (res != null) {
+                        return res;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Product> getChildren(){
+        return children;
     }
 }
