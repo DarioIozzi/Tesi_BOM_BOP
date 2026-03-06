@@ -33,6 +33,5 @@ public class CompositeTypeTest {
         comp.addProductType(new ElementType("Screws", ft));
         assertNotNull(comp.getChild(0));
         comp.addProductType(comptest);
-        //TODO composite in composite?
     }
 }

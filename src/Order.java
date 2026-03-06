@@ -1,5 +1,3 @@
-import Operational.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +5,7 @@ public class Order {
 
     private static int counter = 0;
     private final int id;
-    private final List<IntProductData> productslist = new ArrayList<>();
+    private final List<IntProductData> productslist = new ArrayList<>();        //TODO non è più corretto avere un ordine composto da type?
 
      public Order() {
          this.id = counter++;

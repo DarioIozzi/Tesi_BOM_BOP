@@ -12,7 +12,7 @@ public class TypeBuilder {
     private FeatureTypeDTO ftd;
     private ResourceTypeDTO rtd;
 
-    TypeBuilder(ProcessTypeDTO processtd){
+    public TypeBuilder(ProcessTypeDTO processtd){
         if (processtd == null) {
             throw new IllegalStateException("ResourceTypeDTO is null");
         }
@@ -22,7 +22,7 @@ public class TypeBuilder {
         this.rtd = null;
     }
 
-    TypeBuilder(ProductTypeDTO producttd){
+    public TypeBuilder(ProductTypeDTO producttd){
         if (producttd == null) {
             throw new IllegalStateException("ResourceTypeDTO is null");
         }
@@ -32,7 +32,7 @@ public class TypeBuilder {
         this.rtd = null;
     }
 
-    TypeBuilder(FeatureTypeDTO ftd){
+    public TypeBuilder(FeatureTypeDTO ftd){
         if (ftd == null) {
             throw new IllegalStateException("ResourceTypeDTO is null");
         }
@@ -42,7 +42,7 @@ public class TypeBuilder {
         this.rtd = null;
     }
 
-    TypeBuilder(ResourceTypeDTO rtd){
+    public TypeBuilder(ResourceTypeDTO rtd){
         if (rtd == null) {
             throw new IllegalStateException("ResourceTypeDTO is null");
         }
