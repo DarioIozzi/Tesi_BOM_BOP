@@ -24,8 +24,7 @@ public class Menu {
             System.out.println("4. Add a process");
             System.out.println("5. Add an elementary product");
             System.out.println("6. Add a resource");
-            System.out.println("7. Add a unit");
-            System.out.println("8. Add an order");
+            System.out.println("7. Add an order");
             System.out.println("0. Exit");
 
             scelta = inputInt();
@@ -56,10 +55,6 @@ public class Menu {
                     break;
 
                 case 7:
-                    controller.addUnit();
-                    break;
-
-                case 8:
                     controller.addOrder();
                     break;
 

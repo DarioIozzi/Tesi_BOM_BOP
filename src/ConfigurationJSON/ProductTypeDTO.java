@@ -1,7 +1,5 @@
 package ConfigurationJSON;
 
-import Knowledge.FeatureType;
-
 import java.util.ArrayList;
 import java.util.List;
 

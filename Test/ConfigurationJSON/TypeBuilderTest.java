@@ -15,7 +15,7 @@ public class TypeBuilderTest {
     public void buildProductType_correctDTO() throws IOException {
         Configuration config = new Configuration();
         ProductTypeDTO ptd = config.readProductJSON("/Product.json");
-        ElementType pt = new TypeBuilder(ptd).buildProductType();
+        ElementType pt = new TypeBuilder().buildProductType(ptd);
         assertNotNull(pt);
         assertEquals("vetro", pt.getFamily());
         assertEquals(1, pt.getFeatureTypes().size());
@@ -29,7 +29,7 @@ public class TypeBuilderTest {
     public void buildProcessType_correctDTO() throws IOException {
         Configuration config = new Configuration();
         ProcessTypeDTO ptd = config.readProcessJSON("/Process.json");
-        ProcessType pt = new TypeBuilder(ptd).buildProcessType();
+        ProcessType pt = new TypeBuilder().buildProcessType(ptd);
         assertNotNull(pt);
         assertEquals("assemblare", pt.getFamily());
         assertTrue(pt.getProductTypes().isEmpty());
@@ -42,7 +42,7 @@ public class TypeBuilderTest {
     public void buildFeatureType_correctDTO() throws IOException {
         Configuration config = new Configuration();
         FeatureTypeDTO ftd = config.readFeatureJSON("/Feature.json");
-        FeatureType ft = new TypeBuilder(ftd).buildFeatureType();
+        FeatureType ft = new TypeBuilder().buildFeatureType(ftd);
         assertNotNull(ft);
         assertEquals("specifiche fisiche", ft.getName());
         assertEquals(1, ft.getUnitsType().size());
@@ -53,7 +53,7 @@ public class TypeBuilderTest {
     public void buildResourceType_correctDTO() throws IOException {
         Configuration config = new Configuration();
         ResourceTypeDTO rtd = config.readResourceJSON("/Resource.json");
-        ResourceType rt = new TypeBuilder(rtd).buildResourceType();
+        ResourceType rt = new TypeBuilder().buildResourceType(rtd);
         assertNotNull(rt);
         assertEquals("asse", rt.getFamily());
         assertEquals(1, rt.getFeatureTypes().size());
@@ -64,30 +64,30 @@ public class TypeBuilderTest {
     }
 
     @Test
-    public void buildProductType_missingDTO() throws IOException {
+    public void buildProductType_missingDTO() {
 
         ProductTypeDTO ptd = null;
-        assertThrows(IllegalStateException.class, () -> new TypeBuilder(ptd).buildProductType());
+        assertThrows(IllegalArgumentException.class, () -> new TypeBuilder().buildProductType(ptd));
     }
 
     @Test
-    public void buildProcessType_missingDTO() throws IOException {
+    public void buildProcessType_missingDTO() {
 
         ProcessTypeDTO ptd = null;
-        assertThrows(IllegalStateException.class, () -> new TypeBuilder(ptd).buildProcessType());
+        assertThrows(IllegalArgumentException.class, () -> new TypeBuilder().buildProcessType(ptd));
     }
 
     @Test
-    public void buildFeatureType_missingDTO() throws IOException {
+    public void buildFeatureType_missingDTO() {
 
         FeatureTypeDTO ftd = null;
-        assertThrows(IllegalStateException.class, () -> new TypeBuilder(ftd).buildFeatureType());
+        assertThrows(IllegalArgumentException.class, () -> new TypeBuilder().buildFeatureType(ftd));
     }
 
     @Test
-    public void buildResourceType_missingDTO() throws IOException {
+    public void buildResourceType_missingDTO() {
 
         ResourceTypeDTO rtd = null;
-        assertThrows(IllegalStateException.class, () -> new TypeBuilder(rtd).buildResourceType());
+        assertThrows(IllegalArgumentException.class, () -> new TypeBuilder().buildResourceType(rtd));
     }
 }

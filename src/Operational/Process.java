@@ -46,4 +46,8 @@ public class Process {
     public void setResource(Resource resource){
         this.resource = resource;
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }

@@ -7,52 +7,10 @@ import java.util.List;
 
 public class TypeBuilder {
 
-    private ProcessTypeDTO processtd;
-    private ProductTypeDTO producttd;
-    private FeatureTypeDTO ftd;
-    private ResourceTypeDTO rtd;
+        public ProcessType buildProcessType(ProcessTypeDTO processtd){
 
-    public TypeBuilder(ProcessTypeDTO processtd){
-        if (processtd == null) {
-            throw new IllegalStateException("ResourceTypeDTO is null");
-        }
-        this.processtd = processtd;
-        this.producttd = null;
-        this.ftd = null;
-        this.rtd = null;
-    }
-
-    public TypeBuilder(ProductTypeDTO producttd){
-        if (producttd == null) {
-            throw new IllegalStateException("ResourceTypeDTO is null");
-        }
-        this.processtd = null;
-        this.producttd = producttd;
-        this.ftd = null;
-        this.rtd = null;
-    }
-
-    public TypeBuilder(FeatureTypeDTO ftd){
-        if (ftd == null) {
-            throw new IllegalStateException("ResourceTypeDTO is null");
-        }
-        this.processtd = null;
-        this.producttd = null;
-        this.ftd = ftd;
-        this.rtd = null;
-    }
-
-    public TypeBuilder(ResourceTypeDTO rtd){
-        if (rtd == null) {
-            throw new IllegalStateException("ResourceTypeDTO is null");
-        }
-        this.processtd = null;
-        this.producttd = null;
-        this.ftd = null;
-        this.rtd = rtd;
-    }
-
-    public ProcessType buildProcessType(){
+        if (processtd == null)
+            throw new IllegalArgumentException("ProcessTypeDTO is null");
 
         List<FeatureType> ftds = new ArrayList<>();
 
@@ -73,7 +31,10 @@ public class TypeBuilder {
         return new ProcessType(processtd.getFamily(), ftds, pt);
     }
 
-    public ElementType buildProductType(){
+    public ElementType buildProductType(ProductTypeDTO producttd){
+
+        if (producttd == null)
+            throw new IllegalArgumentException("ProductTypeDTO is null");
 
         List<FeatureType> ftds = new ArrayList<>();
 
@@ -83,12 +44,18 @@ public class TypeBuilder {
         return new ElementType(producttd.getFamily(), ftds);
     }
 
-    public FeatureType buildFeatureType(){
+    public FeatureType buildFeatureType(FeatureTypeDTO ftd){
+
+        if (ftd == null)
+            throw new IllegalArgumentException("FeatureTypeDTO is null");
 
         return new FeatureType(ftd.getName(), ftd.getUnitsType());
     }
 
-    public ResourceType buildResourceType(){
+    public ResourceType buildResourceType(ResourceTypeDTO rtd){
+
+        if (rtd == null)
+            throw new IllegalArgumentException("ResourceTypeDTO is null");
 
         List<FeatureType> ftds = new ArrayList<>();
 
