@@ -12,15 +12,17 @@ public class Resource {
     private final int id;
     private int lotto;
     private ResourceType type;
+    private Process process;
 
     private final List<Feature> features;
 
-    public Resource(int lotto, ResourceType type, List<Feature> f) {
+    public Resource(int lotto, ResourceType type, List<Feature> f, Process p) {
 
         features = new ArrayList<>(Objects.requireNonNull(f, "features cannot be null"));
         this.id = counter++;
         this.lotto = lotto;
         this.type = type;
+        this.process = p;
     }
 
     public int getId() {
