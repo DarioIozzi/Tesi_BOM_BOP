@@ -1,15 +1,22 @@
 package Operational;
 
+import Knowledge.CompositeType;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Composite extends Product{
 
+    CompositeType type;
     private final List<Product> children = new ArrayList<>();
+
+    public Composite(Process process, CompositeType ct, List<Feature> f){
+        super(process, ct, f);
+    }
 
     @Override
     public int getId(){
-        throw new UnsupportedOperationException("Not an element");
+        return id;
     }
 
     @Override

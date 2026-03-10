@@ -1,9 +1,28 @@
 package Operational;
 
+import Knowledge.ProductType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Product {
+
+    ProductType type;
+    static int counter = 0;
+    int id;
+    Process process;
+    List<Feature> features;
+
+    public Product(Process process, ProductType type, List<Feature> f) {
+
+        if(f == null)
+            throw new NullPointerException("Null feature list");
+
+        this.process = process;
+        this.id = counter++;
+        this.type = type;
+        features = new ArrayList<>(f);
+    }
 
     public void addProduct(Product p){
         throw new UnsupportedOperationException("Not a composite.");

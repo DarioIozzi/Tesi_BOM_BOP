@@ -2,22 +2,12 @@ package Operational;
 
 import Knowledge.ProductType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Element extends Product{
 
-    private static int counter = 0;
-    private int id;
-    private ProductType type;
-    private Resource resource;
-
-    private final List<Feature> features = new ArrayList<>();
-
-    public Element(ProductType type, Resource resource) {
-        this.id = counter++;
-        this.type = type;
-        this.resource = resource;
+    public Element(ProductType type, Process process, List<Feature> f) {
+        super(process, type, f);
     }
 
     @Override
@@ -34,20 +24,12 @@ public class Element extends Product{
         return type;
     }
 
-    public Resource getResource() {
-        return resource;
-    }
-
     public void setId(int i) {
         this.id = i;
     }
 
     public void setType(ProductType type) {
         this.type = type;
-    }
-
-    public void setResource(Resource resource) {
-        this.resource = resource;
     }
 
     public void addFeature(Feature feature) {
