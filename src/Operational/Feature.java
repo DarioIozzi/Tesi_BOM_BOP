@@ -4,15 +4,18 @@ import Knowledge.FeatureType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Feature {
 
     private static int counter = 0;
     private final int id;
     private FeatureType type;
-    private final List<Unit> units = new ArrayList<>();
+    private final List<Unit> units;
 
-    public Feature(FeatureType type) {
+    public Feature(FeatureType type, List<Unit> units) {
+
+        this.units = new ArrayList<>(Objects.requireNonNull(units, "units cannot be null"));
         this.id = counter++;
         this.type = type;
     }

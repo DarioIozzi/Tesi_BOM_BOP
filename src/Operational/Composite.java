@@ -4,14 +4,16 @@ import Knowledge.CompositeType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Composite extends Product{
 
-    CompositeType type;
-    private final List<Product> children = new ArrayList<>();
+    private final List<Product> children;
 
-    public Composite(Process process, CompositeType ct, List<Feature> f){
+    public Composite(Process process, CompositeType ct, List<Feature> f, List<Product> children){
+
         super(process, ct, f);
+        this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
     }
 
     @Override

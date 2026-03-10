@@ -1,25 +1,11 @@
 package Knowledge;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ElementType extends ProductType{
 
-    private static int counter = 0;
-    private List<FeatureType> featureTypes = new ArrayList<>();
-    private final int id;
-    private final String family;
-
-    public ElementType(String family, List<FeatureType> fts) {
-        this.id = counter++;
-        this.family = family;
-        if(fts != null)
-            this.featureTypes = new ArrayList<>(fts);
-    }
-
-    public ElementType(String family) {
-        this.id = counter++;
-        this.family = family;
+    public ElementType(String family, List<FeatureType> ft, ProcessType pt) {
+        super(pt, family, ft);
     }
 
     @Override

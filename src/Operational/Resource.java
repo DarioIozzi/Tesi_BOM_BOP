@@ -4,6 +4,7 @@ import Knowledge.ResourceType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Resource {
 
@@ -12,9 +13,11 @@ public class Resource {
     private int lotto;
     private ResourceType type;
 
-    private final List<Feature> features = new ArrayList<>();
+    private final List<Feature> features;
 
-    public Resource(int lotto, ResourceType type) {
+    public Resource(int lotto, ResourceType type, List<Feature> f) {
+
+        features = new ArrayList<>(Objects.requireNonNull(f, "features cannot be null"));
         this.id = counter++;
         this.lotto = lotto;
         this.type = type;

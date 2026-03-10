@@ -4,6 +4,7 @@ import Knowledge.ProductType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Product {
 
@@ -15,13 +16,10 @@ public abstract class Product {
 
     public Product(Process process, ProductType type, List<Feature> f) {
 
-        if(f == null)
-            throw new NullPointerException("Null feature list");
-
+        features = new ArrayList<>(Objects.requireNonNull(f, "features cannot be null"));
         this.process = process;
         this.id = counter++;
         this.type = type;
-        features = new ArrayList<>(f);
     }
 
     public void addProduct(Product p){

@@ -1,20 +1,28 @@
 package Knowledge;
 
+import java.util.Objects;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class CompositeType extends ProductType{                 //TODO ho bisogno di un compositeType??
+public class CompositeType extends ProductType{
 
-    private final Map<Integer, ProductType> children = new HashMap<>();
+    private final Map<Integer, ProductType> children;
+
+    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, Map<Integer, ProductType> children) {
+
+        super(pt, family, ft);
+        this.children = new HashMap<>(Objects.requireNonNull(children, "children cannot be null"));
+    }
 
     @Override
     public int getId(){
-        throw new UnsupportedOperationException("Not an elementType");
+        return id;
     }
 
     @Override
     public boolean isThere(FeatureType ft){
-        throw new UnsupportedOperationException("Not an elementType");
+        throw new UnsupportedOperationException("Not an elementType");          //TODO
     }
 
     @Override
