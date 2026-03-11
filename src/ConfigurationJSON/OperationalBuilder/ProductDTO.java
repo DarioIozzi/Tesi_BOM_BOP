@@ -1,7 +1,6 @@
 package ConfigurationJSON.OperationalBuilder;
 
 import Knowledge.ProductType;
-import Operational.Process;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 public class ProductDTO {
 
     private List<FeatureDTO> features;
-    private Process process;
+    private ProcessDTO process;
     private ProductType type;
 
     public List<FeatureDTO> getFeatures() {
@@ -20,11 +19,11 @@ public class ProductDTO {
         this.features = new ArrayList<>(features);
     }
 
-    public Process getProcess() {
+    public ProcessDTO getProcess() {
         return this.process;
     }
 
-    public void setProcess(Process process) {
+    public void setProcess(ProcessDTO process) {
         this.process = process;
     }
 
