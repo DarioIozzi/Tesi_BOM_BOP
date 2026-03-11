@@ -4,8 +4,11 @@ import java.util.List;
 
 public class ElementType extends ProductType{
 
-    public ElementType(String family, List<FeatureType> ft, ProcessType pt) {
+    private ResourceType resourceType;
+
+    public ElementType(String family, List<FeatureType> ft, ProcessType pt, ResourceType resourceType) {
         super(pt, family, ft);
+        this.resourceType = resourceType;
     }
 
     @Override
@@ -43,5 +46,13 @@ public class ElementType extends ProductType{
                 return true;
         }
         return false;
+    }
+
+    public ResourceType getResourceType(){
+        return resourceType;
+    }
+
+    public void setResourceType(ResourceType resourceType){
+        this.resourceType = resourceType;
     }
 }

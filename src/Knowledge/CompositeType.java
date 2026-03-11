@@ -1,18 +1,15 @@
 package Knowledge;
 
-import java.util.Objects;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CompositeType extends ProductType{
 
-    private final Map<Integer, ProductType> children;
+    private final List<ProductType> children;
 
-    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, Map<Integer, ProductType> children) {
+    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<ProductType> children) {
 
         super(pt, family, ft);
-        this.children = new HashMap<>(Objects.requireNonNull(children, "children cannot be null"));
+        this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
     }
 
     @Override
@@ -27,7 +24,7 @@ public class CompositeType extends ProductType{
 
     @Override
     public void addProductType(ProductType pt) {
-        children.put(pt.getId(), pt);
+        children.add(pt.getId(), pt);
     }
 
     @Override
@@ -36,7 +33,7 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public ProductType getChild(int id) {
-        return children.get(id);
+    public ProductType getChild(int i) {                //TODO ??
+        return children.get(i);
     }
 }

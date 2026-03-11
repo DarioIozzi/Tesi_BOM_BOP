@@ -1,5 +1,4 @@
-package ConfigurationJSON;
-
+package ConfigurationJSON.KnowledgeBuilder;
 import Knowledge.*;
 
 import java.util.ArrayList;
@@ -7,7 +6,7 @@ import java.util.List;
 
 public class TypeBuilder {
 
-        public ProcessType buildProcessType(ProcessTypeDTO processtd){
+    public ProcessType buildProcessType(ProcessTypeDTO processtd){
 
         if (processtd == null)
             throw new IllegalArgumentException("ProcessTypeDTO is null");
@@ -18,20 +17,10 @@ public class TypeBuilder {
             ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
         }
 
-        List<ProductType> pt = new ArrayList<>();
-        List<FeatureType> ftdss = new ArrayList<>();
-        for(ProductTypeDTO p: processtd.getProductTypes()){
-            ftdss.clear();
-            for(FeatureTypeDTO f: p.getFeatureTypes()) {
-                ftdss.add(new FeatureType(f.getName(), f.getUnitsType()));
-            }
-            pt.add(new ElementType(p.getFamily(), ftdss));
-        }
-
-        return new ProcessType(processtd.getFamily(), ftds, pt);
+        return new ProcessType(processtd.getFamily(), ftds);
     }
 
-    public ElementType buildProductType(ProductTypeDTO producttd){
+    public ProductType buildProductType(ProductTypeDTO producttd){
 
         if (producttd == null)
             throw new IllegalArgumentException("ProductTypeDTO is null");
@@ -39,9 +28,18 @@ public class TypeBuilder {
         List<FeatureType> ftds = new ArrayList<>();
 
         for(FeatureTypeDTO f: producttd.getFeatureTypes()){
-            ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
+            ftds.add(buildFeatureType(f));
         }
-        return new ElementType(producttd.getFamily(), ftds);
+
+        if(producttd instanceof CompositeTypeDTO){
+            List<ProductType> ptds = new ArrayList<>();
+            for(ProductTypeDTO p: ((CompositeTypeDTO) producttd).getChildren()){
+                ptds.add(buildProductType(p));
+            }
+            return new CompositeType(buildProcessType(producttd.getProcessType()), producttd.getFamily(), ftds, ptds);
+        }
+
+        return new ElementType(producttd.getFamily(), ftds, buildProcessType(producttd.getProcessType()), buildResourceType(((ElementTypeDTO) producttd).getResourceType()));
     }
 
     public FeatureType buildFeatureType(FeatureTypeDTO ftd){

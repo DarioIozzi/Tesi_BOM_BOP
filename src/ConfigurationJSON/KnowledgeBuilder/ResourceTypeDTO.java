@@ -1,14 +1,14 @@
-package ConfigurationJSON;
+package ConfigurationJSON.KnowledgeBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductTypeDTO {
+public class ResourceTypeDTO {
 
     private List<FeatureTypeDTO> featureTypes;
     private String family;
 
-    public ProductTypeDTO() {}
+    public ResourceTypeDTO() {}
 
     public String getFamily() {
         return family;

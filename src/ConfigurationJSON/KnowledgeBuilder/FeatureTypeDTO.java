@@ -1,4 +1,4 @@
-package ConfigurationJSON;
+package ConfigurationJSON.KnowledgeBuilder;
 
 import Knowledge.UnitType;
 

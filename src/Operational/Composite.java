@@ -1,6 +1,7 @@
 package Operational;
 
 import Knowledge.CompositeType;
+import Knowledge.ProductType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +11,10 @@ public class Composite extends Product{
 
     private final List<Product> children;
 
-    public Composite(Process process, CompositeType ct, List<Feature> f, List<Product> children){
+    public Composite(Process process, ProductType ct, List<Feature> f, List<Product> children){
 
         super(process, ct, f);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
-    }
-
-    @Override
-    public int getId(){
-        return id;
     }
 
     @Override

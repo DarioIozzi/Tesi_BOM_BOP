@@ -9,15 +9,12 @@ public class ProcessType {
     private final int id;
     private String family;
     private List<FeatureType> featureTypes = new ArrayList<>();
-    private List<ProductType> productTypes = new ArrayList<>();
 
-    public ProcessType(String family, List<FeatureType> ft ,List<ProductType> pts) {
+    public ProcessType(String family, List<FeatureType> ft) {
         this.id = counter++;
         this.family = family;
         if (ft != null)
             this.featureTypes = new ArrayList<>(ft);
-        if (pts != null)
-            this.productTypes = new ArrayList<>(pts);
     }
 
     public ProcessType(String family) {
@@ -35,23 +32,6 @@ public class ProcessType {
 
     public void setFamily(String family) {
         this.family = family;
-    }
-
-    public void addProductType(ProductType productType) {
-        productTypes.add(productType);
-    }
-
-    public List<ProductType> getProductTypes() {
-        return productTypes;
-    }
-
-    public boolean removeProductType(int i) {
-        for (ProductType productType : productTypes) {
-            if (productType.getId() == i) {
-                return productTypes.remove(productType);
-            }
-        }
-        return false;
     }
 
     public void addFeatureType(FeatureType featureType) {

@@ -6,8 +6,11 @@ import java.util.List;
 
 public class Element extends Product{
 
-    public Element(ProductType type, Process process, List<Feature> f) {
+    private Resource resource;
+
+    public Element(ProductType type, Process process, List<Feature> f, Resource resource) {
         super(process, type, f);
+        this.resource = resource;
     }
 
     @Override
@@ -16,45 +19,25 @@ public class Element extends Product{
     }
 
     @Override
-    public int getId() {
-        return id;
+    public Product getChild(int id) {
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public ProductType getType() {
-        return type;
+    @Override
+    public void addProduct(Product p){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public void setId(int i) {
-        this.id = i;
+    @Override
+    public boolean removeProduct(int id){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public void setType(ProductType type) {
-        this.type = type;
+    public Resource getResource() {
+        return resource;
     }
 
-    public void addFeature(Feature feature) {
-        features.add(feature);
-    }
-
-    public List<Feature> getFeatures() {
-        typeCheck();
-        return features;
-    }
-
-    public Feature getFeature(int i) {
-        for (Feature f : features) {
-            if (f.getId() == i)
-                return f;
-        }
-        return null;
-    }
-
-    public void removeFeature(int i) {
-        features.removeIf(f -> f.getId() == i);
-    }
-
-    public void typeCheck() {
-
-        features.removeIf(feature -> !type.isThere(feature.getType()));
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 }

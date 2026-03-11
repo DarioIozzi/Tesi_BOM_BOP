@@ -1,6 +1,4 @@
-package ConfigurationJSON;
-
-import Knowledge.ProductType;
+package ConfigurationJSON.KnowledgeBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +6,6 @@ import java.util.List;
 public class ProcessTypeDTO {
 
     private String family;
-    private List<ProductTypeDTO> productTypes;
     private List<FeatureTypeDTO> featureTypes;
 
     public ProcessTypeDTO() {}
@@ -19,14 +16,6 @@ public class ProcessTypeDTO {
 
     public void setFamily(String family) {
         this.family = family;
-    }
-
-    public List<ProductTypeDTO> getProductTypes() {
-        return productTypes;
-    }
-
-    public void setProductTypes(List<ProductTypeDTO> productTypes) {
-        this.productTypes = new ArrayList<>(productTypes);
     }
 
     public List<FeatureTypeDTO> getFeatureTypes() {

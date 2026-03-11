@@ -1,5 +1,10 @@
 package ConfigurationJSON;
 
+import ConfigurationJSON.OperationalBuilder.OrderDTO;
+import ConfigurationJSON.KnowledgeBuilder.FeatureTypeDTO;
+import ConfigurationJSON.KnowledgeBuilder.ProcessTypeDTO;
+import ConfigurationJSON.KnowledgeBuilder.ProductTypeDTO;
+import ConfigurationJSON.KnowledgeBuilder.ResourceTypeDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -53,5 +58,17 @@ public class Configuration {
 
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(is, ResourceTypeDTO.class);
+    }
+
+    public OrderDTO readOrderJSON(String path) throws IOException {
+
+        InputStream is = getClass().getResourceAsStream(path);
+
+        if (is == null) {
+            throw new IllegalArgumentException("Resource not found: " + path);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(is, OrderDTO.class);
     }
 }

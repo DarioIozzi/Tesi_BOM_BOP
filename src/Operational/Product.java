@@ -22,21 +22,53 @@ public abstract class Product {
         this.type = type;
     }
 
-    public void addProduct(Product p){
-        throw new UnsupportedOperationException("Not a composite.");
+    public abstract void addProduct(Product p);
+
+    public abstract boolean removeProduct(int id);
+
+    public abstract Product getChild(int id);
+
+    public abstract List<Product> getChildren();
+
+    public int getId(){
+        return id;
     }
 
-    public boolean removeProduct(int id){
-        throw new UnsupportedOperationException("Not a composite.");
+    public void addFeature(Feature feature) {
+        features.add(feature);
     }
 
-    public Product getChild(int id){
+    public List<Feature> getFeatures() {
+        typeCheck();
+        return features;
+    }
+
+    public void typeCheck() {
+
+        features.removeIf(feature -> !type.isThere(feature.getType()));
+    }
+
+    public Feature getFeature(int i) {
+        for (Feature f : features) {
+            if (f.getId() == i)
+                return f;
+        }
         return null;
     }
 
-    public List<Product> getChildren(){
-        return null;
+    public void removeFeature(int i) {
+        features.removeIf(f -> f.getId() == i);
     }
 
-    public abstract int getId();
+    public ProductType getType() {
+        return type;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+    public Process getProcess() {
+        return process;
+    }
 }
