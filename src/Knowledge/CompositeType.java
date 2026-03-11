@@ -36,4 +36,8 @@ public class CompositeType extends ProductType{
     public ProductType getChild(int i) {                //TODO ??
         return children.get(i);
     }
+
+    public List<ProductType> getChildren(){
+        return children;
+    }
 }
