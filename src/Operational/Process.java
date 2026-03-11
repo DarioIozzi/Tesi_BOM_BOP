@@ -4,18 +4,16 @@ import Knowledge.ProcessType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Process {
 
     private static int counter = 0;
     private final int id;
     private ProcessType type;
-    private List<Feature> featureList;
+    private List<Feature> featureList = new ArrayList<>();
 
-    public Process(ProcessType type, List<Feature> featureList) {
+    public Process(ProcessType type) {
 
-        this.featureList = new ArrayList<>(Objects.requireNonNull(featureList));
         this.id = counter++;
         this.type = type;
     }
@@ -30,5 +28,13 @@ public class Process {
 
     public void setType(ProcessType type) {
         this.type = type;
+    }
+
+    public void addFeature(Feature feature) {
+        featureList.add(feature);
+    }
+
+    public List<Feature> getFeatures(){
+        return featureList;
     }
 }

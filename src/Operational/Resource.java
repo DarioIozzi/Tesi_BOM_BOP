@@ -13,11 +13,10 @@ public class Resource {
     private int lotto;
     private ResourceType type;
 
-    private final List<Feature> features;
+    private final List<Feature> features = new ArrayList<>();
 
-    public Resource(int lotto, ResourceType type, List<Feature> f) {
+    public Resource(int lotto, ResourceType type) {
 
-        features = new ArrayList<>(Objects.requireNonNull(f, "features cannot be null"));
         this.id = counter++;
         this.lotto = lotto;
         this.type = type;
@@ -45,14 +44,6 @@ public class Resource {
 
     public void setType(ResourceType type) {
         this.type = type;
-    }
-
-    public void typeCheck(){
-        for(Feature feature : features){
-            if(!type.isThere(feature.getType())){
-                removeFeature(feature.getId());
-            }
-        }
     }
 
     public boolean addFeature(Feature feature){

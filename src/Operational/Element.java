@@ -8,18 +8,12 @@ public class Element extends Product{
 
     private Resource resource;
 
-    public Element(ProductType type, Process process, List<Feature> f, Resource resource) {
-        super(process, type, f);
-        this.resource = resource;
+    public Element(ProductType type, Process process) {
+        super(process, type);
     }
 
     @Override
     public List<Product> getChildren() {
-        throw new UnsupportedOperationException("Not a composite.");
-    }
-
-    @Override
-    public Product getChild(int id) {
         throw new UnsupportedOperationException("Not a composite.");
     }
 

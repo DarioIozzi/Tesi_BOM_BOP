@@ -7,15 +7,15 @@ import java.util.List;
 
 public class OrderDTO {
 
-    private List<IntProductData> productsList;
+    private List<IntProductDataDTO> productsList;
 
     public OrderDTO(){}
 
-    public void setProductslist(List<IntProductData> productslist){
+    public void setProductslist(List<IntProductDataDTO> productslist){
         this.productsList = new ArrayList<>(productslist);
     }
 
-    public List<IntProductData> getProductsList(){
+    public List<IntProductDataDTO> getProductsList(){
         return productsList;
     }
 }

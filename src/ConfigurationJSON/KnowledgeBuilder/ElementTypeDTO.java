@@ -6,7 +6,7 @@ public class ElementTypeDTO extends ProductTypeDTO{
 
     public ElementTypeDTO() {}
 
-    public ElementTypeDTO(ResourceTypeDTO resourceType) {
+    public void setResourceType(ResourceTypeDTO resourceType) {
         this.resourceType = resourceType;
     }
 

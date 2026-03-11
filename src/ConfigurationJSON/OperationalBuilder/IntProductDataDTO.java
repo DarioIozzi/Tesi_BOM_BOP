@@ -5,7 +5,7 @@ import Operational.Product;
 public class IntProductDataDTO {
 
     private int quantity;
-    private Product product;
+    private ProductDTO product;
 
     public IntProductDataDTO(){}
 
@@ -17,11 +17,11 @@ public class IntProductDataDTO {
         this.quantity = quantity;
     }
 
-    public Product getProduct() {
+    public ProductDTO getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductDTO product) {
         this.product = product;
     }
 }

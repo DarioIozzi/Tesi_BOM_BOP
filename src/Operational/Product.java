@@ -4,7 +4,6 @@ import Knowledge.ProductType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class Product {
 
@@ -12,11 +11,10 @@ public abstract class Product {
     static int counter = 0;
     int id;
     Process process;
-    List<Feature> features;
+    List<Feature> features = new ArrayList<>();
 
-    public Product(Process process, ProductType type, List<Feature> f) {
+    public Product(Process process, ProductType type) {
 
-        features = new ArrayList<>(Objects.requireNonNull(f, "features cannot be null"));
         this.process = process;
         this.id = counter++;
         this.type = type;
@@ -25,8 +23,6 @@ public abstract class Product {
     public abstract void addProduct(Product p);
 
     public abstract boolean removeProduct(int id);
-
-    public abstract Product getChild(int id);
 
     public abstract List<Product> getChildren();
 
@@ -39,21 +35,8 @@ public abstract class Product {
     }
 
     public List<Feature> getFeatures() {
-        typeCheck();
+
         return features;
-    }
-
-    public void typeCheck() {
-
-        features.removeIf(feature -> !type.isThere(feature.getType()));
-    }
-
-    public Feature getFeature(int i) {
-        for (Feature f : features) {
-            if (f.getId() == i)
-                return f;
-        }
-        return null;
     }
 
     public void removeFeature(int i) {
