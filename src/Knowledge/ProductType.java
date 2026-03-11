@@ -1,5 +1,7 @@
 package Knowledge;
 
+import Operational.Process;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +32,10 @@ public abstract class ProductType {
 
     public ProductType getChild(int id) {
         return null;
+    }
+
+    public ProcessType getProcessType() {
+        return processType;
     }
 
     public abstract int getId();

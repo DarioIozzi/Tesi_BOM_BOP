@@ -1,7 +1,7 @@
 package ConfigurationJSON.OperationalBuilder;
 
 import Knowledge.CompositeType;
-import Knowledge.ElementType;
+import Knowledge.ProductType;
 import Operational.*;
 import Operational.Process;
 import Others.IntProductData;
@@ -9,6 +9,7 @@ import Others.Order;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class OpBuilder {
 
@@ -18,14 +19,9 @@ public class OpBuilder {
             throw new IllegalArgumentException("OrderDTO is null");
 
         List<IntProductData> pts= new ArrayList<>();
-        List<Feature> fts = new ArrayList<>();
-        for (IntProductData p: odto.getProductsList()) {        //TODO IntProductDataDTO??
 
-            for (Feature f : p.getProduct().getFeatures()) {
-                fts.add(buildFeature(f));
-            }
-
-            pts.add(new IntProductData(p.getQuantity(), new Composite(p.getProduct().getProcess(), p.getProduct().getType(), fts, )));
+        for(IntProductDataDTO ipddto: odto.getProductsList()){
+            pts.add(new IntProductData(ipddto.getQuantity(), buildProduct(ipddto.getProduct())));
         }
 
         return new Order(new ArrayList<>(pts));
@@ -36,29 +32,17 @@ public class OpBuilder {
         if (pdto == null)
             throw new IllegalArgumentException("ProductDTO is null");
 
-        List<Feature> fts = new ArrayList<>();
-        for(FeatureDTO f: pdto.getFeatures()){
-            fts.add(buildFeature(f));
-        }
-
         if(pdto.getType() instanceof CompositeType){
-            for()
+            List<Product> products = new ArrayList<>();
+            for(ProductType pt: ((CompositeType) pdto.getType()).getChildren()){
+                ProductDTO p = new ProductDTO();
+                p.setType(pt);
+                products.add(buildProduct(p));
+            }
+            return new Composite(new Process(pdto.getType().getProcessType()), pdto.getType(), products);
         }
 
-        return new Element(pdto.getType(), buildProcess(pdto.getProcess()), fts, );
-    }
-
-    public Process buildProcess(ProcessDTO processdto){
-
-        if (processdto == null)
-            throw new IllegalArgumentException("ProcessDTO is null");
-
-        List<Feature> fts = new ArrayList<>();
-        for(FeatureDTO f: processdto.getFeatures()){
-            fts.add(buildFeature(f));
-        }
-
-        return new Process(processdto.getProcessType(), fts);
+        return new Element(pdto.getType(), new Process(pdto.getType().getProcessType()));
     }
 
     public Resource buildResource(ResourceDTO resourcedto){
@@ -66,12 +50,7 @@ public class OpBuilder {
         if (resourcedto == null)
             throw new IllegalArgumentException("ResourceDTO is null");
 
-        List<Feature> fts = new ArrayList<>();
-        for(FeatureDTO f: resourcedto.getFeatures()){
-            fts.add(buildFeature(f));
-        }
-
-        return new Resource(resourcedto.getLotto(), resourcedto.getResourceType(), fts);
+        return new Resource(resourcedto.getLotto(), resourcedto.getResourceType());
     }
 
     public Feature buildFeature(FeatureDTO feature){
