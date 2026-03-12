@@ -17,7 +17,13 @@ public class TypeBuilder {
             ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
         }
 
-        return new ProcessType(processtd.getFamily(), ftds);
+        List<ObservationType> obst = new ArrayList<>();
+
+        for(ObservationTypeDTO o: processtd.getObservationTypes()){
+            obst.add(buildObservationType(o));
+        }
+
+        return new ProcessType(processtd.getFamily(), ftds, obst);
     }
 
     public ProductType buildProductType(ProductTypeDTO producttd){
@@ -61,5 +67,13 @@ public class TypeBuilder {
             ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
         }
         return new ResourceType(rtd.getFamily(), ftds);
+    }
+
+    public ObservationType buildObservationType(ObservationTypeDTO obst){
+
+        if (obst == null)
+            throw new IllegalArgumentException("ObservationTypeDTO is null");
+
+        return new ObservationType(obst.getFamily());
     }
 }

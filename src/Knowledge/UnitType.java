@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 public abstract class UnitType {
 
-    private int counter = 0;
+    private static int counter = 0;
     protected int id;
     protected String name;
     protected Class<?> unitClass;

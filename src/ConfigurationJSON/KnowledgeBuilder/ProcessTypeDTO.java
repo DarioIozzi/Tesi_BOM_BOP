@@ -7,6 +7,7 @@ public class ProcessTypeDTO {
 
     private String family;
     private List<FeatureTypeDTO> featureTypes;
+    private List<ObservationTypeDTO> observationTypes;
 
     public ProcessTypeDTO() {}
 
@@ -24,5 +25,13 @@ public class ProcessTypeDTO {
 
     public void setFeatureTypes(List<FeatureTypeDTO> featureTypes) {
         this.featureTypes = new ArrayList<>(featureTypes);
+    }
+
+    public List<ObservationTypeDTO> getObservationTypes() {
+        return observationTypes;
+    }
+
+    public void setObservationTypes(List<ObservationTypeDTO> observationTypes) {
+        this.observationTypes = new ArrayList<>(observationTypes);
     }
 }

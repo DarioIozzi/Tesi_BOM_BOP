@@ -17,11 +17,6 @@ public class ResourceType {
         id = counter++;
     }
 
-    public ResourceType(String family) {
-        this.family = family;
-        id = counter++;
-    }
-
     public String getFamily() {
         return family;
     }
