@@ -2,7 +2,7 @@ package ConfigurationJSON.KnowledgeBuilder;
 
 public class ElementTypeDTO extends ProductTypeDTO{
 
-    ResourceTypeDTO resourceType;
+    private ResourceTypeDTO resourceType;
 
     public ElementTypeDTO() {}
 

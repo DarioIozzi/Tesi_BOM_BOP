@@ -1,25 +1,5 @@
 package Knowledge;
 
-import Knowledge.Units.*;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-
-
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type"
-)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Length.class, name = "Length"),
-        @JsonSubTypes.Type(value = Weight.class, name = "Weight"),
-        @JsonSubTypes.Type(value = Density.class, name = "Density"),
-        @JsonSubTypes.Type(value = Time.class, name = "Time"),
-        @JsonSubTypes.Type(value = Thickness.class, name = "Thickness"),
-        @JsonSubTypes.Type(value = Width.class, name = "Width"),
-        @JsonSubTypes.Type(value = Text.class, name = "Text")
-})
-
 public abstract class UnitType {
 
     private static int counter = 0;

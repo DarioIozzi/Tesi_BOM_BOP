@@ -8,7 +8,7 @@ import java.util.List;
 public class FeatureTypeDTO {
 
     private String name;
-    private List<UnitType> unitsType;
+    private List<UnitTypeDTO> unitsType;
 
     public FeatureTypeDTO() {}
 
@@ -20,11 +20,11 @@ public class FeatureTypeDTO {
         this.name = name;
     }
 
-    public List<UnitType> getUnitsType() {
+    public List<UnitTypeDTO> getUnitsType() {
         return unitsType;
     }
 
-    public void setUnitsType(List<UnitType> unitsType) {
+    public void setUnitsType(List<UnitTypeDTO> unitsType) {
         this.unitsType = new ArrayList<>(unitsType);
     }
 }

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
-        property = "child"
+        property = "type"
 )
 @JsonSubTypes({
         @JsonSubTypes.Type(value = ElementTypeDTO.class, name = "element"),
