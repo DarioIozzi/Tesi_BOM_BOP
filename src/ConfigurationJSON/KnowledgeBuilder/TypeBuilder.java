@@ -1,5 +1,8 @@
 package ConfigurationJSON.KnowledgeBuilder;
 import Knowledge.*;
+import Knowledge.Units.*;
+import ConfigurationJSON.KnowledgeBuilder.Units.*;
+import Others.IntProductTypeData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,8 @@ public class TypeBuilder {
         List<FeatureType> ftds = new ArrayList<>();
 
         for(FeatureTypeDTO f: processtd.getFeatureTypes()){
-            ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
+
+            ftds.add(buildFeatureType(f));
         }
 
         List<ObservationType> obst = new ArrayList<>();
@@ -26,26 +30,26 @@ public class TypeBuilder {
         return new ProcessType(processtd.getFamily(), ftds, obst);
     }
 
-    public ProductType buildProductType(ProductTypeDTO producttd){
+    public IntProductTypeData buildProductType(IntProductTypeDataDTO producttd){
 
         if (producttd == null)
             throw new IllegalArgumentException("ProductTypeDTO is null");
 
         List<FeatureType> ftds = new ArrayList<>();
 
-        for(FeatureTypeDTO f: producttd.getFeatureTypes()){
+        for(FeatureTypeDTO f: producttd.getProductType().getFeatureTypes()){
             ftds.add(buildFeatureType(f));
         }
 
-        if(producttd instanceof CompositeTypeDTO){
-            List<ProductType> ptds = new ArrayList<>();
-            for(ProductTypeDTO p: ((CompositeTypeDTO) producttd).getChildren()){
+        if(producttd.getProductType() instanceof CompositeTypeDTO){
+            List<IntProductTypeData> ptds = new ArrayList<>();
+            for(IntProductTypeDataDTO p: ((CompositeTypeDTO) producttd.getProductType()).getChildren()){
                 ptds.add(buildProductType(p));
             }
-            return new CompositeType(buildProcessType(producttd.getProcessType()), producttd.getFamily(), ftds, ptds);
+            return new IntProductTypeData(producttd.getQuantity(), new CompositeType(buildProcessType(producttd.getProductType().getProcessType()), producttd.getProductType().getFamily(), ftds, ptds));
         }
 
-        return new ElementType(producttd.getFamily(), ftds, buildProcessType(producttd.getProcessType()), buildResourceType(((ElementTypeDTO) producttd).getResourceType()));
+        return new IntProductTypeData(producttd.getQuantity(), new ElementType(producttd.getProductType().getFamily(), ftds, buildProcessType(producttd.getProductType().getProcessType()), buildResourceType(((ElementTypeDTO) producttd.getProductType()).getResourceType())));
     }
 
     public FeatureType buildFeatureType(FeatureTypeDTO ftd){
@@ -53,7 +57,13 @@ public class TypeBuilder {
         if (ftd == null)
             throw new IllegalArgumentException("FeatureTypeDTO is null");
 
-        return new FeatureType(ftd.getName(), ftd.getUnitsType());
+        List<UnitType> uts = new ArrayList<>();
+
+        for(UnitTypeDTO u: ftd.getUnitTypes()) {
+            uts.add(buildUnitType(u));
+        }
+
+        return new FeatureType(ftd.getName(), uts);
     }
 
     public ResourceType buildResourceType(ResourceTypeDTO rtd){
@@ -64,7 +74,8 @@ public class TypeBuilder {
         List<FeatureType> ftds = new ArrayList<>();
 
         for (FeatureTypeDTO f: rtd.getFeatureTypes()){
-            ftds.add(new FeatureType(f.getName(), f.getUnitsType()));
+
+            ftds.add(buildFeatureType(f));
         }
         return new ResourceType(rtd.getFamily(), ftds);
     }
@@ -75,5 +86,34 @@ public class TypeBuilder {
             throw new IllegalArgumentException("ObservationTypeDTO is null");
 
         return new ObservationType(obst.getFamily());
+    }
+
+    public UnitType buildUnitType(UnitTypeDTO utd){
+
+        if(utd == null)
+            throw new IllegalArgumentException("UnitTypeDTO is null");
+
+        if (utd instanceof LengthDTO)
+            return new Length(utd.getValue());
+
+        if (utd instanceof WeightDTO)
+            return new Weight(utd.getValue());
+
+        if (utd instanceof DensityDTO)
+            return new Density(utd.getValue());
+
+        if (utd instanceof TimeDTO)
+            return new Time(utd.getValue());
+
+        if (utd instanceof ThicknessDTO)
+            return new Thickness(utd.getValue());
+
+        if (utd instanceof WidthDTO)
+            return new Width(utd.getValue());
+
+        if (utd instanceof TextDTO)
+            return new Text(utd.getValue());
+
+        throw new IllegalArgumentException("Unknown UnitTypeDTO");
     }
 }

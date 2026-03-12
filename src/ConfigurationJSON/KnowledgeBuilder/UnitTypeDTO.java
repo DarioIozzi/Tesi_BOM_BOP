@@ -20,17 +20,17 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
         @JsonSubTypes.Type(value = TextDTO.class, name = "Text")
 })
 
-public class UnitTypeDTO {
+public abstract class UnitTypeDTO {
 
-    protected Object unitValue;
+    protected Object value;
 
     public UnitTypeDTO() {}
 
-    public void setUnitValue(Object unitValue){
-        this.unitValue = unitValue;
+    public void setValue(Object unitValue){
+        this.value = unitValue;
     }
 
-    public Object getUnitValue(){
-        return unitValue;
+    public Object getValue(){
+        return value;
     }
 }
