@@ -10,7 +10,8 @@ public class Process {
     private static int counter = 0;
     private final int id;
     private ProcessType type;
-    private List<Feature> featureList = new ArrayList<>();
+    private final List<Feature> featureList = new ArrayList<>();
+    private List<Observation> observations;
 
     public Process(ProcessType type) {
 
@@ -36,5 +37,13 @@ public class Process {
 
     public List<Feature> getFeatures(){
         return featureList;
+    }
+
+    public List<Observation> getObservation() {
+        return observations;
+    }
+
+    public void addObservation(Observation observation) {
+        this.observations.add(observation);
     }
 }
