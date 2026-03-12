@@ -1,6 +1,8 @@
 package Knowledge;
 
 import Operational.Process;
+import Others.IntProductData;
+import Others.IntProductTypeData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ public abstract class ProductType {
         this.family = family;
     }
 
-    public void addProductType(ProductType pt){
+    public void addProductType(IntProductTypeData pt){
         throw new UnsupportedOperationException("Not a compositeType");
     }
 
@@ -30,7 +32,7 @@ public abstract class ProductType {
         throw new UnsupportedOperationException("Not a compositeType");
     }
 
-    public ProductType getChild(int id) {
+    public IntProductTypeData getChild(int id) {
         return null;
     }
 

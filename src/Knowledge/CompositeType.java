@@ -1,12 +1,14 @@
 package Knowledge;
 
+import Others.IntProductTypeData;
+
 import java.util.*;
 
 public class CompositeType extends ProductType{
 
-    private final List<ProductType> children;
+    private final List<IntProductTypeData> children;
 
-    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<ProductType> children) {
+    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<IntProductTypeData> children) {
 
         super(pt, family, ft);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
@@ -23,8 +25,17 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public void addProductType(ProductType pt) {
-        children.add(pt.getId(), pt);
+    public void addProductType(IntProductTypeData pt) {
+
+        if(this.Contain(pt.getProductType())){
+            for(IntProductTypeData child : this.children){
+                if(child.getProductType().getId() == pt.getProductType().getId()){
+                    child.modifyQuantity(pt.getQuantity());
+                }
+            }
+        }else {
+            children.add(new IntProductTypeData(pt.getQuantity(), pt.getProductType()));
+        }
     }
 
     @Override
@@ -33,11 +44,20 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public ProductType getChild(int i) {                //TODO ??
+    public IntProductTypeData getChild(int i) {
         return children.get(i);
     }
 
-    public List<ProductType> getChildren(){
+    public List<IntProductTypeData> getChildren(){
         return children;
+    }
+
+    public boolean Contain(ProductType pt){
+        for(IntProductTypeData child : this.children){
+            if(child.getProductType().getId() == pt.getId()){
+                return true;
+            }
+        }
+        return false;
     }
 }

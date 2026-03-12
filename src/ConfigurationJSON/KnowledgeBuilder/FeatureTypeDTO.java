@@ -1,7 +1,5 @@
 package ConfigurationJSON.KnowledgeBuilder;
 
-import Knowledge.UnitType;
-
 import java.util.ArrayList;
 import java.util.List;
 
