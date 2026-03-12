@@ -2,13 +2,13 @@ package ConfigurationJSON.KnowledgeBuilder;
 
 import Knowledge.UnitType;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FeatureTypeDTO {
 
     private String name;
-    private Map<String, UnitType> unitsType;
+    private List<UnitType> unitsType;
 
     public FeatureTypeDTO() {}
 
@@ -20,11 +20,11 @@ public class FeatureTypeDTO {
         this.name = name;
     }
 
-    public Map<String, UnitType> getUnitsType() {
+    public List<UnitType> getUnitsType() {
         return unitsType;
     }
 
-    public void setUnitsType(Map<String, UnitType> unitsType) {
-        this.unitsType = new HashMap<>(unitsType);
+    public void setUnitsType(List<UnitType> unitsType) {
+        this.unitsType = new ArrayList<>(unitsType);
     }
 }

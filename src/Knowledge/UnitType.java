@@ -22,9 +22,18 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 public abstract class UnitType {
 
+    private int counter = 0;
+    protected int id;
     protected String name;
     protected Class<?> unitClass;
     protected String unitOfMeasure;
+    protected Object unitValue;
+
+    public UnitType(Object value){
+
+        this.id = counter++;
+        this.unitValue = value;
+    }
 
     public String getName(){
         return name;
@@ -35,5 +44,13 @@ public abstract class UnitType {
 
     public String getUnitOfMeasure(){
         return unitOfMeasure;
+    }
+
+    public Object getUnitValue(){
+        return unitValue;
+    }
+
+    public int getId(){
+        return id;
     }
 }
