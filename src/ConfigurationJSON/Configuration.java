@@ -1,18 +1,17 @@
 package ConfigurationJSON;
 
+import ConfigurationJSON.KnowledgeBuilder.*;
 import ConfigurationJSON.OperationalBuilder.OrderDTO;
-import ConfigurationJSON.KnowledgeBuilder.FeatureTypeDTO;
-import ConfigurationJSON.KnowledgeBuilder.ProcessTypeDTO;
-import ConfigurationJSON.KnowledgeBuilder.ProductTypeDTO;
-import ConfigurationJSON.KnowledgeBuilder.ResourceTypeDTO;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class Configuration {
 
-    public ProductTypeDTO readProductJSON(String path) throws IOException {
+    public List<ProductTypeDTO> readProductListJSON(String path) throws IOException {
 
         InputStream is = getClass().getResourceAsStream(path);
 
@@ -21,7 +20,19 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(is, ProductTypeDTO.class);
+        return mapper.readValue(is, new TypeReference<List<ProductTypeDTO>>() {});
+    }
+
+    public IntProductTypeDataDTO readProductJSON(String path) throws IOException {
+
+        InputStream is = getClass().getResourceAsStream(path);
+
+        if (is == null) {
+            throw new IllegalArgumentException("Resource not found: " + path);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(is, IntProductTypeDataDTO.class);
     }
 
     public ProcessTypeDTO readProcessJSON(String path) throws IOException {

@@ -1,7 +1,5 @@
 package ConfigurationJSON.KnowledgeBuilder;
 
-import Others.IntProductTypeData;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package ConfigurationJSON.KnowledgeBuilder;
 
-import Knowledge.ProductType;
-
 public class IntProductTypeDataDTO {
 
     private int quantity;
