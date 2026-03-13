@@ -1,7 +1,5 @@
 package Knowledge;
 
-import Operational.Process;
-import Others.IntProductData;
 import Others.IntProductTypeData;
 
 import java.util.ArrayList;
@@ -24,23 +22,66 @@ public abstract class ProductType {
         this.family = family;
     }
 
-    public void addProductType(IntProductTypeData pt){
-        throw new UnsupportedOperationException("Not a compositeType");
+    ProductType() {                             //Per test
+        this.id = counter++;
+        this.featureTypes = new ArrayList<>();
     }
 
-    public boolean removeProductType(int id){
-        throw new UnsupportedOperationException("Not a compositeType");
+    public static void restCounter(){                      //Per test
+        counter = 0;
     }
 
-    public IntProductTypeData getChild(int id) {
-        return null;
-    }
+    public abstract void addProductType(IntProductTypeData pt);
+
+    public abstract boolean removeProductType(int i, int q);
+
+    public abstract IntProductTypeData getChild(int i);
+
+    public abstract List<IntProductTypeData> getChildren();
+
+    public abstract List<ProductType> getAllElement();
 
     public ProcessType getProcessType() {
         return processType;
     }
 
-    public abstract int getId();
+    public List<FeatureType> getFeatureTypes(){
+        return featureTypes;
+    }
 
-    public abstract boolean isThere(FeatureType ft);
+    public FeatureType getFeatureType(int id){
+        for(FeatureType f : featureTypes){
+            if (f.getId() == id)
+                return f;
+        }
+        return null;
+    }
+
+    public void addFeatureType(FeatureType f){
+        featureTypes.add(f);
+    }
+
+    public boolean removeFeatureType(int id){
+        return featureTypes.remove(id) != null;
+    }
+
+    public String getFamily(){
+        return family;
+    }
+
+    public void setFamily(String family){
+        this.family = family;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public boolean isThere(FeatureType ft){
+        for(FeatureType f : featureTypes){
+            if(f.getId() == ft.getId())
+                return true;
+        }
+        return false;
+    }
 }

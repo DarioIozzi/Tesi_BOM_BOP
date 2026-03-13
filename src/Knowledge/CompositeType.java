@@ -1,5 +1,6 @@
 package Knowledge;
 
+import Operational.Composite;
 import Others.IntProductTypeData;
 
 import java.util.*;
@@ -14,50 +15,69 @@ public class CompositeType extends ProductType{
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
     }
 
-    @Override
-    public int getId(){
-        return id;
-    }
-
-    @Override
-    public boolean isThere(FeatureType ft){
-        throw new UnsupportedOperationException("Not an elementType");          //TODO
+    public CompositeType(){                         //Per test
+        super();
+        this.children = new ArrayList<>();
     }
 
     @Override
     public void addProductType(IntProductTypeData pt) {
 
-        if(this.Contain(pt.getProductType())){
-            for(IntProductTypeData child : this.children){
-                if(child.getProductType().getId() == pt.getProductType().getId()){
-                    child.modifyQuantity(pt.getQuantity());
-                }
-            }
-        }else {
-            children.add(new IntProductTypeData(pt.getQuantity(), pt.getProductType()));
-        }
-    }
-
-    @Override
-    public boolean removeProductType(int id){
-        return children.remove(id) != null;
-    }
-
-    @Override
-    public IntProductTypeData getChild(int i) {
-        return children.get(i);
-    }
-
-    public List<IntProductTypeData> getChildren(){
-        return children;
-    }
-
-    public boolean Contain(ProductType pt){
         for(IntProductTypeData child : this.children){
-            if(child.getProductType().getId() == pt.getId()){
+            if(child.getProductType().getId() == pt.getProductType().getId()){
+                child.modifyQuantity(pt.getQuantity());
+                return;
+            }
+        }
+        children.add(new IntProductTypeData(pt.getQuantity(), pt.getProductType()));
+    }
+
+    @Override
+    public boolean removeProductType(int i, int q){
+
+        Iterator<IntProductTypeData> it = this.children.iterator();
+
+        while (it.hasNext()) {
+            IntProductTypeData child = it.next();
+            if(child.getProductType().getId() == i){
+                child.modifyQuantity(-q);
+                if(child.getQuantity() == 0) {
+                    it.remove();
+                }
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public IntProductTypeData getChild(int i) {
+        for (IntProductTypeData child : children) {
+            if(child.getProductType().getId() == i){
+                return child;
+            }else if(child.getProductType() instanceof CompositeType){
+                child.getProductType().getChild(i);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<IntProductTypeData> getChildren(){
+        return children;
+    }
+
+    @Override
+    public List<ProductType> getAllElement(){
+
+        List<ProductType> list = new ArrayList<>();
+        for(IntProductTypeData child : this.children){
+            if(child.getProductType() instanceof ElementType) {
+                list.add(child.getProductType());
+            }else {
+                list.addAll((child.getProductType()).getAllElement());
+            }
+        }
+        return list;
     }
 }

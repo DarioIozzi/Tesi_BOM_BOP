@@ -20,6 +20,12 @@ public class ProcessType {
         this.featureTypes = new ArrayList<>(Objects.requireNonNull(ft,"FeatureTypes cannot be null"));
     }
 
+    public ProcessType(){                               //Per test
+        this.id = counter++;
+        this.featureTypes = new ArrayList<>();
+        this.observationTypes = new ArrayList<>();
+    }
+
     public int getId() {
         return id;
     }

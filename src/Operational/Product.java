@@ -1,6 +1,7 @@
 package Operational;
 
 import Knowledge.ProductType;
+import Others.IntProductData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,22 @@ public abstract class Product {
         this.type = type;
     }
 
-    public abstract void addProduct(Product p);
+    public Product(){                   //Per test
+        this.id = counter++;
+        this.features = new ArrayList<>();
+    }
 
-    public abstract boolean removeProduct(int id);
+    public static void resetCounter(){              //Per test
+        counter = 0;
+    }
 
-    public abstract List<Product> getChildren();
+    public abstract void addProduct(IntProductData pt);
+
+    public abstract boolean removeProduct(int i, int q);
+
+    public abstract List<IntProductData> getChildren();
+
+    public abstract IntProductData getChild(int i);
 
     public int getId(){
         return id;

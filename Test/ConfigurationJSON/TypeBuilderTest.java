@@ -1,9 +1,7 @@
 package ConfigurationJSON;
 
-import Knowledge.ElementType;
-import Knowledge.FeatureType;
-import Knowledge.ProcessType;
-import Knowledge.ResourceType;
+import ConfigurationJSON.KnowledgeBuilder.*;
+import Knowledge.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,52 +13,17 @@ public class TypeBuilderTest {
     public void buildProductType_correctDTO() throws IOException {
         Configuration config = new Configuration();
         ProductTypeDTO ptd = config.readProductJSON("/Product.json");
-        ElementType pt = new TypeBuilder().buildProductType(ptd);
+        ProductType pt = new TypeBuilder().buildProductType(ptd);
         assertNotNull(pt);
-        assertEquals("vetro", pt.getFamily());
-        assertEquals(1, pt.getFeatureTypes().size());
-        assertEquals("perimetro", pt.getFeatureTypes().get(0).getName());
-        assertEquals(2, pt.getFeatureTypes().get(0).getUnitTypes().size());
-        assertEquals("Length", pt.getFeatureTypes().get(0).getUnitTypes().get("Length").getName());
-        assertEquals("Width", pt.getFeatureTypes().get(0).getUnitTypes().get("Width").getName());
-    }
-
-    @Test
-    public void buildProcessType_correctDTO() throws IOException {
-        Configuration config = new Configuration();
-        ProcessTypeDTO ptd = config.readProcessJSON("/Process.json");
-        ProcessType pt = new TypeBuilder().buildProcessType(ptd);
-        assertNotNull(pt);
-        assertEquals("assemblare", pt.getFamily());
-        assertTrue(pt.getProductTypes().isEmpty());
-        assertNotNull(pt.getFeatureTypes());
-        assertEquals("descrizione", pt.getFeatureTypes().get(0).getName());
-        assertEquals("Text", pt.getFeatureTypes().get(0).getUnitTypes().get("Text").getName());
-    }
-
-    @Test
-    public void buildFeatureType_correctDTO() throws IOException {
-        Configuration config = new Configuration();
-        FeatureTypeDTO ftd = config.readFeatureJSON("/Feature.json");
-        FeatureType ft = new TypeBuilder().buildFeatureType(ftd);
-        assertNotNull(ft);
-        assertEquals("specifiche fisiche", ft.getName());
-        assertEquals(1, ft.getUnitTypes().size());
-        assertEquals("Weight", ft.getUnitTypes().get("Weight").getName());
-    }
-
-    @Test
-    public void buildResourceType_correctDTO() throws IOException {
-        Configuration config = new Configuration();
-        ResourceTypeDTO rtd = config.readResourceJSON("/Resource.json");
-        ResourceType rt = new TypeBuilder().buildResourceType(rtd);
-        assertNotNull(rt);
-        assertEquals("asse", rt.getFamily());
-        assertEquals(1, rt.getFeatureTypes().size());
-        assertEquals("perimetro", rt.getFeatureTypes().get(0).getName());
-        assertEquals(2, rt.getFeatureTypes().get(0).getUnitTypes().size());
-        assertEquals("Length", rt.getFeatureTypes().get(0).getUnitTypes().get("Length").getName());
-        assertEquals("Width", rt.getFeatureTypes().get(0).getUnitTypes().get("Width").getName());
+        assertEquals("Dining Chair", pt.getFamily());
+        assertEquals(2, pt.getFeatureTypes().size());
+        assertEquals("height", pt.getFeatureTypes().get(0).getName());
+        assertEquals(1, pt.getFeatureTypes().get(0).getUnitTypes().size());
+        assertEquals("Length", pt.getFeatureTypes().get(0).getUnitTypes().get(0).getName());
+        assertEquals("Dining ChairAssembly", pt.getProcessType().getFamily());
+        assertTrue(pt.getProcessType().getFeatureTypes().isEmpty());
+        ProductType el = pt.getAllElement().get(0);
+        assertEquals("WoodBeam", ((ElementType) el).getResourceType().getFamily());
     }
 
     @Test

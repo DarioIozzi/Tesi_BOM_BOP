@@ -1,15 +1,26 @@
 package Knowledge;
+import Others.IntProductTypeData;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class ElementTypeTest {
 
+    @Before
+    public void setUp(){
+        ProductType.restCounter();
+    }
+
     @Test
     public void notLegalMethods() {
-        ElementType e = new ElementType("screw");
-        ElementType et = new ElementType("stuff");
-        assertThrows(UnsupportedOperationException.class, () -> e.addProductType(et));
-        assertThrows(UnsupportedOperationException.class, () -> e.removeProductType(0));
+        ElementType e = new ElementType();
+        ElementType et = new ElementType();
+        IntProductTypeData p = new IntProductTypeData(2, et);
+        assertThrows(UnsupportedOperationException.class, () -> e.addProductType(p));
+        assertThrows(UnsupportedOperationException.class, () -> e.removeProductType(0, 4));
+        assertThrows(UnsupportedOperationException.class, () -> e.getChild(0));
+        assertThrows(UnsupportedOperationException.class, e::getChildren);
+        assertThrows(UnsupportedOperationException.class, e::getAllElement);
     }
 }

@@ -1,13 +1,9 @@
 {
-  "family": "assemblare",
-  "productTypes": [
-  ],
-  "featureTypes": [
+  "family": "Dining ChairAssembly",
+  "featureTypes": [],
+  "observationTypes": [
     {
-      "name": "descrizione",
-      "unitsType": {
-        "Text": {"type":  "Text"}
-      }
+      "family": "finalInspection"
     }
   ]
 }

@@ -1,33 +1,71 @@
 package Operational;
 
 import Knowledge.ProductType;
+import Others.IntProductData;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 public class Composite extends Product{
 
-    private final List<Product> children;
+    private final List<IntProductData> children;
 
-    public Composite(Process process, ProductType ct, List<Product> children){
+    public Composite(Process process, ProductType ct, List<IntProductData> children){
 
         super(process, ct);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
     }
 
-    @Override
-    public void addProduct(Product product){
-        children.add(product.getId(), product);
+    public Composite(){                 //Per test
+        super();
+        this.children = new ArrayList<>();
     }
 
     @Override
-    public boolean removeProduct(int id){
-        return children.remove(id) != null;
+    public void addProduct(IntProductData pt){
+        for(IntProductData child : this.children){
+            if(child.getProduct().getId() == pt.getProduct().getId()){
+                child.modifyQuantity(pt.getQuantity());
+                return;
+            }
+        }
+        children.add(new IntProductData(pt.getQuantity(), pt.getProduct()));
     }
 
     @Override
-    public List<Product> getChildren(){
+    public boolean removeProduct(int i, int q){
+
+        Iterator<IntProductData> it = this.children.iterator();
+
+        while (it.hasNext()) {
+            IntProductData child = it.next();
+            if(child.getProduct().getId() == i){
+                child.modifyQuantity(-q);
+                if(child.getQuantity() == 0) {
+                    it.remove();
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public List<IntProductData> getChildren(){
         return children;
+    }
+
+    @Override
+    public IntProductData getChild(int i) {
+        for (IntProductData child : children) {
+            if(child.getProduct().getId() == i){
+                return child;
+            }else if(child.getProduct() instanceof Composite){
+                child.getProduct().getChild(i);
+            }
+        }
+        return null;
     }
 }

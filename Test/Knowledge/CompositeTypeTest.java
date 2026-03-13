@@ -1,37 +1,31 @@
 package Knowledge;
 
-import Knowledge.Units.Length;
+import Others.IntProductTypeData;
+import org.junit.Before;
 import org.junit.Test;
-
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
 public class CompositeTypeTest {
 
-    @Test
-    public void thoseThatThrowExceptions() {
-        CompositeType comp = new CompositeType();
-        Length length = new Length();
-        FeatureType ft = new FeatureType("name", Stream.of(new AbstractMap.SimpleEntry<>("Length", length)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-        assertThrows(UnsupportedOperationException.class, comp::getId);
-        assertThrows(UnsupportedOperationException.class, () -> comp.isThere(ft));
+    @Before
+    public void setUp(){
+        ProductType.restCounter();
     }
 
     @Test
-    public void addProductTypeTest() {
+    public void addRemoveProductTypeTest() {
+
         CompositeType comp = new CompositeType();
         CompositeType comptest  = new CompositeType();
-        List<FeatureType> ft = new ArrayList<>();
-        Length length = new Length();
-        ft.add(new FeatureType("name", Stream.of(new AbstractMap.SimpleEntry<>("Length", length)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))));
-        comp.addProductType(new ElementType("Screws", ft));
-        assertNotNull(comp.getChild(0));
-        comp.addProductType(comptest);
+        comp.addProductType(new IntProductTypeData(2, new ElementType()));
+        assertNotNull(comp.getChild(2));
+        assertEquals(2, comp.getChild(2).getQuantity());
+        comp.addProductType(new IntProductTypeData(1, comptest));
+        assertEquals(1, comp.getChild(1).getQuantity());
+        comp.addProductType(new IntProductTypeData(1, comptest));
+        assertEquals(2, comp.getChild(1).getQuantity());
+        comp.removeProductType(1, 2);
+        assertEquals(1, comp.getChildren().size());
     }
 }

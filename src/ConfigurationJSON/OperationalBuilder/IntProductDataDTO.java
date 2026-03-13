@@ -1,7 +1,5 @@
 package ConfigurationJSON.OperationalBuilder;
 
-import Operational.Product;
-
 public class IntProductDataDTO {
 
     private int quantity;

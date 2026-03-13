@@ -1,10 +1,10 @@
 package ConfigurationJSON.OperationalBuilder;
 
 import Knowledge.CompositeType;
-import Knowledge.ProductType;
-import Operational.*;
 import Operational.Process;
+import Operational.*;
 import Others.IntProductData;
+import Others.IntProductTypeData;
 import Others.Order;
 
 import java.util.ArrayList;
@@ -33,11 +33,11 @@ public class OpBuilder {
             throw new IllegalArgumentException("ProductDTO is null");
 
         if(pdto.getType() instanceof CompositeType){
-            List<Product> products = new ArrayList<>();
-            for(ProductType pt: ((CompositeType) pdto.getType()).getChildren()){
+            List<IntProductData> products = new ArrayList<>();
+            for(IntProductTypeData pt: pdto.getType().getChildren()){
                 ProductDTO p = new ProductDTO();
-                p.setType(pt);
-                products.add(buildProduct(p));
+                p.setType(pt.getProductType());
+                products.add(new IntProductData(pt.getQuantity(), buildProduct(p)));
             }
             return new Composite(new Process(pdto.getType().getProcessType()), pdto.getType(), products);
         }

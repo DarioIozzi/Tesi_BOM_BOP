@@ -1,5 +1,8 @@
 package Knowledge;
 
+import Others.IntProductTypeData;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ElementType extends ProductType{
@@ -11,41 +14,33 @@ public class ElementType extends ProductType{
         this.resourceType = resourceType;
     }
 
+    public ElementType(){                   //Per test
+        super();
+    }
+
     @Override
-    public int getId(){
-        return id;
+    public void addProductType(IntProductTypeData p){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public String getFamily(){
-        return family;
+    @Override
+    public boolean removeProductType(int i, int q){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public FeatureType getFeatureType(int id){
-        for(FeatureType f : featureTypes){
-            if (f.getId() == id)
-                    return f;
-        }
-        return null;
+    @Override
+    public IntProductTypeData getChild(int i){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public List<FeatureType> getFeatureTypes(){
-        return featureTypes;
+    @Override
+    public List<IntProductTypeData> getChildren(){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
-    public void addFeatureType(FeatureType f){
-        featureTypes.add(f);
-    }
-
-    public boolean removeFeatureType(int id){
-        return featureTypes.remove(id) != null;
-    }
-
-    public boolean isThere(FeatureType ft){
-        for(FeatureType f : featureTypes){
-            if(f.getId() == ft.getId())
-                return true;
-        }
-        return false;
+    @Override
+    public List<ProductType> getAllElement(){
+        throw new UnsupportedOperationException("Not a composite.");
     }
 
     public ResourceType getResourceType(){

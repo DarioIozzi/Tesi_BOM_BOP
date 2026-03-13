@@ -20,10 +20,10 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(is, new TypeReference<List<ProductTypeDTO>>() {});
+        return mapper.readValue(is, new TypeReference<>() {});
     }
 
-    public IntProductTypeDataDTO readProductJSON(String path) throws IOException {
+    public ProductTypeDTO readProductJSON(String path) throws IOException {
 
         InputStream is = getClass().getResourceAsStream(path);
 
@@ -32,7 +32,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(is, IntProductTypeDataDTO.class);
+        return mapper.readValue(is, ProductTypeDTO.class);
     }
 
     public ProcessTypeDTO readProcessJSON(String path) throws IOException {

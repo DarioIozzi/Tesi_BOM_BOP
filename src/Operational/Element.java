@@ -1,6 +1,7 @@
 package Operational;
 
 import Knowledge.ProductType;
+import Others.IntProductData;
 
 import java.util.List;
 
@@ -12,18 +13,27 @@ public class Element extends Product{
         super(process, type);
     }
 
+    public Element(){
+        super();
+    }
+
     @Override
-    public List<Product> getChildren() {
+    public List<IntProductData> getChildren() {
         throw new UnsupportedOperationException("Not a composite.");
     }
 
     @Override
-    public void addProduct(Product p){
+    public void addProduct(IntProductData pt){
         throw new UnsupportedOperationException("Not a composite.");
     }
 
     @Override
-    public boolean removeProduct(int id){
+    public boolean removeProduct(int i, int q){
+        throw new UnsupportedOperationException("Not a composite.");
+    }
+
+    @Override
+    public IntProductData getChild(int i){
         throw new UnsupportedOperationException("Not a composite.");
     }
 
