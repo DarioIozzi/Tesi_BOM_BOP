@@ -18,14 +18,18 @@ public class CompositeTypeTest {
 
         CompositeType comp = new CompositeType();
         CompositeType comptest  = new CompositeType();
-        comp.addProductType(new IntProductTypeData(2, new ElementType()));
-        assertNotNull(comp.getChild(2));
-        assertEquals(2, comp.getChild(2).getQuantity());
+        IntProductTypeData ip = new IntProductTypeData(2, new ElementType());
+        IntProductTypeData ip2 = new IntProductTypeData(1, new ElementType());
+        comp.addProductType(ip);
+        comptest.addProductType(ip2);
+        assertNotNull(comp.getChild(ip.getProductType().getId()));
+        assertEquals(2, comp.getChild(ip.getProductType().getId()).getQuantity());
         comp.addProductType(new IntProductTypeData(1, comptest));
-        assertEquals(1, comp.getChild(1).getQuantity());
+        assertEquals(1, comp.getChild(comptest.getId()).getQuantity());
         comp.addProductType(new IntProductTypeData(1, comptest));
-        assertEquals(2, comp.getChild(1).getQuantity());
-        comp.removeProductType(1, 2);
+        assertEquals(2, comp.getChild(comptest.getId()).getQuantity());
+        assertEquals(1, comp.getChild(ip2.getProductType().getId()).getQuantity());
+        comp.removeProductType(comptest.getId(), 2);
         assertEquals(1, comp.getChildren().size());
     }
 }

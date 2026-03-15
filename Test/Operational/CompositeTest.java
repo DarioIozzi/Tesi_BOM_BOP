@@ -26,16 +26,18 @@ public class CompositeTest {
 
         Composite comp = new Composite();
         Composite comptest  = new Composite();
-        comp.addProduct(new IntProductData(2, new Element()));
-        comptest.addProduct(new IntProductData(1, new Element()));
-        assertNotNull(comp.getChild(2));
-        assertEquals(2, comp.getChild(2).getQuantity());
-        comp.addProduct(new IntProductData(1, comptest));                   //TODO correggi con getId e non hardcoded
-        assertEquals(1, comp.getChild(1).getQuantity());
+        IntProductData ip = new IntProductData(2, new Element());
+        IntProductData ip2 = new IntProductData(1, new Element());
+        comp.addProduct(ip);
+        comptest.addProduct(ip2);
+        assertNotNull(comp.getChild(ip.getProduct().getId()));
+        assertEquals(2, comp.getChild(ip.getProduct().getId()).getQuantity());
         comp.addProduct(new IntProductData(1, comptest));
-        assertEquals(2, comp.getChild(1).getQuantity());
-        assertEquals(1, comp.getChild(3).getQuantity());
-        comp.removeProduct(1, 2);
+        assertEquals(1, comp.getChild(comptest.getId()).getQuantity());
+        comp.addProduct(new IntProductData(1, comptest));
+        assertEquals(2, comp.getChild(comptest.getId()).getQuantity());
+        assertEquals(1, comp.getChild(ip2.getProduct().getId()).getQuantity());
+        comp.removeProduct(comptest.getId(), 2);
         assertEquals(1, comp.getChildren().size());
     }
 }

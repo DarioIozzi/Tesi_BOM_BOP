@@ -63,7 +63,10 @@ public class Composite extends Product{
             if(child.getProduct().getId() == i){
                 return child;
             }else if(child.getProduct() instanceof Composite){
-                child.getProduct().getChild(i);
+                IntProductData result = child.getProduct().getChild(i);
+                if (result != null) {
+                    return result;
+                }
             }
         }
         return null;

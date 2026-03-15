@@ -1,6 +1,7 @@
 package Knowledge;
 
 import Operational.Composite;
+import Others.IntProductData;
 import Others.IntProductTypeData;
 
 import java.util.*;
@@ -56,7 +57,9 @@ public class CompositeType extends ProductType{
             if(child.getProductType().getId() == i){
                 return child;
             }else if(child.getProductType() instanceof CompositeType){
-                child.getProductType().getChild(i);
+                IntProductTypeData result = child.getProductType().getChild(i);
+                if (result != null)
+                    return result;
             }
         }
         return null;
