@@ -1,39 +1,50 @@
 import ConfigurationJSON.Configuration;
-import ConfigurationJSON.TypeBuilder;
+import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
+import ConfigurationJSON.OperationalBuilder.OpBuilder;
 import Knowledge.ProcessType;
+import Knowledge.ProductCatalog;
 import Knowledge.ProductType;
 import Knowledge.ResourceType;
+import Operational.Resource;
+import Others.Order;
+import Others.Warehouse;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Controller {
 
     private final Warehouse warehouse;
+    private final ProductCatalog productCatalog;
 
     public Controller(){
         warehouse = new Warehouse();
-    }
-
-    public void addProcessType() throws IOException {
-        Configuration config = new Configuration();
-        ProcessType pt = new TypeBuilder().buildProcessType(config.readProcessJSON("/Process.json"));
+        productCatalog = new ProductCatalog();
     }
 
     public void addProductType() throws IOException {
         Configuration config = new Configuration();
         ProductType pt = new TypeBuilder().buildProductType(config.readProductJSON("/Product.json"));
+        productCatalog.addProductType(pt);
     }
 
-    public void addResourceType() throws IOException {
+    public void addProductTypeList() throws IOException {
         Configuration config = new Configuration();
-        ResourceType rt = new TypeBuilder().buildResourceType(config.readResourceJSON("/Resource.json"));
+        List<ProductType> pt = new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json"));
+        productCatalog.addProductType(pt);
     }
 
-    public void addProcess(){}
+    public void removeProductType(int id) {
+        productCatalog.removeProductType(id);
+    }
 
-    public void addElement(){}
+    public void addResource() throws IOException{
+        Configuration config = new Configuration();
+        Resource r = new OpBuilder().buildResource(config.readResourceJSON("/Resource.json"));
+    }
 
-    public void addResource(){}
-
-    public void addOrder(){}
+    public void addOrder() throws IOException {             //TODO menù gestione ordine --> aggiunta di features, observations, modifica stato processi (?)
+        Configuration config = new Configuration();
+        Order order = new OpBuilder().buildOrder(config.readOrderJSON("/Order.json"));
+    }
 }

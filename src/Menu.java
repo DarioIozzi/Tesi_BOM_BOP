@@ -21,17 +21,14 @@ public class Menu {
             System.out.println("1. Add a process type");
             System.out.println("2. Add an elementary product type");
             System.out.println("3. Add a resource type");
-            System.out.println("4. Add a process");
-            System.out.println("5. Add an elementary product");
-            System.out.println("6. Add a resource");
-            System.out.println("7. Add an order");
+            System.out.println("4. Add an order");
             System.out.println("0. Exit");
 
             scelta = inputInt();
 
             switch (scelta) {
                 case 1:
-                    controller.addProcessType();
+
                     break;
 
                 case 2:
@@ -39,22 +36,10 @@ public class Menu {
                     break;
 
                 case 3:
-                    controller.addResourceType();
+
                     break;
 
                 case 4:
-                    controller.addProcess();
-                    break;
-
-                case 5:
-                    controller.addElement();
-                    break;
-
-                case 6:
-                    controller.addResource();
-                    break;
-
-                case 7:
                     controller.addOrder();
                     break;
 

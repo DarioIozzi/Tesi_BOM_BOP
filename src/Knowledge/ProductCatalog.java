@@ -1,44 +1,40 @@
 package Knowledge;
 
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class ProductCatalog {
 
-    private List<ProductType> products;
+    private final Map<Integer, ProductType> products = new HashMap<>();
 
     public ProductCatalog() {}
 
-    public void addProductType(ProductType p) {
+    public void addProductType(List<ProductType> productsList) {
 
-        products.add(Objects.requireNonNull(p, "Product type cannot be null"));
+        Map<Integer, ProductType> mp = new HashMap<>();
+        for (ProductType p : productsList) {
+            mp.put(p.getId(), p);
+        }
+        this.products.putAll(Objects.requireNonNull(mp, "Product type list cannot be null"));
     }
 
-    public List<ProductType> getProducts() {
+    public void addProductType(ProductType p) {
+
+        products.put(Objects.requireNonNull(p, "Product type cannot be null").getId(), p);
+    }
+
+    public Map<Integer, ProductType> getProductTypes() {
         return products;
     }
 
     public ProductType getProductType(int id) {
-        for (ProductType p : products) {
-            if (p.getId() == id) {
-                return p;
-            }
-        }
-        return null;
+        return products.get(id);
     }
 
-    public boolean removeProductType(int id) {
+    public void removeProductType(int id) {
 
-        Iterator<ProductType> it = products.iterator();
-
-        while (it.hasNext()){
-            ProductType p = it.next();
-            if (p.getId() == id){
-                it.remove();
-                return true;
-            }
-        }
-        return false;
+        products.remove(id);
     }
 }

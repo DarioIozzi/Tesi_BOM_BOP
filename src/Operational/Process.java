@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Process {
 
+    //TODO aggiungi enum stato processo
     private static int counter = 0;
     private final int id;
     private ProcessType type;
