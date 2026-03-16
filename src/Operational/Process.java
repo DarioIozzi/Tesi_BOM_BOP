@@ -7,17 +7,25 @@ import java.util.List;
 
 public class Process {
 
-    //TODO aggiungi enum stato processo
+    public enum Status{
+        READY,
+        IN_PROGRESS,
+        COMPLETE,
+        FAILED
+    }
+
+    private Status status;
     private static int counter = 0;
     private final int id;
     private ProcessType type;
     private final List<Feature> featureList = new ArrayList<>();
-    private List<Observation> observations;
+    private final List<Observation> observations = new ArrayList<>();
 
     public Process(ProcessType type) {
 
         this.id = counter++;
         this.type = type;
+        this.status = Status.READY;
     }
 
     public int getId() {
@@ -46,5 +54,21 @@ public class Process {
 
     public void addObservation(Observation observation) {
         this.observations.add(observation);
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void start(){
+        status = Status.IN_PROGRESS;
+    }
+
+    public void completed(){
+        status = Status.COMPLETE;
+    }
+
+    public void failed(){
+        status = Status.FAILED;
     }
 }
