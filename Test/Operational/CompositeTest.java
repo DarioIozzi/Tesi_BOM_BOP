@@ -1,7 +1,6 @@
 package Operational;
 
 import Knowledge.CompositeType;
-import Others.IntProductData;
 import org.junit.Before;
 import org.junit.Test;
 

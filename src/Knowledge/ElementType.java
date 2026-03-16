@@ -1,8 +1,5 @@
 package Knowledge;
 
-import Others.IntProductTypeData;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ElementType extends ProductType{

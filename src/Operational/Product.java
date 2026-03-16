@@ -1,7 +1,6 @@
 package Operational;
 
 import Knowledge.ProductType;
-import Others.IntProductData;
 
 import java.util.ArrayList;
 import java.util.List;

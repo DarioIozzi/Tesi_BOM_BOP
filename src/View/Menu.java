@@ -1,3 +1,7 @@
+package View;
+
+import Controller.Controller;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -16,7 +20,7 @@ public class Menu {
         int scelta;
 
         while (true) {
-            System.out.println("Menu");
+            System.out.println("View.Menu");
             System.out.println("Welcome, do you want to: ");
             System.out.println("1. Add a process type");
             System.out.println("2. Add an elementary product type");

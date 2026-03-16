@@ -1,6 +1,4 @@
-package Others;
-
-import Knowledge.ProductType;
+package Knowledge;
 
 import java.util.Objects;
 

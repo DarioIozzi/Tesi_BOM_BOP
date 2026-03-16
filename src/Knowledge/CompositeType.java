@@ -1,9 +1,5 @@
 package Knowledge;
 
-import Operational.Composite;
-import Others.IntProductData;
-import Others.IntProductTypeData;
-
 import java.util.*;
 
 public class CompositeType extends ProductType{

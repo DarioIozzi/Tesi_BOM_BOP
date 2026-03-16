@@ -1,6 +1,4 @@
-package Others;
-
-import Operational.Product;
+package Operational;
 
 import java.util.Objects;
 

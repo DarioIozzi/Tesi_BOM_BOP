@@ -3,9 +3,9 @@ package ConfigurationJSON.OperationalBuilder;
 import Knowledge.CompositeType;
 import Operational.Process;
 import Operational.*;
-import Others.IntProductData;
-import Others.IntProductTypeData;
-import Others.Order;
+import Operational.IntProductData;
+import Knowledge.IntProductTypeData;
+import Operational.Order;
 
 import java.util.ArrayList;
 import java.util.List;

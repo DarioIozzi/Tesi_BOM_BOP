@@ -1,4 +1,4 @@
-package Others;
+package Warehouse;
 
 import java.util.HashMap;
 import java.util.Map;

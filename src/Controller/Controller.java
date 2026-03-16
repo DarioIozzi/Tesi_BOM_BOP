@@ -1,13 +1,12 @@
+package Controller;
+
 import ConfigurationJSON.Configuration;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
 import ConfigurationJSON.OperationalBuilder.OpBuilder;
-import Knowledge.ProcessType;
 import Knowledge.ProductCatalog;
 import Knowledge.ProductType;
-import Knowledge.ResourceType;
-import Operational.Resource;
-import Others.Order;
-import Others.Warehouse;
+import Operational.Order;
+import Warehouse.Warehouse;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,7 +39,7 @@ public class Controller {
 
     public void addResource() throws IOException{
         Configuration config = new Configuration();
-        Resource r = new OpBuilder().buildResource(config.readResourceJSON("/Resource.json"));
+        warehouse.addResource(new OpBuilder().buildResource(config.readResourceJSON("/Resource.json")));
     }
 
     public void addOrder() throws IOException {             //TODO menù gestione ordine --> aggiunta di features, observations, modifica stato processi (?)

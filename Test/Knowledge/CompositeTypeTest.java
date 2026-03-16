@@ -1,6 +1,5 @@
 package Knowledge;
 
-import Others.IntProductTypeData;
 import org.junit.Before;
 import org.junit.Test;
 

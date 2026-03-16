@@ -1,7 +1,5 @@
 package ConfigurationJSON.OperationalBuilder;
 
-import Others.IntProductData;
-
 import java.util.ArrayList;
 import java.util.List;
 

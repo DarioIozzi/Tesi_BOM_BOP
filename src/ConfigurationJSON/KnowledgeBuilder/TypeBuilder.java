@@ -2,7 +2,7 @@ package ConfigurationJSON.KnowledgeBuilder;
 import Knowledge.*;
 import Knowledge.Units.*;
 import ConfigurationJSON.KnowledgeBuilder.Units.*;
-import Others.IntProductTypeData;
+import Knowledge.IntProductTypeData;
 
 import java.util.ArrayList;
 import java.util.List;
