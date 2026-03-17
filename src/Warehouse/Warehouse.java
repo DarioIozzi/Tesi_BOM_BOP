@@ -33,4 +33,12 @@ public class Warehouse {
 
         return resources.get(fam).get(id);
     }
+
+    public void display(){
+        for (Map.Entry<Integer, Map<Integer, Resource>> entry : resources.entrySet()) {
+            for (Resource r : entry.getValue().values()) {
+                System.out.println(r);
+            }
+        }
+    }
 }

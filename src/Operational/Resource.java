@@ -4,7 +4,6 @@ import Knowledge.ResourceType;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Resource {
 
@@ -59,5 +58,10 @@ public class Resource {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Resource{id = " + id + ", family = " + getFamily() + "}";
     }
 }

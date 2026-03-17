@@ -1,6 +1,7 @@
 package View;
 
 import View.Knowledge.MenuProductCatalog;
+import View.Operational.MenuWarehouse;
 import View.Operational.OrderMenu;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class MenuFacade extends Menu {
             System.out.println("Welcome, do you want to: ");
             System.out.println("1. Manage product catalog");
             System.out.println("2. Manage an order");
+            System.out.println("3. Manage the warehouse");
             System.out.println("0. Exit");
 
             scelta = inputInt();
@@ -35,6 +37,11 @@ public class MenuFacade extends Menu {
 
                 case 2:
                     menuAttuale = new OrderMenu();
+                    menuAttuale.Display();
+                    break;
+
+                case 3:
+                    menuAttuale = new MenuWarehouse();
                     menuAttuale.Display();
                     break;
 

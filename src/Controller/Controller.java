@@ -51,18 +51,24 @@ public class Controller {
     }
 
     public void addResourceToProduct(int orderId, int productId, int resourceId, int family) {
-
         ((Element) orderManager.getOrder(orderId).getProduct(productId)).setResource(warehouse.getResource(family, resourceId));
     }
 
     public void removeResourceFromProduct(int orderId, int productId) {
-
         ((Element) orderManager.getOrder(orderId).getProduct(productId)).removeResource();
     }
 
     public void addResourceToWarehouse() throws IOException {
         Configuration config = new Configuration();
         warehouse.addResource(new OpBuilder().buildResource(config.readResourceJSON("/Resource.json")));
+    }
+
+    public void removeResourceFromWarehouse(int family, int resourceId) {
+        warehouse.removeResource(family, resourceId);
+    }
+
+    public void displayWarehouse() {
+        warehouse.display();
     }
 
     public void addOrder() throws IOException {
