@@ -82,4 +82,9 @@ public abstract class ProductType {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "{id= " + id + ", family= " + family + "} \n";
+    }
 }

@@ -28,4 +28,9 @@ public class Warehouse {
 
         resources.get(fam).remove(id);
     }
+
+    public Resource getResource(int fam, int id) {
+
+        return resources.get(fam).get(id);
+    }
 }

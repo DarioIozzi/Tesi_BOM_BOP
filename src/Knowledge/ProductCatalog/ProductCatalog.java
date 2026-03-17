@@ -1,13 +1,12 @@
-package Knowledge;
+package Knowledge.ProductCatalog;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import Knowledge.ProductType;
+
+import java.util.*;
 
 public class ProductCatalog {
 
-    private final Map<Integer, ProductType> products = new HashMap<>();
+    private final Map<Integer, ProductType> products = new TreeMap<>();
 
     public ProductCatalog() {}
 
@@ -35,6 +34,8 @@ public class ProductCatalog {
 
     public void removeProductType(int id) {
 
+        if (id < 0)
+            throw new IllegalArgumentException("Product type id cannot be negative");
         products.remove(id);
     }
 }

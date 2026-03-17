@@ -56,6 +56,10 @@ public class Process {
         this.observations.add(observation);
     }
 
+    public void removeObservaion(int id){
+        this.observations.remove(id);
+    }
+
     public Status getStatus() {
         return status;
     }

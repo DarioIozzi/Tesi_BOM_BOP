@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-
+                                                                                //TODO valuta interfaccia ulteriore alla abstract class
 public class Composite extends Product{
 
     private final List<IntProductData> children;

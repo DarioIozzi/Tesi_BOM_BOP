@@ -43,4 +43,8 @@ public class Element extends Product{
     public void setResource(Resource resource) {
         this.resource = resource;
     }
+
+    public void removeResource(){
+        this.resource = null;
+    }
 }

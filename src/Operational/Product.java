@@ -65,4 +65,9 @@ public abstract class Product {
     public Process getProcess() {
         return process;
     }
+
+    @Override
+    public String toString(){
+        return "{id= " + id + ", family= " + type.getFamily() + "} \n";
+    }
 }
