@@ -1,19 +1,11 @@
-package Operational;
+package ConfigurationJSON.OperationalBuilder;
 
 import Knowledge.ObservationType;
 
-public class Observation {
+public class ObservationDTO {
 
-    private static int counter = 0;
     private ObservationType type;
-    private final int id;
     private String text;
-
-    public Observation(ObservationType type, String text) {
-        this.id = counter++;
-        this.type = type;
-        this.text = text;
-    }
 
     public void setText(String text) {
         this.text = text;
@@ -21,10 +13,6 @@ public class Observation {
 
     public String getText() {
         return text;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public ObservationType getType() {

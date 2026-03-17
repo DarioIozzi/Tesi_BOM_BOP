@@ -5,7 +5,7 @@ import Operational.Process;
 import Operational.*;
 import Operational.IntProductData;
 import Knowledge.IntProductTypeData;
-import Operational.Order;
+import Operational.OrderManager.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,5 +59,13 @@ public class OpBuilder {
             throw new IllegalArgumentException("Feature is null");
 
         return new Feature(feature.getType(), feature.getUnits());
+    }
+
+    public Observation buildObservation(ObservationDTO observationDTO){
+
+        if (observationDTO == null)
+            throw new IllegalArgumentException("ObservationDTO is null");
+
+        return new Observation(observationDTO.getType(), observationDTO.getText());
     }
 }
