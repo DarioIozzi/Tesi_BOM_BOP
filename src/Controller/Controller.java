@@ -35,6 +35,12 @@ public class Controller {
         return instance;
     }
 
+    public void reset(){
+        warehouse.reset();
+        productCatalog.reset();
+        orderManager.reset();
+    }
+
     public void addProductType() throws IOException {
         Configuration config = new Configuration();
         ProductType pt = new TypeBuilder().buildProductType(config.readProductJSON("/Product.json"));

@@ -38,4 +38,8 @@ public class ProductCatalog {
             throw new IllegalArgumentException("Product type id cannot be negative");
         products.remove(id);
     }
+
+    public void reset(){
+        products.clear();
+    }
 }

@@ -41,4 +41,8 @@ public class Warehouse {
             }
         }
     }
+
+    public void reset(){
+        resources.clear();
+    }
 }

@@ -27,4 +27,8 @@ public class OrderManager {
     public List<Order> getOrders() {
         return orders;
     }
+
+    public void reset(){
+        orders.clear();
+    }
 }
