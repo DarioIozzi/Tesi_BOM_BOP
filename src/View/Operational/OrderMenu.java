@@ -33,8 +33,8 @@ public class OrderMenu extends Menu {
             System.out.println("6. Remove a resource from a basic element");
             System.out.println("7. Remove a feature from a product");
             System.out.println("8. Start an order");
-            System.out.println("9. View an order");
-            System.out.println("10. Close an order");
+            System.out.println("9. View the order");
+            System.out.println("10. Close the order");
             System.out.println("0. Exit");
 
             scelta = inputInt();

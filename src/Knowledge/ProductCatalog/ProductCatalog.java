@@ -24,8 +24,8 @@ public class ProductCatalog {
         products.put(Objects.requireNonNull(p, "Product type cannot be null").getId(), p);
     }
 
-    public Map<Integer, ProductType> getProductTypes() {
-        return products;
+    public Collection<ProductType> getProductTypes() {
+        return products.values();
     }
 
     public ProductType getProductType(int id) {

@@ -10,6 +10,7 @@ import Operational.OrderManager.OrderManager;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -76,7 +77,7 @@ public class Controller {
         orderManager.addOrder(new OpBuilder().buildOrder(config.readOrderJSON("/Order.json")));
     }
 
-    public Map<Integer, ProductType> displayProductCatalog(){
+    public Collection<ProductType> displayProductCatalog(){
         return productCatalog.getProductTypes();
     }
 

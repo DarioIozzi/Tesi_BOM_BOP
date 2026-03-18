@@ -44,4 +44,9 @@ public class IntProductData {
     public int hashCode() {
         return Objects.hash(quantity, product);
     }
+
+    @Override
+    public String toString() {
+        return " [product = " + product.getType() + ", quantity = " + quantity + "]";
+    }
 }
