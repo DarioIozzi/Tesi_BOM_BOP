@@ -27,15 +27,15 @@ public class MenuProductCatalog extends Menu {
 
             switch (scelta) {
                 case 1:
-                    System.out.println(controller.displayProductCatalog());
+                    System.out.println(controller.getProductCatalog());
                     break;
 
                 case 2:
-                    controller.addProductType();
+                    controller.addProductType("/Product.json");
                     break;
 
                 case 3:
-                    controller.addProductTypeList();
+                    controller.addProductTypeList("/ProductCatalog.json");
                     break;
 
                 case 4:

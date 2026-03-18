@@ -8,11 +8,13 @@ import Knowledge.ProductType;
 import Operational.Element;
 import Operational.OrderManager.Order;
 import Operational.OrderManager.OrderManager;
+import Operational.Resource;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
 
@@ -35,27 +37,38 @@ public class Controller {
         return instance;
     }
 
-    public void reset(){
+    public void reset(){        //Per testing
         warehouse.reset();
-        productCatalog.reset();
         orderManager.reset();
     }
 
-    public void addProductType() throws IOException {
+    //Product Types methods
+
+    public void addProductType(String path) throws IOException {
         Configuration config = new Configuration();
-        ProductType pt = new TypeBuilder().buildProductType(config.readProductJSON("/Product.json"));
+        ProductType pt = new TypeBuilder().buildProductType(config.readProductJSON(path));
         productCatalog.addProductType(pt);
     }
 
-    public void addProductTypeList() throws IOException {
+    public void addProductTypeList(String path) throws IOException {
         Configuration config = new Configuration();
-        List<ProductType> pt = new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json"));
+        List<ProductType> pt = new TypeBuilder().buildProductListType(config.readProductListJSON(path));
         productCatalog.addProductType(pt);
     }
 
     public void removeProductType(int id) {
         productCatalog.removeProductType(id);
     }
+
+    public Collection<ProductType> getProductCatalog(){
+        return productCatalog.getProductTypes();
+    }
+
+    public ProductType getProductType(int id){
+        return productCatalog.getProductType(id);
+    }
+
+    //Resource-product methods
 
     public void addResourceToProduct(int orderId, int productId, int resourceId, int family) {
         ((Element) orderManager.getOrder(orderId).getProduct(productId)).setResource(warehouse.getResource(family, resourceId));
@@ -65,31 +78,8 @@ public class Controller {
         ((Element) orderManager.getOrder(orderId).getProduct(productId)).removeResource();
     }
 
-    public void addResourceToWarehouse() throws IOException {
-        Configuration config = new Configuration();
-        warehouse.addResource(new OpBuilder().buildResource(config.readResourceJSON("/Resource.json")));
-    }
 
-    public void removeResourceFromWarehouse(int family, int resourceId) {
-        warehouse.removeResource(family, resourceId);
-    }
-
-    public void displayWarehouse() {
-        warehouse.display();
-    }
-
-    public void addOrder() throws IOException {
-        Configuration config = new Configuration();
-        orderManager.addOrder(new OpBuilder().buildOrder(config.readOrderJSON("/Order.json")));
-    }
-
-    public void removeOrder(int orderId){
-        orderManager.removeOrder(orderId);
-    }
-
-    public Collection<ProductType> displayProductCatalog(){
-        return productCatalog.getProductTypes();
-    }
+    //Observations-Product methods
 
     public void addObservation(int orderId, int productId) throws IOException {
         Configuration config = new Configuration();
@@ -105,6 +95,47 @@ public class Controller {
             orderManager.getOrder(orderId).getProduct(productId).getProcess().completed();
         else if(status == 2)
             orderManager.getOrder(orderId).getProduct(productId).getProcess().failed();
+    }
+
+    //Feature-Product methods
+
+    public void addFeature(int orderId, int productId) throws IOException {
+        Configuration config = new Configuration();
+        orderManager.getOrder(orderId).getProduct(productId).addFeature(new OpBuilder().buildFeature(config.readFeatureJSON("/Feature")));
+    }
+
+    public void removeFeature(int orderId, int productId, int featureId){
+        orderManager.getOrder(orderId).getProduct(productId).removeFeature(featureId);
+    }
+
+    //Resource-warehouse methods
+
+    public void addResourceToWarehouse(String path) throws IOException {
+        Configuration config = new Configuration();
+        warehouse.addResource(new OpBuilder().buildResource(config.readResourceJSON(path)));
+    }
+
+    public void removeResourceFromWarehouse(int family, int resourceId) {
+        warehouse.removeResource(family, resourceId);
+    }
+
+    public void displayWarehouse() {
+        warehouse.display();
+    }
+
+    public Map<Integer, Map<Integer, Resource>> getWarehouse(){
+        return warehouse.getResources();
+    }
+
+    //Order methods
+
+    public void addOrder(String path) throws IOException {
+        Configuration config = new Configuration();
+        orderManager.addOrder(new OpBuilder().buildOrder(config.readOrderJSON(path)));
+    }
+
+    public void removeOrder(int orderId){
+        orderManager.removeOrder(orderId);
     }
 
     public void startOrder(int orderId){
@@ -124,14 +155,5 @@ public class Controller {
 
     public List<Order> displayOrderList(){
         return orderManager.getOrders();
-    }
-
-    public void addFeature(int orderId, int productId) throws IOException {
-        Configuration config = new Configuration();
-        orderManager.getOrder(orderId).getProduct(productId).addFeature(new OpBuilder().buildFeature(config.readFeatureJSON("/Feature")));
-    }
-
-    public void removeFeature(int orderId, int productId, int featureId){
-        orderManager.getOrder(orderId).getProduct(productId).removeFeature(featureId);
     }
 }

@@ -53,7 +53,7 @@ public class MenuFacade extends Menu {
                     break;
 
                 case 5:
-                    controller.addOrder();
+                    controller.addOrder("/Order.json");
                     break;
 
                 case 0:

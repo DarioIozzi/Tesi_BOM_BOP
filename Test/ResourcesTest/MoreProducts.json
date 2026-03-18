@@ -1,0 +1,218 @@
+[
+  {
+    "type": "composite",
+    "family": "Bench",
+    "featureTypes": [
+      {
+        "name": "length",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 120
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "BenchAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 4,
+        "productType": {
+          "type": "element",
+          "family": "BenchLeg",
+          "featureTypes": [
+            {
+              "name": "length",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 45
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "BenchLegProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodBeam",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 1,
+        "productType": {
+          "type": "element",
+          "family": "BenchSeat",
+          "featureTypes": [
+            {
+              "name": "thickness",
+              "unitTypes": [
+                {
+                  "type": "Thickness",
+                  "value": 4
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "BenchSeatProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "Shoe Cabinet",
+    "featureTypes": [
+      {
+        "name": "height",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 110
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "Shoe CabinetAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 4,
+        "productType": {
+          "type": "element",
+          "family": "CabinetShelf",
+          "featureTypes": [
+            {
+              "name": "width",
+              "unitTypes": [
+                {
+                  "type": "Width",
+                  "value": 70
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "CabinetShelfProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 2,
+        "productType": {
+          "type": "element",
+          "family": "CabinetDoor",
+          "featureTypes": [
+            {
+              "name": "height",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 100
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "CabinetDoorProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+]

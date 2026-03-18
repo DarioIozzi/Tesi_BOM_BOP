@@ -26,7 +26,7 @@ public class MenuWarehouse extends Menu {
 
             switch(scelta){
                 case 1:
-                    controller.addResourceToWarehouse();
+                    controller.addResourceToWarehouse("/Resource.json");
                     break;
 
                 case 2:

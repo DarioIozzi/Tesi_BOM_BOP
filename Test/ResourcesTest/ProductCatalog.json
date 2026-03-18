@@ -1,0 +1,794 @@
+[
+  {
+    "type": "composite",
+    "family": "Dining Table",
+    "featureTypes": [
+      {
+        "name": "length",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 160
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "unitTypes": [
+          {
+            "type": "Width",
+            "value": 90
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "Dining TableAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 4,
+        "productType": {
+          "type": "element",
+          "family": "TableLeg",
+          "featureTypes": [
+            {
+              "name": "length",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 75
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "TableLegProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodBeam",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 1,
+        "productType": {
+          "type": "element",
+          "family": "TableTop",
+          "featureTypes": [
+            {
+              "name": "thickness",
+              "unitTypes": [
+                {
+                  "type": "Thickness",
+                  "value": 4
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "TableTopProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "Coffee Table",
+    "featureTypes": [
+      {
+        "name": "length",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "unitTypes": [
+          {
+            "type": "Width",
+            "value": 60
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "Coffee TableAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 4,
+        "productType": {
+          "type": "element",
+          "family": "CoffeeLeg",
+          "featureTypes": [
+            {
+              "name": "length",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 40
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "CoffeeLegProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodBeam",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 1,
+        "productType": {
+          "type": "element",
+          "family": "CoffeeTop",
+          "featureTypes": [
+            {
+              "name": "thickness",
+              "unitTypes": [
+                {
+                  "type": "Thickness",
+                  "value": 3
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "CoffeeTopProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "Bookshelf",
+    "featureTypes": [
+      {
+        "name": "height",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 180
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "BookshelfAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 5,
+        "productType": {
+          "type": "element",
+          "family": "ShelfPanel",
+          "featureTypes": [
+            {
+              "name": "width",
+              "unitTypes": [
+                {
+                  "type": "Width",
+                  "value": 80
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "ShelfPanelProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 2,
+        "productType": {
+          "type": "element",
+          "family": "SidePanel",
+          "featureTypes": [
+            {
+              "name": "height",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 180
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "SidePanelProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "Wardrobe",
+    "featureTypes": [
+      {
+        "name": "height",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 200
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "unitTypes": [
+          {
+            "type": "Width",
+            "value": 150
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "WardrobeAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 2,
+        "productType": {
+          "type": "element",
+          "family": "WardrobeDoor",
+          "featureTypes": [
+            {
+              "name": "height",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 190
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "WardrobeDoorProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 5,
+        "productType": {
+          "type": "element",
+          "family": "WardrobeShelf",
+          "featureTypes": [
+            {
+              "name": "width",
+              "unitTypes": [
+                {
+                  "type": "Width",
+                  "value": 140
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "WardrobeShelfProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "Desk",
+    "featureTypes": [
+      {
+        "name": "length",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 140
+          }
+        ]
+      },
+      {
+        "name": "width",
+        "unitTypes": [
+          {
+            "type": "Width",
+            "value": 70
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "DeskAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 4,
+        "productType": {
+          "type": "element",
+          "family": "DeskLeg",
+          "featureTypes": [
+            {
+              "name": "length",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 72
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "DeskLegProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "MetalBar",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 1,
+        "productType": {
+          "type": "element",
+          "family": "DeskTop",
+          "featureTypes": [
+            {
+              "name": "thickness",
+              "unitTypes": [
+                {
+                  "type": "Thickness",
+                  "value": 3
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "DeskTopProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "Nightstand",
+    "featureTypes": [
+      {
+        "name": "height",
+        "unitTypes": [
+          {
+            "type": "Length",
+            "value": 55
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "NightstandAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 4,
+        "productType": {
+          "type": "element",
+          "family": "NightstandLeg",
+          "featureTypes": [
+            {
+              "name": "length",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 20
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "NightstandLegProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodBeam",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 1,
+        "productType": {
+          "type": "element",
+          "family": "Drawer",
+          "featureTypes": [
+            {
+              "name": "width",
+              "unitTypes": [
+                {
+                  "type": "Width",
+                  "value": 35
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "DrawerProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "composite",
+    "family": "TV Stand",
+    "featureTypes": [
+      {
+        "name": "width",
+        "unitTypes": [
+          {
+            "type": "Width",
+            "value": 140
+          }
+        ]
+      }
+    ],
+    "processType": {
+      "family": "TV StandAssembly",
+      "featureTypes": [],
+      "observationTypes": [
+        {
+          "family": "finalInspection"
+        }
+      ]
+    },
+    "children": [
+      {
+        "quantity": 2,
+        "productType": {
+          "type": "element",
+          "family": "TVSidePanel",
+          "featureTypes": [
+            {
+              "name": "height",
+              "unitTypes": [
+                {
+                  "type": "Length",
+                  "value": 50
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "TVSidePanelProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "quantity": 3,
+        "productType": {
+          "type": "element",
+          "family": "TVShelf",
+          "featureTypes": [
+            {
+              "name": "width",
+              "unitTypes": [
+                {
+                  "type": "Width",
+                  "value": 130
+                }
+              ]
+            }
+          ],
+          "processType": {
+            "family": "TVShelfProcess",
+            "featureTypes": [],
+            "observationTypes": [
+              {
+                "family": "qualityCheck"
+              }
+            ]
+          },
+          "resourceType": {
+            "family": "WoodPanel",
+            "featureTypes": [
+              {
+                "name": "density",
+                "unitTypes": [
+                  {
+                    "type": "Density",
+                    "value": 0.6
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+]

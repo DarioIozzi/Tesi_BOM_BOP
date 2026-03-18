@@ -30,16 +30,12 @@ public class ProductCatalog {
 
     public ProductType getProductType(int id) {
         return products.get(id);
-    }
+    }                   //TODO aggiungi in productCatalog menu
 
     public void removeProductType(int id) {
 
         if (id < 0)
             throw new IllegalArgumentException("Product type id cannot be negative");
         products.remove(id);
-    }
-
-    public void reset(){
-        products.clear();
     }
 }

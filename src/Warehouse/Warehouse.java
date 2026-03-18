@@ -34,6 +34,10 @@ public class Warehouse {
         return resources.get(fam).get(id);
     }
 
+    public Map<Integer, Map<Integer, Resource>> getResources() {
+        return resources;
+    }
+
     public void display(){
         for (Map.Entry<Integer, Map<Integer, Resource>> entry : resources.entrySet()) {
             for (Resource r : entry.getValue().values()) {
