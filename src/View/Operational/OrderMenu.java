@@ -34,7 +34,8 @@ public class OrderMenu extends Menu {
             System.out.println("7. Remove a feature from a product");
             System.out.println("8. Start an order");
             System.out.println("9. View the order");
-            System.out.println("10. Close the order");
+            System.out.println("10. Close this order");
+            System.out.println("11. Remove this order");
             System.out.println("0. Exit");
 
             scelta = inputInt();
@@ -100,6 +101,10 @@ public class OrderMenu extends Menu {
                     System.out.println("2.Failed");
                     int res = inputInt();
                     controller.closeOrder(orderId, res);
+                    break;
+
+                case 11:
+                    controller.removeOrder(orderId);
 
                 case 0:
                     System.out.println("Uscita in corso...");

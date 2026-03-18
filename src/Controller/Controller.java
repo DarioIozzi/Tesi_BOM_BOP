@@ -8,7 +8,6 @@ import Knowledge.ProductType;
 import Operational.Element;
 import Operational.OrderManager.Order;
 import Operational.OrderManager.OrderManager;
-import Operational.Product;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
@@ -76,6 +75,10 @@ public class Controller {
     public void addOrder() throws IOException {
         Configuration config = new Configuration();
         orderManager.addOrder(new OpBuilder().buildOrder(config.readOrderJSON("/Order.json")));
+    }
+
+    public void removeOrder(int orderId){
+        orderManager.removeOrder(orderId);
     }
 
     public Collection<ProductType> displayProductCatalog(){

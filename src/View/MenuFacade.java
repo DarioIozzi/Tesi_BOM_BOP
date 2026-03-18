@@ -26,6 +26,8 @@ public class MenuFacade extends Menu {
             System.out.println("2. Manage an order");
             System.out.println("3. Manage the warehouse");
             System.out.println("4. View orders");
+            System.out.println("5. Add an order");
+            System.out.println("6. Remove an order");
             System.out.println("0. Exit");
 
             scelta = inputInt();
@@ -48,6 +50,11 @@ public class MenuFacade extends Menu {
 
                 case 4:
                     System.out.println(controller.displayOrderList());
+                    break;
+
+                case 5:
+                    controller.addOrder();
+                    break;
 
                 case 0:
                     System.out.println("Uscita in corso...");
