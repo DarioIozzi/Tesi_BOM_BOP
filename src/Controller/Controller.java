@@ -6,13 +6,14 @@ import ConfigurationJSON.OperationalBuilder.OpBuilder;
 import Knowledge.ProductCatalog.ProductCatalog;
 import Knowledge.ProductType;
 import Operational.Element;
+import Operational.OrderManager.Order;
 import Operational.OrderManager.OrderManager;
+import Operational.Product;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public class Controller {
 
@@ -110,6 +111,10 @@ public class Controller {
 
     public void displayOrder(int id){
         System.out.println(orderManager.getOrder(id).getProductslist());
+    }
+
+    public List<Order> displayOrderList(){
+        return orderManager.getOrders();
     }
 
     public void addFeature(int orderId, int productId) throws IOException {

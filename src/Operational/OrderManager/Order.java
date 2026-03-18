@@ -86,4 +86,9 @@ public class Order {
     public Status getStatus() {
          return status;
     }
+
+    @Override
+    public String toString(){
+        return "[id = " + id + ", status = " + status + "] \n";
+    }
 }

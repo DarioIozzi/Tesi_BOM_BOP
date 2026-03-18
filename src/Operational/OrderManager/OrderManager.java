@@ -24,4 +24,7 @@ public class OrderManager {
         return null;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
 }

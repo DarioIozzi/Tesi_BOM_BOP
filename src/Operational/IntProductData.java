@@ -47,6 +47,6 @@ public class IntProductData {
 
     @Override
     public String toString() {
-        return " [product = " + product.getType() + ", quantity = " + quantity + "]";
+        return " [product = " + product.getType() + ", quantity = " + quantity + "]\n";
     }
 }

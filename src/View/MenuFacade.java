@@ -25,6 +25,7 @@ public class MenuFacade extends Menu {
             System.out.println("1. Manage product catalog");
             System.out.println("2. Manage an order");
             System.out.println("3. Manage the warehouse");
+            System.out.println("4. View orders");
             System.out.println("0. Exit");
 
             scelta = inputInt();
@@ -44,6 +45,9 @@ public class MenuFacade extends Menu {
                     menuAttuale = new MenuWarehouse();
                     menuAttuale.Display();
                     break;
+
+                case 4:
+                    System.out.println(controller.displayOrderList());
 
                 case 0:
                     System.out.println("Uscita in corso...");

@@ -62,6 +62,6 @@ public class Resource {
 
     @Override
     public String toString() {
-        return "Resource{id = " + id + ", family = " + getFamily() + "}";
+        return "Resource{id = " + id + ", family = " + getFamily() + "}\n";
     }
 }
