@@ -6,9 +6,9 @@ public class CompositeType extends ProductType{
 
     private final List<IntProductTypeData> children;
 
-    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<IntProductTypeData> children) {
+    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<IntProductTypeData> children, String code) {
 
-        super(pt, family, ft);
+        super(pt, family, ft, code);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
     }
 

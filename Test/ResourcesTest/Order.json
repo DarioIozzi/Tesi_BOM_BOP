@@ -1,0 +1,16 @@
+{
+  "productsList": [
+    {
+      "quantity": 2,
+      "product": {
+        "typeCode":
+      }
+    },
+    {
+      "quantity": 5,
+      "product": {
+        "typeCode":
+      }
+    }
+  ]
+}

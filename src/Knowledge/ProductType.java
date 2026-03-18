@@ -8,16 +8,18 @@ public abstract class ProductType {
 
     static int counter = 0;
     int id;
+    String code;
     ProcessType processType;
     String family;
     List<FeatureType> featureTypes;
 
-    ProductType(ProcessType processType, String family, List<FeatureType> featureTypes) {
+    ProductType(ProcessType processType, String family, List<FeatureType> featureTypes, String code) {
 
         this.featureTypes = new ArrayList<>(Objects.requireNonNull(featureTypes, "featureTypes cannot be null"));
         this.id = counter++;
         this.processType = processType;
         this.family = family;
+        this.code = code;
     }
 
     ProductType() {                             //Per test
@@ -55,14 +57,6 @@ public abstract class ProductType {
         return null;
     }
 
-    public void addFeatureType(FeatureType f){
-        featureTypes.add(f);
-    }
-
-    public boolean removeFeatureType(int id){
-        return featureTypes.remove(id) != null;
-    }
-
     public String getFamily(){
         return family;
     }
@@ -75,12 +69,8 @@ public abstract class ProductType {
         return id;
     }
 
-    public boolean isThere(FeatureType ft){
-        for(FeatureType f : featureTypes){
-            if(f.getId() == ft.getId())
-                return true;
-        }
-        return false;
+    public String getCode(){
+        return code;
     }
 
     @Override

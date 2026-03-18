@@ -16,7 +16,7 @@ import java.io.IOException;
 public class ControllerTest {
 
     private Controller controller;
-    private static ProductCatalog catalog = new ProductCatalog();
+    private static ProductCatalog catalog = ProductCatalog.getInstance();
 
     @Before
     public void setup() {
@@ -71,6 +71,6 @@ public class ControllerTest {
     @Test
     public void orderMethodsTest() throws IOException {
 
-        controller.addOrder("/Resource.json");      //TODO finire
+        controller.addOrder("/Order.json");
     }
 }

@@ -6,8 +6,8 @@ public class ElementType extends ProductType{
 
     private ResourceType resourceType;
 
-    public ElementType(String family, List<FeatureType> ft, ProcessType pt, ResourceType resourceType) {
-        super(pt, family, ft);
+    public ElementType(String family, List<FeatureType> ft, ProcessType pt, ResourceType resourceType, String code) {
+        super(pt, family, ft, code);
         this.resourceType = resourceType;
     }
 

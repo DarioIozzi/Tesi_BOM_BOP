@@ -44,9 +44,9 @@ public class TypeBuilder {
             for(IntProductTypeDataDTO ip: ((CompositeTypeDTO) p).getChildren()){
                 iptds.add(new IntProductTypeData(ip.getQuantity(), buildProductType(ip.getProductType())));
             }
-            return new CompositeType(buildProcessType(p.getProcessType()), p.getFamily(), ftds, iptds);
+            return new CompositeType(buildProcessType(p.getProcessType()), p.getFamily(), ftds, iptds, p.getCode());
         }else {
-            return new ElementType(p.getFamily(), ftds, buildProcessType(p.getProcessType()), buildResourceType(((ElementTypeDTO) p).getResourceType()));
+            return new ElementType(p.getFamily(), ftds, buildProcessType(p.getProcessType()), buildResourceType(((ElementTypeDTO) p).getResourceType()), p.getCode());
         }
     }
 

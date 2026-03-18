@@ -22,7 +22,7 @@ public class FeatureTypeDTO {
         return unitTypes;
     }
 
-    public void setUnitsType(List<UnitTypeDTO> unitsType) {
+    public void setUnitTypes(List<UnitTypeDTO> unitsType) {
         this.unitTypes = new ArrayList<>(unitsType);
     }
 }

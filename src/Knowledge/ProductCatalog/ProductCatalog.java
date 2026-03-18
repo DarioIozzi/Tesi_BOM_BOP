@@ -6,9 +6,18 @@ import java.util.*;
 
 public class ProductCatalog {
 
-    private final Map<Integer, ProductType> products = new TreeMap<>();
+    private static ProductCatalog instance = null;
+    private final Map<Integer, ProductType> products = new HashMap<>();
 
-    public ProductCatalog() {}
+    private ProductCatalog() {}
+
+    public static ProductCatalog getInstance(){
+        if(instance == null){
+            instance = new ProductCatalog();
+        }
+
+        return instance;
+    }
 
     public void addProductType(List<ProductType> productsList) {
 

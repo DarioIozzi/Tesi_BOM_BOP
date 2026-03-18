@@ -9,7 +9,7 @@ public class OrderDTO {
 
     public OrderDTO(){}
 
-    public void setProductslist(List<IntProductDataDTO> productslist){
+    public void setProductsList(List<IntProductDataDTO> productslist){
         this.productsList = new ArrayList<>(productslist);
     }
 

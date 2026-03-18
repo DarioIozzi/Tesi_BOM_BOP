@@ -21,6 +21,7 @@ public abstract class ProductTypeDTO {
     private List<FeatureTypeDTO> featureTypes;
     private String family;
     private ProcessTypeDTO processType;
+    private String code;
 
     public ProductTypeDTO() {}
 
@@ -46,5 +47,13 @@ public abstract class ProductTypeDTO {
 
     public void setProcessType(ProcessTypeDTO processType) {
         this.processType = processType;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

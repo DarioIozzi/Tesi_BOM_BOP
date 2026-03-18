@@ -1,16 +1,14 @@
 package ConfigurationJSON.OperationalBuilder;
 
-import Knowledge.ProductType;
-
 public class ProductDTO {
 
-    private ProductType type;
+    private int typeCode;
 
-    public ProductType getType() {
-        return type;
+    public int getTypeCode() {
+        return typeCode;
     }
 
-    public void setType(ProductType type) {
-        this.type = type;
+    public void setTypeCode(int typeCode) {
+        this.typeCode = typeCode;
     }
 }

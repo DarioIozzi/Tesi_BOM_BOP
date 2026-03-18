@@ -25,7 +25,7 @@ public class Controller {
 
     private Controller(){
         warehouse = new Warehouse();
-        productCatalog = new ProductCatalog();
+        productCatalog = ProductCatalog.getInstance();
         orderManager = new OrderManager();
     }
 
