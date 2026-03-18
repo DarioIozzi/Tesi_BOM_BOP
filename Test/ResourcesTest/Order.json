@@ -3,13 +3,13 @@
     {
       "quantity": 2,
       "product": {
-        "typeCode":
+        "typeCode": "DT-001"
       }
     },
     {
       "quantity": 5,
       "product": {
-        "typeCode":
+        "typeCode": "CT-001"
       }
     }
   ]

@@ -1,6 +1,7 @@
 {
   "type": "composite",
   "family": "Dining Chair",
+  "code": "DC-001",
   "featureTypes": [
     {
       "name": "height",
