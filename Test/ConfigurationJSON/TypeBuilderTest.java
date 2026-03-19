@@ -12,7 +12,7 @@ public class TypeBuilderTest {
     @Test
     public void buildProductType_correctDTO() throws IOException {
         Configuration config = new Configuration();
-        ProductTypeDTO ptd = config.readProductJSON("/Product.json");
+        ProductTypeDTO ptd = config.readProductJSON("/ProductType.json");
         ProductType pt = new TypeBuilder().buildProductType(ptd);
         assertNotNull(pt);
         assertEquals("Dining Chair", pt.getFamily());
@@ -23,7 +23,7 @@ public class TypeBuilderTest {
         assertEquals("Dining ChairAssembly", pt.getProcessType().getFamily());
         assertTrue(pt.getProcessType().getFeatureTypes().isEmpty());
         ProductType el = pt.getAllElement().get(0);
-        assertEquals("WoodBeam", ((ElementType) el).getResourceType().getFamily());
+        assertEquals(1, ((ElementType) el).getResourceType().getFamily());
     }
 
     @Test

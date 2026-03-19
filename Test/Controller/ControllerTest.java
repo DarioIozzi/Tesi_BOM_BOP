@@ -37,7 +37,7 @@ public class ControllerTest {
 
         //Add single
         int before = controller.getProductCatalog().size();
-        controller.addProductType("/Product.json");
+        controller.addProductType("/ProductType.json");
         ProductType added = catalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Chair")).findFirst().orElse(null);
         assertNotNull(added);
         assertEquals(before + 1, controller.getProductCatalog().size());

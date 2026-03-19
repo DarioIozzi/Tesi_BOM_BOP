@@ -31,7 +31,7 @@ public class MenuProductCatalog extends Menu {
                     break;
 
                 case 2:
-                    controller.addProductType("/Product.json");
+                    controller.addProductType("/ProductType.json");
                     break;
 
                 case 3:
