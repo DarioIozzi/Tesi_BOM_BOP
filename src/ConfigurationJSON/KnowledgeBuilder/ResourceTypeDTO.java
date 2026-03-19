@@ -6,15 +6,15 @@ import java.util.List;
 public class ResourceTypeDTO {
 
     private List<FeatureTypeDTO> featureTypes;
-    private String family;
+    private int family;
 
     public ResourceTypeDTO() {}
 
-    public String getFamily() {
+    public int getFamily() {
         return family;
     }
 
-    public void setFamily(String family) {
+    public void setFamily(int family) {
         this.family = family;
     }
 

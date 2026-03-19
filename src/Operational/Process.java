@@ -48,7 +48,7 @@ public class Process {
         return featureList;
     }
 
-    public List<Observation> getObservation() {
+    public List<Observation> getObservations() {
         return observations;
     }
 

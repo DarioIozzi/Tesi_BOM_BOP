@@ -10,7 +10,7 @@ public class OrderMenu extends Menu {
     public void Display() throws IOException {
 
         int scelta;
-        int productId;
+        String code;
         int orderId;
         int status;
         int resourceId;
@@ -42,17 +42,17 @@ public class OrderMenu extends Menu {
 
             switch (scelta) {
                 case 1:
-                    productId = getProductId();
-                    controller.addObservation(orderId, productId);
+                    code = getProductCode();
+                    controller.addObservation(orderId, code, "/Observation.json");
                     break;
 
                 case 2:
-                    productId = getProductId();
+                    code = getProductCode();
                     System.out.println("Write the new status");
                     System.out.println("1. Complete");
                     System.out.println("2. Failed");
                     status = inputInt();
-                    controller.modifyStatusProcess(orderId, productId, status);
+                    controller.modifyStatusProcess(orderId, code, status);
                     break;
 
                 case 3:
@@ -60,32 +60,32 @@ public class OrderMenu extends Menu {
                     resourceId = inputInt();
                     System.out.println("Write resource family");
                     family = inputInt();
-                    productId = getProductId();
-                    controller.addResourceToProduct(orderId, productId, resourceId, family);
+                    code = getProductCode();
+                    controller.addResourceToProduct(orderId, code, resourceId, family);
                     break;
 
                 case 4:
-                    productId = getProductId();
-                    controller.addFeature(orderId, productId);
+                    code = getProductCode();
+                    controller.addFeature(orderId, code, "/Feature");
                     break;
 
                 case 5:
-                    productId = getProductId();
+                    code = getProductCode();
                     System.out.println("Write the observation id");
                     obsId = inputInt();
-                    controller.removeObservation(orderId, productId, obsId);
+                    controller.removeObservation(orderId, code, obsId);
                     break;
 
                 case 6:
-                    productId = getProductId();
-                    controller.removeResourceFromProduct(orderId, productId);
+                    code = getProductCode();
+                    controller.removeResourceFromProduct(orderId, code);
                     break;
 
                 case 7:
-                    productId = getProductId();
+                    code = getProductCode();
                     System.out.println("Write the feature id");
                     featureId = inputInt();
-                    controller.removeFeature(orderId, productId, featureId);
+                    controller.removeFeature(orderId, code, featureId);
                     break;
 
                 case 8:
@@ -117,8 +117,8 @@ public class OrderMenu extends Menu {
         }
     }
 
-    public int getProductId(){
-        System.out.println("Please write the product id");
-        return inputInt();
+    public String getProductCode(){
+        System.out.println("Please write the product code");
+        return scanner.nextLine();
     }
 }

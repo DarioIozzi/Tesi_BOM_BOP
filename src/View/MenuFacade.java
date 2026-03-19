@@ -49,7 +49,7 @@ public class MenuFacade extends Menu {
                     break;
 
                 case 4:
-                    System.out.println(controller.displayOrderList());
+                    System.out.println(controller.getOrderList());
                     break;
 
                 case 5:

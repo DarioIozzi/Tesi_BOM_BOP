@@ -49,6 +49,15 @@ public class Order {
          return null;
     }
 
+    public Product getProduct(String code){
+        for (IntProductData ipd : productslist) {
+            if (ipd.getProduct().getType().getCode().equals(code)){
+                return ipd.getProduct();
+            }
+        }
+        return null;
+    }
+
     public int getId() {
          return id;
     }

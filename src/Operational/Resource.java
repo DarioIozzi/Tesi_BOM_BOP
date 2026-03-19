@@ -33,7 +33,7 @@ public class Resource {
         this.lotto = lotto;
     }
 
-    public String getFamily(){
+    public int getFamily(){
         return type.getFamily();
     }
 
@@ -62,6 +62,6 @@ public class Resource {
 
     @Override
     public String toString() {
-        return "{id = " + id + ", family = " + getFamily() + "}\n";
+        return "{id = " + id + ", name = " + getFamily() + "}\n";
     }
 }

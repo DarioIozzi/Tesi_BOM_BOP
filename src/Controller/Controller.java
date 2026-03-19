@@ -68,46 +68,6 @@ public class Controller {
         return productCatalog.getProductType(id);
     }
 
-    //Resource-product methods
-
-    public void addResourceToProduct(int orderId, int productId, int resourceId, int family) {
-        ((Element) orderManager.getOrder(orderId).getProduct(productId)).setResource(warehouse.getResource(family, resourceId));
-    }
-
-    public void removeResourceFromProduct(int orderId, int productId) {
-        ((Element) orderManager.getOrder(orderId).getProduct(productId)).removeResource();
-    }
-
-
-    //Observations-Product methods
-
-    public void addObservation(int orderId, int productId) throws IOException {
-        Configuration config = new Configuration();
-        orderManager.getOrder(orderId).getProduct(productId).getProcess().addObservation(new OpBuilder().buildObservation(config.readObservationJSON("/Observation")));
-    }
-
-    public void removeObservation(int orderId, int productId, int observationId){
-        orderManager.getOrder(orderId).getProduct(productId).getProcess().removeObservaion(observationId);
-    }
-
-    public void modifyStatusProcess(int orderId, int productId, int status){
-        if(status == 1)
-            orderManager.getOrder(orderId).getProduct(productId).getProcess().completed();
-        else if(status == 2)
-            orderManager.getOrder(orderId).getProduct(productId).getProcess().failed();
-    }
-
-    //Feature-Product methods
-
-    public void addFeature(int orderId, int productId) throws IOException {
-        Configuration config = new Configuration();
-        orderManager.getOrder(orderId).getProduct(productId).addFeature(new OpBuilder().buildFeature(config.readFeatureJSON("/Feature")));
-    }
-
-    public void removeFeature(int orderId, int productId, int featureId){
-        orderManager.getOrder(orderId).getProduct(productId).removeFeature(featureId);
-    }
-
     //Resource-warehouse methods
 
     public void addResourceToWarehouse(String path) throws IOException {
@@ -125,6 +85,46 @@ public class Controller {
 
     public Map<Integer, Map<Integer, Resource>> getWarehouse(){
         return warehouse.getResources();
+    }
+
+    //Resource-product methods
+
+    public void addResourceToProduct(int orderId, String code, int resourceId, int family) {
+        ((Element) orderManager.getOrder(orderId).getProduct(code)).setResource(warehouse.getResource(family, resourceId));
+    }
+
+    public void removeResourceFromProduct(int orderId, String code) {
+        ((Element) orderManager.getOrder(orderId).getProduct(code)).removeResource();
+    }
+
+
+    //Observations-Product methods
+
+    public void addObservation(int orderId, String code, String path) throws IOException {
+        Configuration config = new Configuration();
+        orderManager.getOrder(orderId).getProduct(code).getProcess().addObservation(new OpBuilder().buildObservation(config.readObservationJSON(path)));
+    }
+
+    public void removeObservation(int orderId, String code, int observationId){
+        orderManager.getOrder(orderId).getProduct(code).getProcess().removeObservaion(observationId);
+    }
+
+    public void modifyStatusProcess(int orderId, String code, int status){
+        if(status == 1)
+            orderManager.getOrder(orderId).getProduct(code).getProcess().completed();
+        else if(status == 2)
+            orderManager.getOrder(orderId).getProduct(code).getProcess().failed();
+    }
+
+    //Feature-Product methods
+
+    public void addFeature(int orderId, String code, String path) throws IOException {
+        Configuration config = new Configuration();
+        orderManager.getOrder(orderId).getProduct(code).addFeature(new OpBuilder().buildFeature(config.readFeatureJSON(path)));
+    }
+
+    public void removeFeature(int orderId, String code, int featureId){
+        orderManager.getOrder(orderId).getProduct(code).removeFeature(featureId);
     }
 
     //Order methods
@@ -153,7 +153,7 @@ public class Controller {
         System.out.println(orderManager.getOrder(id).getProductslist());
     }
 
-    public List<Order> displayOrderList(){
+    public List<Order> getOrderList(){
         return orderManager.getOrders();
     }
 }
