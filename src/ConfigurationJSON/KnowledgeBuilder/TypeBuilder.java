@@ -1,5 +1,6 @@
 package ConfigurationJSON.KnowledgeBuilder;
 import Knowledge.*;
+import Knowledge.Catalogs.ResourceCatalog;
 import Knowledge.Units.*;
 import ConfigurationJSON.KnowledgeBuilder.Units.*;
 import Knowledge.IntProductTypeData;
@@ -8,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypeBuilder {
+
+    ResourceCatalog rc;
+
+    public TypeBuilder() {
+        rc = ResourceCatalog.getInstance();
+    }
 
     public ProcessType buildProcessType(ProcessTypeDTO processtd){
 
@@ -59,7 +66,8 @@ public class TypeBuilder {
 
         for(ProductTypeDTO p: producttd){
 
-            ptds.add(buildProductType(p));
+            ProductType pt = buildProductType(p);
+            ptds.add(pt);
         }
 
         return ptds;
@@ -90,7 +98,9 @@ public class TypeBuilder {
 
             ftds.add(buildFeatureType(f));
         }
-        return new ResourceType(rtd.getFamily(), ftds);
+        ResourceType rt = new ResourceType(rtd.getFamily(), ftds);
+        rc.addResource(rt);
+        return rt;
     }
 
     public ObservationType buildObservationType(ObservationTypeDTO obst){

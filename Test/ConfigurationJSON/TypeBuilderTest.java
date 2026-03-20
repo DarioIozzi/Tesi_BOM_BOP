@@ -23,11 +23,11 @@ public class TypeBuilderTest {
         assertEquals("Dining ChairAssembly", pt.getProcessType().getFamily());
         assertTrue(pt.getProcessType().getFeatureTypes().isEmpty());
         ProductType el = pt.getAllElement().get(0);
-        assertEquals(1, ((ElementType) el).getResourceType().getFamily());
+        assertEquals("WoodBeam", ((ElementType) el).getResourceType().getFamily());
     }
 
     @Test
-    public void buildProductType_missingDTO() {                     //TODO ricontrolla
+    public void buildProductType_missingDTO() {
 
         ProductTypeDTO ptd = null;
         assertThrows(IllegalArgumentException.class, () -> new TypeBuilder().buildProductType(ptd));

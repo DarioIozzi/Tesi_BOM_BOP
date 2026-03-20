@@ -1,5 +1,6 @@
 package Operational;
 
+import Knowledge.ElementType;
 import Knowledge.ProductType;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class Element extends Product{
     }
 
     public void setResource(Resource resource) {
+        resource.setType(((ElementType)this.getType()).getResourceType());
         this.resource = resource;
     }
 

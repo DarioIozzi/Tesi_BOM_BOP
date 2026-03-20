@@ -3,7 +3,7 @@ package Controller;
 import ConfigurationJSON.Configuration;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
 import ConfigurationJSON.OperationalBuilder.OpBuilder;
-import Knowledge.ProductCatalog.ProductCatalog;
+import Knowledge.Catalogs.ProductCatalog;
 import Knowledge.ProductType;
 import Operational.Element;
 import Operational.OrderManager.Order;
@@ -56,16 +56,16 @@ public class Controller {
         productCatalog.addProductType(pt);
     }
 
-    public void removeProductType(int id) {
-        productCatalog.removeProductType(id);
+    public void removeProductType(String code) {
+        productCatalog.removeProductType(code);
     }
 
     public Collection<ProductType> getProductCatalog(){
         return productCatalog.getProductTypes();
     }
 
-    public ProductType getProductType(int id){
-        return productCatalog.getProductType(id);
+    public ProductType getProductType(String code){
+        return productCatalog.getProductType(code);
     }
 
     //Resource-warehouse methods
@@ -75,7 +75,7 @@ public class Controller {
         warehouse.addResource(new OpBuilder().buildResource(config.readResourceJSON(path)));
     }
 
-    public void removeResourceFromWarehouse(int family, int resourceId) {
+    public void removeResourceFromWarehouse(String family, int resourceId) {
         warehouse.removeResource(family, resourceId);
     }
 
@@ -83,13 +83,13 @@ public class Controller {
         warehouse.display();
     }
 
-    public Map<Integer, Map<Integer, Resource>> getWarehouse(){
+    public Map<String, Map<Integer, Resource>> getWarehouse(){
         return warehouse.getResources();
     }
 
     //Resource-product methods
 
-    public void addResourceToProduct(int orderId, String code, int resourceId, int family) {
+    public void addResourceToProduct(int orderId, String code, int resourceId, String family) {
         ((Element) orderManager.getOrder(orderId).getProduct(code)).setResource(warehouse.getResource(family, resourceId));
     }
 

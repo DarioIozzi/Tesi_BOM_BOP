@@ -8,16 +8,16 @@ public class ResourceDTO {
 
     private List<FeatureDTO> features;
     private int lotto;
-    private ResourceType resourceType;
+    private String code;
 
     public ResourceDTO(){}
 
-    public ResourceType getResourceType() {
-        return resourceType;
+    public String getCode() {
+        return code;
     }
 
-    public void setResourceType(ResourceType resourceType) {
-        this.resourceType = resourceType;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public List<FeatureDTO> getFeatures() {

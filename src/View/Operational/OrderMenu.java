@@ -14,7 +14,7 @@ public class OrderMenu extends Menu {
         int orderId;
         int status;
         int resourceId;
-        int family;
+        String family;
         int obsId;
         int featureId;
 
@@ -59,7 +59,7 @@ public class OrderMenu extends Menu {
                     System.out.println("Write resource id");
                     resourceId = inputInt();
                     System.out.println("Write resource family");
-                    family = inputInt();
+                    family = scanner.nextLine();
                     code = getProductCode();
                     controller.addResourceToProduct(orderId, code, resourceId, family);
                     break;

@@ -1,0 +1,44 @@
+[
+  {
+    "family": "WoodBeam",
+    "featureTypes": [
+      {
+        "name": "density",
+        "unitTypes": [
+          {
+            "type": "Density",
+            "value": 0.6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "family": "WoodPanel",
+    "featureTypes": [
+      {
+        "name": "density",
+        "unitTypes": [
+          {
+            "type": "Density",
+            "value": 0.6
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "family": "MetalBar",
+    "featureTypes": [
+      {
+        "name": "density",
+        "unitTypes": [
+          {
+            "type": "Density",
+            "value": 0.6
+          }
+        ]
+      }
+    ]
+  }
+]

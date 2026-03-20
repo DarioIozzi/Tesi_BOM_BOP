@@ -2,13 +2,13 @@ package ConfigurationJSON.OperationalBuilder;
 
 public class ProductDTO {
 
-    private int typeCode;
+    private String typeCode;
 
-    public int getTypeCode() {
+    public String getTypeCode() {
         return typeCode;
     }
 
-    public void setTypeCode(int typeCode) {
+    public void setTypeCode(String typeCode) {
         this.typeCode = typeCode;
     }
 }

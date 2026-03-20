@@ -7,21 +7,21 @@ public class ResourceType {
 
     private static int counter = 0;
     private final int id;
-    private int family;
+    private String family;
     private List<FeatureType> featureTypes = new ArrayList<>();
 
-    public ResourceType(int family, List<FeatureType> featureTypes) {
+    public ResourceType(String family, List<FeatureType> featureTypes) {
         if(featureTypes != null)
             this.featureTypes = new ArrayList<>(featureTypes);
         this.family = family;
         id = counter++;
     }
 
-    public int getFamily() {
+    public String getFamily() {
         return family;
     }
 
-    public void setFamily(int family) {
+    public void setFamily(String family) {
         this.family = family;
     }
 

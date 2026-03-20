@@ -11,7 +11,7 @@ public class MenuWarehouse extends Menu {
     public void Display() throws IOException {
 
         int scelta;
-        int family;
+        String family;
         int resourceId;
 
         while(true){
@@ -31,7 +31,7 @@ public class MenuWarehouse extends Menu {
 
                 case 2:
                     System.out.println("Write the resource family");
-                    family = inputInt();
+                    family = scanner.nextLine();
                     System.out.println("Write the id of the resource");
                     resourceId = inputInt();
                     controller.removeResourceFromWarehouse(family, resourceId);

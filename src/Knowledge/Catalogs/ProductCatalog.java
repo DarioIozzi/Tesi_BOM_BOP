@@ -1,4 +1,4 @@
-package Knowledge.ProductCatalog;
+package Knowledge.Catalogs;
 
 import Knowledge.ProductType;
 
@@ -7,7 +7,7 @@ import java.util.*;
 public class ProductCatalog {
 
     private static ProductCatalog instance = null;
-    private final Map<Integer, ProductType> products = new HashMap<>();
+    private final Map<String, ProductType> products = new HashMap<>();
 
     private ProductCatalog() {}
 
@@ -21,30 +21,29 @@ public class ProductCatalog {
 
     public void addProductType(List<ProductType> productsList) {
 
-        Map<Integer, ProductType> mp = new HashMap<>();
+        Map<String, ProductType> mp = new HashMap<>();
         for (ProductType p : productsList) {
-            mp.put(p.getId(), p);
+            mp.put(p.getCode(), p);
         }
         this.products.putAll(Objects.requireNonNull(mp, "Product type list cannot be null"));
     }
 
     public void addProductType(ProductType p) {
 
-        products.put(Objects.requireNonNull(p, "Product type cannot be null").getId(), p);
+        products.put(Objects.requireNonNull(p, "Product type cannot be null").getCode(), p);
     }
 
     public Collection<ProductType> getProductTypes() {
         return products.values();
     }
 
-    public ProductType getProductType(int id) {
-        return products.get(id);
-    }                   //TODO aggiungi in productCatalog menu
+    //TODO aggiungi in productCatalog menu
+    public ProductType getProductType(String code) {
+        return products.get(code);
+    }
 
-    public void removeProductType(int id) {
+    public void removeProductType(String code) {
 
-        if (id < 0)
-            throw new IllegalArgumentException("Product type id cannot be negative");
-        products.remove(id);
+        products.remove(code);
     }
 }

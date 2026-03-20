@@ -40,8 +40,8 @@ public class MenuProductCatalog extends Menu {
 
                 case 4:
                     System.out.println("Write product id");
-                    int id = inputInt();
-                    controller.removeProductType(id);
+                    String code = scanner.nextLine();
+                    controller.removeProductType(code);
                     break;
 
                 case 0:

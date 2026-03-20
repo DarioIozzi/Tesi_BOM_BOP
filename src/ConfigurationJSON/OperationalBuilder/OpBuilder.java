@@ -1,8 +1,10 @@
 package ConfigurationJSON.OperationalBuilder;
 
+import Knowledge.Catalogs.ResourceCatalog;
 import Knowledge.CompositeType;
-import Knowledge.ProductCatalog.ProductCatalog;
+import Knowledge.Catalogs.ProductCatalog;
 import Knowledge.ProductType;
+import Knowledge.ResourceType;
 import Operational.Process;
 import Operational.*;
 import Operational.IntProductData;
@@ -41,7 +43,7 @@ public class OpBuilder {
             List<IntProductData> products = new ArrayList<>();
             for(IntProductTypeData pt: productType.getChildren()){
                 ProductDTO p = new ProductDTO();
-                p.setTypeCode(pt.getProductType().getId());
+                p.setTypeCode(pt.getProductType().getCode());
                 products.add(new IntProductData(pt.getQuantity(), buildProduct(p)));
             }
             return new Composite(new Process(productType.getProcessType()), productType, products);
@@ -55,7 +57,9 @@ public class OpBuilder {
         if (resourcedto == null)
             throw new IllegalArgumentException("ResourceDTO is null");
 
-        return new Resource(resourcedto.getLotto(), resourcedto.getResourceType());
+        ResourceCatalog rc = ResourceCatalog.getInstance();
+
+        return new Resource(resourcedto.getLotto(), rc.getResource(resourcedto.getCode()));
     }
 
     public Feature buildFeature(FeatureDTO feature){

@@ -33,7 +33,7 @@ public class Resource {
         this.lotto = lotto;
     }
 
-    public int getFamily(){
+    public String getFamily(){
         return type.getFamily();
     }
 

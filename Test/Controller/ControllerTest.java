@@ -2,7 +2,8 @@ package Controller;
 
 import ConfigurationJSON.Configuration;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
-import Knowledge.ProductCatalog.ProductCatalog;
+import Knowledge.Catalogs.ProductCatalog;
+import Knowledge.Catalogs.ResourceCatalog;
 import Knowledge.ProductType;
 import static org.junit.Assert.*;
 
@@ -18,7 +19,8 @@ import java.util.List;
 public class ControllerTest {
 
     private Controller controller;
-    private static ProductCatalog catalog = ProductCatalog.getInstance();
+    private static final ProductCatalog productCatalog = ProductCatalog.getInstance();
+    private static final ResourceCatalog resourceCatalog = ResourceCatalog.getInstance();
 
     @Before
     public void setup() {
@@ -29,7 +31,7 @@ public class ControllerTest {
     @BeforeClass
     public static void setUpProductCatalog() throws IOException {
         Configuration config = new Configuration();
-        catalog.addProductType(new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json")));
+        productCatalog.addProductType(new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json")));
     }
 
     @Test
@@ -38,21 +40,21 @@ public class ControllerTest {
         //Add single
         int before = controller.getProductCatalog().size();
         controller.addProductType("/ProductType.json");
-        ProductType added = catalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Chair")).findFirst().orElse(null);
+        ProductType added = productCatalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Chair")).findFirst().orElse(null);
         assertNotNull(added);
         assertEquals(before + 1, controller.getProductCatalog().size());
 
         //Remove
-        ProductType toRemove = catalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Table")).findFirst().orElseThrow();
-        controller.removeProductType(toRemove.getId());
+        ProductType toRemove = productCatalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Table")).findFirst().orElseThrow();
+        controller.removeProductType(toRemove.getCode());
         assertEquals(before, controller.getProductCatalog().size());
 
         //List
-        controller.addProductTypeList("/MoreProducts.json");
+        controller.addProductTypeList("/MoreProductTypes.json");
         assertEquals(before + 2, controller.getProductCatalog().size());
-        added = catalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Bench")).findFirst().orElse(null);
+        added = productCatalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Bench")).findFirst().orElse(null);
         assertNotNull(added);
-        added = catalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Shoe Cabinet")).findFirst().orElse(null);
+        added = productCatalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Shoe Cabinet")).findFirst().orElse(null);
         assertNotNull(added);
     }
 
@@ -62,12 +64,13 @@ public class ControllerTest {
         //Add
         controller.addResourceToWarehouse("/Resource.json");
         assertEquals(1, controller.getWarehouse().size());
-        Resource r = controller.getWarehouse().get(0).get(0);
+        Resource r = controller.getWarehouse().get("WoodBeam").get(0);
         assertNotNull(r);
 
         //Remove
-        controller.removeResourceFromWarehouse(0, 0);
-        assertEquals(0, controller.getWarehouse().size());
+        controller.removeResourceFromWarehouse("WoodBeam", 0);
+        assertEquals(1, controller.getWarehouse().size());
+        assertEquals(0, controller.getWarehouse().get("WoodBeam").size());
     }
 
     @Test
@@ -98,7 +101,7 @@ public class ControllerTest {
         Product p = o.getProduct("TL-001");
         controller.addResourceToProduct(o.getId(), p.getType().getCode(), r.getId(), r.getFamily());
         assertEquals(r.getLotto(), ((Element)p).getResource().getLotto());
-        assertEquals(r.getLotto(), ((Element)p).getResource().getFamily());
+        assertEquals(r.getLotto(), ((Element)p).getResource().getLotto());
         controller.removeResourceFromProduct(o.getId(), p.getType().getCode());
 
         //Manage process observations
