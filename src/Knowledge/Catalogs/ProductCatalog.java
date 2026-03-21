@@ -1,5 +1,7 @@
 package Knowledge.Catalogs;
 
+import Knowledge.CompositeType;
+import Knowledge.IntProductTypeData;
 import Knowledge.ProductType;
 
 import java.util.*;
@@ -19,25 +21,37 @@ public class ProductCatalog {
         return instance;
     }
 
-    public void addProductType(List<ProductType> productsList) {
-
-        Map<String, ProductType> mp = new HashMap<>();
-        for (ProductType p : productsList) {
-            mp.put(p.getCode(), p);
-        }
-        this.products.putAll(Objects.requireNonNull(mp, "Product type list cannot be null"));
+    public void reset(){
+        products.clear();
     }
 
-    public void addProductType(ProductType p) {
+    public void addProductType(List<ProductType> productsList) {
 
-        products.put(Objects.requireNonNull(p, "Product type cannot be null").getCode(), p);
+        for (ProductType p : productsList) {
+            addRecursively(p);
+        }
+    }
+
+    public void addProductType(ProductType product) {
+
+            addRecursively(product);
+    }
+
+    private void addRecursively(ProductType p) {
+
+        products.put(p.getCode(), p);
+
+        if (p instanceof CompositeType) {
+            for (IntProductTypeData child : p.getChildren()) {
+                addRecursively(child.getProductType());
+            }
+        }
     }
 
     public Collection<ProductType> getProductTypes() {
         return products.values();
     }
 
-    //TODO aggiungi in productCatalog menu
     public ProductType getProductType(String code) {
         return products.get(code);
     }

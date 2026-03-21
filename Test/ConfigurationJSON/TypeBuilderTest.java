@@ -16,6 +16,7 @@ public class TypeBuilderTest {
         ProductType pt = new TypeBuilder().buildProductType(ptd);
         assertNotNull(pt);
         assertEquals("Dining Chair", pt.getFamily());
+        assertEquals("DC-001", pt.getCode());
         assertEquals(2, pt.getFeatureTypes().size());
         assertEquals("height", pt.getFeatureTypes().get(0).getName());
         assertEquals(1, pt.getFeatureTypes().get(0).getUnitTypes().size());

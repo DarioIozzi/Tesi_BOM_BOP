@@ -15,9 +15,10 @@ public class OpBuilderTest {
 
     @Test
     public void testOrderProductBuilder() throws IOException {
+        ProductCatalog pc = ProductCatalog.getInstance();
+        pc.reset();
         Configuration config = new Configuration();
         OpBuilder opBuilder = new OpBuilder();
-        ProductCatalog pc = ProductCatalog.getInstance();
         pc.addProductType(new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json")));
         Order o = opBuilder.buildOrder(config.readOrderJSON("/Order.json"));
         assertEquals(2, o.getProductslist().size());

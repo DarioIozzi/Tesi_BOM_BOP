@@ -40,6 +40,7 @@ public class Controller {
     public void reset(){        //Per testing
         warehouse.reset();
         orderManager.reset();
+        productCatalog.reset();
     }
 
     //Product Types methods

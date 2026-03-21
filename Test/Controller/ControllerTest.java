@@ -40,12 +40,12 @@ public class ControllerTest {
         //Add single
         int before = controller.getProductCatalog().size();
         controller.addProductType("/ProductType.json");
-        ProductType added = productCatalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Chair")).findFirst().orElse(null);
+        ProductType added = productCatalog.getProductType("DC-001");
         assertNotNull(added);
         assertEquals(before + 1, controller.getProductCatalog().size());
 
         //Remove
-        ProductType toRemove = productCatalog.getProductTypes().stream().filter(p -> p.getFamily().equals("Dining Table")).findFirst().orElseThrow();
+        ProductType toRemove = productCatalog.getProductType("DC-001");
         controller.removeProductType(toRemove.getCode());
         assertEquals(before, controller.getProductCatalog().size());
 
