@@ -38,19 +38,26 @@ public class ControllerTest {
 
         //Add single
         int before = controller.getProductCatalog().size();
+        int beforeChildren = controller.getChildrenProductCatalog().size();
         controller.addProductType("/ProductType.json");
         ProductType added = productCatalog.getProductType("DC-001");
         assertNotNull(added);
-        assertEquals(before + 3, controller.getProductCatalog().size());    //non 4 perchè CL-001 già esiste nel product catalog
+        assertEquals(before + 1, controller.getProductCatalog().size());
+        assertEquals(beforeChildren + 2, controller.getChildrenProductCatalog().size());        //Uno dei product già esiste
 
         //Remove
         ProductType toRemove = productCatalog.getProductType("DC-001");
         controller.removeProductType(toRemove.getCode());
-        assertEquals(before + 2, controller.getProductCatalog().size());
+        assertEquals(before, controller.getProductCatalog().size());
+        assertEquals(beforeChildren + 2, controller.getChildrenProductCatalog().size());
+        toRemove = productCatalog.getProductType("CL-001");
+        controller.removeProductType(toRemove.getCode());
+        assertEquals(beforeChildren + 2, controller.getChildrenProductCatalog().size());
 
         //List
         controller.addProductTypeList("/MoreProductTypes.json");
-        assertEquals(before + 4, controller.getProductCatalog().size());
+        assertEquals(before + 2, controller.getProductCatalog().size());
+        assertEquals(beforeChildren + 6, controller.getChildrenProductCatalog().size());
         added = productCatalog.getProductType("B-001");
         assertNotNull(added);
         added = productCatalog.getProductType("SC-001");

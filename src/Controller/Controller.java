@@ -64,6 +64,10 @@ public class Controller {
         return productCatalog.getProductTypes();
     }
 
+    public Collection<ProductType> getChildrenProductCatalog(){
+        return productCatalog.getChildren();
+    }
+
     public ProductType getProductType(String code){
         return productCatalog.getProductType(code);
     }

@@ -9,7 +9,8 @@ import java.util.*;
 public class ProductCatalog {
 
     private static ProductCatalog instance = null;
-    private final Map<String, ProductType> products = new HashMap<>();
+    private final Map<String, ProductType> finalProducts = new HashMap<>();
+    private final Map<String, ProductType> allChildren = new HashMap<>();
 
     private ProductCatalog() {}
 
@@ -22,42 +23,57 @@ public class ProductCatalog {
     }
 
     public void reset(){
-        products.clear();
+        finalProducts.clear();
     }
 
     public void addProductType(List<ProductType> productsList) {
 
         for (ProductType p : productsList) {
-            addRecursively(p);
+            finalProducts.put(p.getCode(), p);
+            addChildren(p);
         }
     }
 
     public void addProductType(ProductType product) {
 
-            addRecursively(product);
+        finalProducts.put(product.getCode(), product);
+        addChildren(product);
     }
 
-    private void addRecursively(ProductType p) {
-
-        products.put(p.getCode(), p);
+    private void addChildren(ProductType p) {
 
         if (p instanceof CompositeType) {
             for (IntProductTypeData child : p.getChildren()) {
-                addRecursively(child.getProductType());
+                allChildren.put(child.getProductType().getCode(), child.getProductType());
+                addChildren(child.getProductType());
             }
-        }
+        }else
+            allChildren.put(p.getCode(), p);
+    }
+
+    public ProductType getChild(String code) {
+        return allChildren.get(code);
+    }
+
+    public Collection<ProductType> getChildren() {
+        return allChildren.values();
     }
 
     public Collection<ProductType> getProductTypes() {
-        return products.values();
+        return finalProducts.values();
     }
 
     public ProductType getProductType(String code) {
-        return products.get(code);
+
+        ProductType p = finalProducts.get(code);
+        if(p != null)
+            return finalProducts.get(code);
+        else
+            return allChildren.get(code);
     }
 
     public void removeProductType(String code) {
 
-        products.remove(code);
+        finalProducts.remove(code);
     }
 }

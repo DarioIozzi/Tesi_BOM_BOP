@@ -29,6 +29,7 @@
         "productType": {
           "type": "element",
           "family": "BenchLeg",
+          "code": "BL-001",
           "featureTypes": [
             {
               "name": "length",
@@ -70,6 +71,7 @@
         "productType": {
           "type": "element",
           "family": "BenchSeat",
+          "code": "BS-001",
           "featureTypes": [
             {
               "name": "thickness",
@@ -138,6 +140,7 @@
         "productType": {
           "type": "element",
           "family": "CabinetShelf",
+          "code": "CS-001",
           "featureTypes": [
             {
               "name": "width",
@@ -179,6 +182,7 @@
         "productType": {
           "type": "element",
           "family": "CabinetDoor",
+          "code": "CD-001",
           "featureTypes": [
             {
               "name": "height",
