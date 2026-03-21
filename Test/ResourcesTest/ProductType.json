@@ -37,6 +37,7 @@
       "productType": {
         "type": "element",
         "family": "ChairLeg",
+        "code": "CL-001",
         "featureTypes": [
           {
             "name": "length",
@@ -78,6 +79,7 @@
       "productType": {
         "type": "element",
         "family": "Seat",
+        "code": "S-001",
         "featureTypes": [
           {
             "name": "width",
@@ -119,6 +121,7 @@
       "productType": {
         "type": "element",
         "family": "Backrest",
+        "code": "B-001",
         "featureTypes": [
           {
             "name": "height",

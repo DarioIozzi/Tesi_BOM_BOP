@@ -21,6 +21,10 @@ public class Resource {
         this.type = type;
     }
 
+    public static void resetCounter(){
+        counter = 0;
+    }
+
     public int getId() {
         return id;
     }

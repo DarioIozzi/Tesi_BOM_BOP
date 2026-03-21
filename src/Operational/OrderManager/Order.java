@@ -1,5 +1,6 @@
 package Operational.OrderManager;
 
+import Operational.Composite;
 import Operational.IntProductData;
 import Operational.Process;
 import Operational.Product;
@@ -40,21 +41,31 @@ public class Order {
          return productslist;
     }
 
-    public Product getProduct(int id){
-         for (IntProductData ipd : productslist) {
-             if (ipd.getProduct().getId() == id){
-                 return ipd.getProduct();
-             }
-         }
-         return null;
-    }
-
-    public Product getProduct(String code){
+    public Product getProduct(String code) {
         for (IntProductData ipd : productslist) {
-            if (ipd.getProduct().getType().getCode().equals(code)){
-                return ipd.getProduct();
+            Product p = findProduct(ipd.getProduct(), code);
+            if (p != null) {
+                return p;
             }
         }
+        return null;
+    }
+
+    private Product findProduct(Product product, String code) {
+        if (product.getType().getCode().equals(code)) {
+            return product;
+        }
+
+        if (product instanceof Composite) {
+            Composite composite = (Composite) product;
+            for (IntProductData childData : composite.getChildren()) {
+                Product found = findProduct(childData.getProduct(), code);
+                if (found != null) {
+                    return found;
+                }
+            }
+        }
+
         return null;
     }
 
