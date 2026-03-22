@@ -33,14 +33,6 @@ public class ResourceType {
         featureTypes.add(featureType);
     }
 
-    public boolean isThere(FeatureType ft){
-        for(FeatureType f : featureTypes){
-            if(f.getId() == ft.getId())
-                return true;
-        }
-        return false;
-    }
-
     public boolean removeFeatureType(int id) {
         for (FeatureType featureType : featureTypes) {
             if (featureType.getId() == id) {

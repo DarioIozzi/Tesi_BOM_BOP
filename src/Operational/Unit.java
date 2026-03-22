@@ -8,11 +8,11 @@ public class Unit {
 
     private static int counter = 0;
     private final int id;
-    private UnitType unittype;
+    private UnitType unitType;
     private Object value;
 
-    public Unit(UnitType unittype, Object value) {
-        this.unittype = unittype;
+    public Unit(UnitType unitType, Object value) {
+        this.unitType = unitType;
 
         if(isValid(value))
             this.value = value;
@@ -38,21 +38,21 @@ public class Unit {
     }
 
     public UnitType getUnitType() {
-        if (unittype == null)
+        if (unitType == null)
             throw new IllegalStateException("Unit type is null, it must be set");
-        return unittype;
+        return unitType;
     }
 
     public void setUnitType(UnitType unittype) {
-        this.unittype = unittype;
+        this.unitType = unittype;
     }
 
     public boolean isValid(Object v){
-        if (v instanceof String && unittype.getUnitClass() == String.class)
+        if (v instanceof String && unitType.getUnitClass() == String.class)
             return true;
-        else if (v instanceof Number && ((Number) v).doubleValue() >= 0 && unittype.getUnitClass() == Double.class)
+        else if (v instanceof Number && ((Number) v).doubleValue() >= 0 && unitType.getUnitClass() == Double.class)
             return true;
-        else if (v instanceof Duration && !((Duration) v).isNegative() && unittype.getUnitClass() == Duration.class)
+        else if (v instanceof Duration && !((Duration) v).isNegative() && unitType.getUnitClass() == Duration.class)
             return true;
 
         return false;

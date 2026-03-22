@@ -37,15 +37,18 @@ public class Element extends Product{
         throw new UnsupportedOperationException("Not a composite.");
     }
 
+    @Override
     public Resource getResource() {
         return resource;
     }
 
+    @Override
     public void setResource(Resource resource) {
         resource.setType(((ElementType)this.getType()).getResourceType());
         this.resource = resource;
     }
 
+    @Override
     public void removeResource(){
         this.resource = null;
     }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class ProductType {
-
+                                                    //TODO tutti i metodi nella abstract
     static int counter = 0;
     int id;
     String code;
@@ -72,6 +72,10 @@ public abstract class ProductType {
     public String getCode(){
         return code;
     }
+
+    public abstract ResourceType getResourceType();
+
+    public abstract void setResourceType(ResourceType resourceType);
 
     @Override
     public String toString() {

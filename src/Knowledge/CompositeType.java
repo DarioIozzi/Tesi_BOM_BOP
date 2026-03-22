@@ -79,4 +79,14 @@ public class CompositeType extends ProductType{
         }
         return list;
     }
+
+    @Override
+    public ResourceType getResourceType(){
+        throw new UnsupportedOperationException("Not an element.");
+    }
+
+    @Override
+    public void setResourceType(ResourceType resourceType){
+        throw new UnsupportedOperationException("Not an element.");
+    }
 }

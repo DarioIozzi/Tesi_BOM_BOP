@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-                                                                                //TODO valuta interfaccia ulteriore alla abstract class
+                                                                                //TODO chiedi per UML, aggregazione con Product o IntProductData?
 public class Composite extends Product{
 
     private final List<IntProductData> children;
@@ -69,5 +69,20 @@ public class Composite extends Product{
             }
         }
         return null;
+    }
+
+    @Override
+    public Resource getResource(){
+        throw new UnsupportedOperationException("Not an element.");
+    }
+
+    @Override
+    public void setResource(Resource resource){
+        throw new UnsupportedOperationException("Not an element.");
+    }
+
+    @Override
+    public void removeResource(){
+        throw new UnsupportedOperationException("Not an element.");
     }
 }

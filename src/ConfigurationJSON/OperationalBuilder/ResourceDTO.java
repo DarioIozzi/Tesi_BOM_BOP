@@ -1,7 +1,5 @@
 package ConfigurationJSON.OperationalBuilder;
 
-import Knowledge.ResourceType;
-
 import java.util.List;
 
 public class ResourceDTO {

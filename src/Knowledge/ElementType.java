@@ -40,10 +40,12 @@ public class ElementType extends ProductType{
         throw new UnsupportedOperationException("Not a composite.");
     }
 
+    @Override
     public ResourceType getResourceType(){
         return resourceType;
     }
 
+    @Override
     public void setResourceType(ResourceType resourceType){
         this.resourceType = resourceType;
     }

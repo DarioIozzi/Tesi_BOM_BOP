@@ -50,9 +50,7 @@ public class Resource {
     }
 
     public boolean addFeature(Feature feature){
-        if (type.isThere(feature.getType()))
-            return features.add(feature);
-        return false;
+        return features.add(feature);
     }
 
     public boolean removeFeature(int i){

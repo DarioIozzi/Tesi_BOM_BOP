@@ -70,4 +70,10 @@ public abstract class Product {
     public String toString(){
         return "{id= " + id + ", family= " + type.getFamily() + "} \n";
     }
+
+    public abstract Resource getResource();
+
+    public abstract void setResource(Resource resource);
+
+    public abstract void removeResource();
 }

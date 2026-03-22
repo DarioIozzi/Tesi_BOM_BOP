@@ -1,6 +1,6 @@
 package Knowledge;
 
-public class ObservationType {
+public class ObservationType {          //TODO serve ad evidenziare un qualcosa?
 
     private String family;
 
