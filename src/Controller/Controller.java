@@ -6,17 +6,16 @@ import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
 import ConfigurationJSON.OperationalBuilder.FeatureDTO;
 import ConfigurationJSON.OperationalBuilder.ObservationDTO;
 import ConfigurationJSON.OperationalBuilder.OpBuilder;
+import ConfigurationJSON.OperationalBuilder.UnitDTO;
 import Knowledge.Catalogs.ProductCatalog;
 import Knowledge.FeatureType;
 import Knowledge.ObservationType;
 import Knowledge.ProductType;
-import Operational.Element;
-import Operational.Observation;
+import Knowledge.UnitType;
+import Operational.*;
 import Operational.OrderManager.Order;
 import Operational.OrderManager.OrderManager;
 import Operational.Process;
-import Operational.Product;
-import Operational.Resource;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
@@ -119,7 +118,10 @@ public class Controller {
         ObservationType obt = p.getType().getObservationType(ob.getCode());
         if(obt == null)
             throw new RuntimeException("ObservationType not found");
-        p.addObservation(new OpBuilder().buildObservation(ob));
+
+        Observation o = new OpBuilder().buildObservation(ob);
+        o.setType(obt);
+        p.addObservation(o);
     }
 
     public void removeObservation(int orderId, String code, int observationId){
@@ -142,7 +144,24 @@ public class Controller {
         FeatureType ft = p.getType().getFeatureType(fd.getType());
         if (ft == null)
             throw new RuntimeException("Feature type not found");
-        p.addFeature(new OpBuilder().buildFeature(fd));
+
+        List<UnitType> uts = ft.getUnitTypes();
+        boolean found;
+        for(UnitDTO u : fd.getUnits()){
+            found = false;
+            for (UnitType ut : uts)
+                if (ut.getCode().equals(u.getUnitType())) {
+                    found = true;
+                    break;
+                }
+
+            if(!found)
+                throw new IOException("Units are not valid");
+        }
+        List<Unit> us = new OpBuilder().buildUnits(fd.getUnits(), uts);
+        Feature f = new OpBuilder().buildFeature(fd, us);
+        f.setType(ft);
+        p.addFeature(f);
     }
 
     public void removeFeature(int orderId, String code, int featureId){

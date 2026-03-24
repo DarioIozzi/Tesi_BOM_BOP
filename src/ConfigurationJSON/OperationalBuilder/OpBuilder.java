@@ -4,6 +4,7 @@ import Knowledge.Catalogs.ResourceCatalog;
 import Knowledge.CompositeType;
 import Knowledge.Catalogs.ProductCatalog;
 import Knowledge.ProductType;
+import Knowledge.UnitType;
 import Operational.Process;
 import Operational.*;
 import Operational.IntProductData;
@@ -61,12 +62,12 @@ public class OpBuilder {
         return new Resource(resourcedto.getLotto(), rc.getResource(resourcedto.getCode()));
     }
 
-    public Feature buildFeature(FeatureDTO feature){
+    public Feature buildFeature(FeatureDTO feature, List<Unit> us){
 
         if (feature == null)
             throw new IllegalArgumentException("Feature is null");
 
-        return new Feature(feature.getType(), feature.getUnits());
+        return new Feature(us);
     }
 
     public Observation buildObservation(ObservationDTO observationDTO){
@@ -74,13 +75,17 @@ public class OpBuilder {
         if (observationDTO == null)
             throw new IllegalArgumentException("ObservationDTO is null");
 
-        return new Observation(observationDTO.getCode(), observationDTO.getText());
+        return new Observation(observationDTO.getText());
     }
 
-    public List<Unit> buildUnits(List<UnitDTO> unitdtos){
+    public List<Unit> buildUnits(List<UnitDTO> unitdtos, List<UnitType> utds){
         List<Unit> units = new ArrayList<>();
         for(UnitDTO u: unitdtos){
-
+            for(UnitType ut: utds) {
+                if (u.getUnitType().equals(ut.getCode()))
+                    units.add(new Unit(ut, u.getValue()));
+            }
         }
+        return units;
     }
 }

@@ -13,11 +13,10 @@ public class Feature {
     private FeatureType type;
     private final List<Unit> units;
 
-    public Feature(FeatureType type, List<Unit> units) {
+    public Feature(List<Unit> units) {
 
         this.units = new ArrayList<>(Objects.requireNonNull(units, "units cannot be null"));
         this.id = counter++;
-        this.type = type;
     }
 
     public int getId() {

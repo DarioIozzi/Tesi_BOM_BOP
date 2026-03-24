@@ -8,6 +8,7 @@ public abstract class UnitType {
     protected Class<?> unitClass;
     protected String unitOfMeasure;
     protected Object unitValue;
+    protected String code;
 
     public UnitType(Object value){
 
@@ -32,5 +33,13 @@ public abstract class UnitType {
 
     public int getId(){
         return id;
+    }
+
+    public String getCode(){
+        return code;
+    }
+
+    public void setCode(String code){
+        this.code = code;
     }
 }

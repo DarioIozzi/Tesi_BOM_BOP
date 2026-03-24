@@ -9,9 +9,8 @@ public class Observation {
     private final int id;
     private String text;
 
-    public Observation(ObservationType type, String text) {
+    public Observation(String text) {
         this.id = counter++;
-        this.type = type;
         this.text = text;
     }
 

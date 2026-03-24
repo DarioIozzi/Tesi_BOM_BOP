@@ -41,6 +41,15 @@ public class FeatureType {
         return null;
     }
 
+    public UnitType getUnitType(String code) {
+
+        for (UnitType ut : unitTypes) {
+            if (ut.getCode().equals(code))
+                return ut;
+        }
+        return null;
+    }
+
     public void addUnitType(UnitType unitType) {
         unitTypes.add(unitType);
     }
