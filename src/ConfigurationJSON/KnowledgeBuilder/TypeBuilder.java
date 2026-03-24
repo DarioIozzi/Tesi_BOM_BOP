@@ -137,6 +137,9 @@ public class TypeBuilder {
         if (utd instanceof TextDTO)
             return new Text(utd.getValue());
 
+        if(utd instanceof PriceDTO)
+            return new Price(utd.getValue());
+
         throw new IllegalArgumentException("Unknown UnitTypeDTO");
     }
 }

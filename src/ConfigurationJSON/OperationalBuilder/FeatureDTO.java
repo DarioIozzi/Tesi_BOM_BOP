@@ -1,29 +1,26 @@
 package ConfigurationJSON.OperationalBuilder;
 
-import Knowledge.FeatureType;
-import Operational.Unit;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class FeatureDTO {
 
-    private FeatureType type;
-    private List<Unit> units;
+    private String type;
+    private List<UnitDTO> units;
 
-    public void setType(FeatureType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public void setUnits(List<Unit> units) {
+    public void setUnits(List<UnitDTO> units) {
         this.units = new ArrayList<>(units);
     }
 
-    public FeatureType getType() {
+    public String getType() {
         return type;
     }
 
-    public List<Unit> getUnits() {
+    public List<UnitDTO> getUnits() {
         return units;
     }
 }

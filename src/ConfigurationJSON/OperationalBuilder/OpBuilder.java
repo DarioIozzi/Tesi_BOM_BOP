@@ -4,7 +4,6 @@ import Knowledge.Catalogs.ResourceCatalog;
 import Knowledge.CompositeType;
 import Knowledge.Catalogs.ProductCatalog;
 import Knowledge.ProductType;
-import Knowledge.ResourceType;
 import Operational.Process;
 import Operational.*;
 import Operational.IntProductData;
@@ -75,6 +74,13 @@ public class OpBuilder {
         if (observationDTO == null)
             throw new IllegalArgumentException("ObservationDTO is null");
 
-        return new Observation(observationDTO.getType(), observationDTO.getText());
+        return new Observation(observationDTO.getCode(), observationDTO.getText());
+    }
+
+    public List<Unit> buildUnits(List<UnitDTO> unitdtos){
+        List<Unit> units = new ArrayList<>();
+        for(UnitDTO u: unitdtos){
+
+        }
     }
 }

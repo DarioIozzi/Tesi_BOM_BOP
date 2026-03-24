@@ -107,24 +107,24 @@ public class ControllerTest {
         Product p = o.getProduct("TL-001");
         assertNotNull(p.getType().getCode());
         controller.addResourceToProduct(o.getId(), p.getType().getCode(), r.getId(), r.getFamily());
-        assertEquals(r.getLotto(), ((Element)p).getResource().getLotto());
-        assertEquals(r.getLotto(), ((Element)p).getResource().getLotto());
+        assertEquals(r.getLotto(), p.getResource().getLotto());
+        assertEquals(r.getLotto(), p.getResource().getLotto());
         controller.removeResourceFromProduct(o.getId(), p.getType().getCode());
 
         //Manage process observations
-        /*controller.addObservation(o.getId(), p.getType().getCode(), "/Observation.json");
+        controller.addObservation(o.getId(), p.getType().getCode(), "/Observation.json");
         List<Observation> obs = o.getProduct(p.getType().getCode()).getProcess().getObservations();
         assertEquals(1, obs.size());
         assertEquals(obs.get(0).getText(), "");
         controller.removeObservation(o.getId(), p.getType().getCode(), obs.get(0).getId());
-        assertEquals(1, o.getProduct(p.getType().getCode()).getProcess().getObservations().size());*/
+        assertEquals(1, o.getProduct(p.getType().getCode()).getProcess().getObservations().size());
 
-        //Manage product features                                                       //TODO observation e feature connesse ai type? Deserializzazione inutilmente complicata?
-        /*controller.addFeature(o.getId(), p.getType().getCode(), "/Feature.json");
+        //Manage product features
+        controller.addFeature(o.getId(), p.getType().getCode(), "/Feature.json");
         List<Feature> fs = o.getProduct(p.getType().getCode()).getFeatures();
         assertEquals(1, fs.size());
         assertEquals(2, fs.get(0).getUnits().size());
         controller.removeFeature(o.getId(), p.getType().getCode(), fs.get(0).getId());
-        assertEquals(0, o.getProduct(p.getType().getCode()).getFeatures().size());*/
+        assertEquals(0, o.getProduct(p.getType().getCode()).getFeatures().size());
     }
 }

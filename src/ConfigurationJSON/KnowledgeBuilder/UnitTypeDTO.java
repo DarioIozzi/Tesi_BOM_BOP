@@ -17,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
         @JsonSubTypes.Type(value = TimeDTO.class, name = "Time"),
         @JsonSubTypes.Type(value = ThicknessDTO.class, name = "Thickness"),
         @JsonSubTypes.Type(value = WidthDTO.class, name = "Width"),
-        @JsonSubTypes.Type(value = TextDTO.class, name = "Text")
+        @JsonSubTypes.Type(value = TextDTO.class, name = "Text"),
+        @JsonSubTypes.Type(value = PriceDTO.class, name = "Price")
 })
 
 public abstract class UnitTypeDTO {

@@ -1,13 +1,21 @@
 package Controller;
 
 import ConfigurationJSON.Configuration;
+import ConfigurationJSON.KnowledgeBuilder.FeatureTypeDTO;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
+import ConfigurationJSON.OperationalBuilder.FeatureDTO;
+import ConfigurationJSON.OperationalBuilder.ObservationDTO;
 import ConfigurationJSON.OperationalBuilder.OpBuilder;
 import Knowledge.Catalogs.ProductCatalog;
+import Knowledge.FeatureType;
+import Knowledge.ObservationType;
 import Knowledge.ProductType;
 import Operational.Element;
+import Operational.Observation;
 import Operational.OrderManager.Order;
 import Operational.OrderManager.OrderManager;
+import Operational.Process;
+import Operational.Product;
 import Operational.Resource;
 import Warehouse.Warehouse;
 
@@ -106,7 +114,12 @@ public class Controller {
 
     public void addObservation(int orderId, String code, String path) throws IOException {
         Configuration config = new Configuration();
-        orderManager.getOrder(orderId).getProduct(code).getProcess().addObservation(new OpBuilder().buildObservation(config.readObservationJSON(path)));
+        Process p = orderManager.getOrder(orderId).getProduct(code).getProcess();
+        ObservationDTO ob = config.readObservationJSON(path);
+        ObservationType obt = p.getType().getObservationType(ob.getCode());
+        if(obt == null)
+            throw new RuntimeException("ObservationType not found");
+        p.addObservation(new OpBuilder().buildObservation(ob));
     }
 
     public void removeObservation(int orderId, String code, int observationId){
@@ -124,7 +137,12 @@ public class Controller {
 
     public void addFeature(int orderId, String code, String path) throws IOException {
         Configuration config = new Configuration();
-        orderManager.getOrder(orderId).getProduct(code).addFeature(new OpBuilder().buildFeature(config.readFeatureJSON(path)));
+        Product p = orderManager.getOrder(orderId).getProduct(code);
+        FeatureDTO fd = config.readFeatureJSON(path);
+        FeatureType ft = p.getType().getFeatureType(fd.getType());
+        if (ft == null)
+            throw new RuntimeException("Feature type not found");
+        p.addFeature(new OpBuilder().buildFeature(fd));
     }
 
     public void removeFeature(int orderId, String code, int featureId){

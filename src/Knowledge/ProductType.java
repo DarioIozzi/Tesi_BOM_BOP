@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class ProductType {
-                                                    //TODO tutti i metodi nella abstract
+
     static int counter = 0;
     int id;
     String code;
@@ -52,6 +52,14 @@ public abstract class ProductType {
     public FeatureType getFeatureType(int id){
         for(FeatureType f : featureTypes){
             if (f.getId() == id)
+                return f;
+        }
+        return null;
+    }
+
+    public FeatureType getFeatureType(String code){
+        for(FeatureType f : featureTypes){
+            if(f.getCode().equals(code))
                 return f;
         }
         return null;

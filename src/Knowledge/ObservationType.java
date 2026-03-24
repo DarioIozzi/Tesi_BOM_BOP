@@ -1,8 +1,9 @@
 package Knowledge;
 
-public class ObservationType {          //TODO serve ad evidenziare un qualcosa?
+public class ObservationType {
 
     private String family;
+    private String code;
 
     public ObservationType(String f){
         this.family = f;
@@ -14,5 +15,13 @@ public class ObservationType {          //TODO serve ad evidenziare un qualcosa?
 
     public void setFamily(String f) {
         this.family = f;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String c) {
+        this.code = c;
     }
 }

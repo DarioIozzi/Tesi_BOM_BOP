@@ -50,6 +50,15 @@ public class ProcessType {
         return observationTypes;
     }
 
+    public ObservationType getObservationType(String code) {
+        for (ObservationType obt : observationTypes) {
+            if (obt.getCode().equals(code)) {
+                return obt;
+            }
+        }
+        return null;
+    }
+
     public void addObservationType(ObservationType obs) {
         observationTypes.add(Objects.requireNonNull(obs, "ObservationType cannot be null"));
     }

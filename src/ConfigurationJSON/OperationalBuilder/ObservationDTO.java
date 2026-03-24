@@ -1,10 +1,8 @@
 package ConfigurationJSON.OperationalBuilder;
 
-import Knowledge.ObservationType;
-
 public class ObservationDTO {
 
-    private ObservationType type;
+    private String code;
     private String text;
 
     public void setText(String text) {
@@ -15,11 +13,11 @@ public class ObservationDTO {
         return text;
     }
 
-    public ObservationType getType() {
-        return type;
+    public String getCode() {
+        return code;
     }
 
-    public void setType(ObservationType type) {
-        this.type = type;
+    public void setCode(String code) {
+        this.code = code;
     }
 }

@@ -8,6 +8,7 @@ public class FeatureType {
     private final int id;
     private String name;
     private final List<UnitType> unitTypes;
+    private String code;
 
     public FeatureType(String name, List<UnitType> uts) {
         this.id = counter++;
@@ -56,5 +57,13 @@ public class FeatureType {
             }
         }
         return false;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
