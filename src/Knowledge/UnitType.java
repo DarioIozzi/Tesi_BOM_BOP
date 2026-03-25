@@ -10,10 +10,11 @@ public abstract class UnitType {
     protected Object unitValue;
     protected String code;
 
-    public UnitType(Object value){
+    public UnitType(Object value, String code){
 
         this.id = counter++;
         this.unitValue = value;
+        this.code = code;
     }
 
     public String getName(){

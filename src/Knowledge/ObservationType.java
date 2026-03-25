@@ -5,8 +5,9 @@ public class ObservationType {
     private String family;
     private String code;
 
-    public ObservationType(String f){
+    public ObservationType(String f, String code){
         this.family = f;
+        this.code = code;
     }
 
     public String getFamily() {

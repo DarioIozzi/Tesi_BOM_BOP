@@ -4,9 +4,9 @@ import Knowledge.UnitType;
 
 public class Time extends UnitType {
 
-    public Time(Object value) {
+    public Time(Object value, String code) {
 
-        super(value);
+        super(value, code);
         this.unitOfMeasure = "s";
         this.unitClass = java.time.Duration.class;
         this.name = "Time";

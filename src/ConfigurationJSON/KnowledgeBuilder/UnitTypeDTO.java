@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 public abstract class UnitTypeDTO {
 
     protected Object value;
+    protected String code;
 
     public UnitTypeDTO() {}
 
@@ -33,5 +34,13 @@ public abstract class UnitTypeDTO {
 
     public Object getValue(){
         return value;
+    }
+
+    public String getCode(){
+        return code;
+    }
+
+    public void setCode(String code){
+        this.code = code;
     }
 }

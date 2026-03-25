@@ -10,10 +10,11 @@ public class FeatureType {
     private final List<UnitType> unitTypes;
     private String code;
 
-    public FeatureType(String name, List<UnitType> uts) {
+    public FeatureType(String name, List<UnitType> uts, String code) {
         this.id = counter++;
         this.name = name;
         this.unitTypes = new ArrayList<>(Objects.requireNonNull(uts, "unitTypes cannot be null"));
+        this.code = code;
     }
 
     public int getId() {

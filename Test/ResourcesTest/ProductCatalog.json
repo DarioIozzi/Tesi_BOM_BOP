@@ -6,20 +6,16 @@
     "featureTypes": [
       {
         "name": "length",
+        "code": "FT-LEN-DT",
         "unitTypes": [
-          {
-            "type": "Length",
-            "value": 160
-          }
+          { "type": "Length", "value": 160, "code": "UT-LEN-160" }
         ]
       },
       {
         "name": "width",
+        "code": "FT-WID-DT",
         "unitTypes": [
-          {
-            "type": "Width",
-            "value": 90
-          }
+          { "type": "Width", "value": 90, "code": "UT-WID-90" }
         ]
       }
     ],
@@ -27,9 +23,7 @@
       "family": "Dining TableAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-DT" }
       ]
     },
     "children": [
@@ -42,11 +36,9 @@
           "featureTypes": [
             {
               "name": "length",
+              "code": "FT-LEN-TL",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 75
-                }
+                { "type": "Length", "value": 75, "code": "UT-LEN-75" }
               ]
             }
           ],
@@ -54,9 +46,7 @@
             "family": "TableLegProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-TL" }
             ]
           },
           "resourceType": {
@@ -64,11 +54,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WB",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -84,11 +72,9 @@
           "featureTypes": [
             {
               "name": "thickness",
+              "code": "FT-THK-TT",
               "unitTypes": [
-                {
-                  "type": "Thickness",
-                  "value": 4
-                }
+                { "type": "Thickness", "value": 4, "code": "UT-THK-4" }
               ]
             }
           ],
@@ -96,9 +82,7 @@
             "family": "TableTopProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-TT" }
             ]
           },
           "resourceType": {
@@ -106,11 +90,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -126,20 +108,16 @@
     "featureTypes": [
       {
         "name": "length",
+        "code": "FT-LEN-CT",
         "unitTypes": [
-          {
-            "type": "Length",
-            "value": 100
-          }
+          { "type": "Length", "value": 100, "code": "UT-LEN-100" }
         ]
       },
       {
         "name": "width",
+        "code": "FT-WID-CT",
         "unitTypes": [
-          {
-            "type": "Width",
-            "value": 60
-          }
+          { "type": "Width", "value": 60, "code": "UT-WID-60" }
         ]
       }
     ],
@@ -147,9 +125,7 @@
       "family": "Coffee TableAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-CT" }
       ]
     },
     "children": [
@@ -162,11 +138,9 @@
           "featureTypes": [
             {
               "name": "length",
+              "code": "FT-LEN-CL",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 40
-                }
+                { "type": "Length", "value": 40, "code": "UT-LEN-40" }
               ]
             }
           ],
@@ -174,9 +148,7 @@
             "family": "CoffeeLegProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-CL" }
             ]
           },
           "resourceType": {
@@ -184,11 +156,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WB",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -204,11 +174,9 @@
           "featureTypes": [
             {
               "name": "thickness",
+              "code": "FT-THK-CTT",
               "unitTypes": [
-                {
-                  "type": "Thickness",
-                  "value": 3
-                }
+                { "type": "Thickness", "value": 3, "code": "UT-THK-3" }
               ]
             }
           ],
@@ -216,9 +184,7 @@
             "family": "CoffeeTopProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-CTT" }
             ]
           },
           "resourceType": {
@@ -226,11 +192,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -246,11 +210,9 @@
     "featureTypes": [
       {
         "name": "height",
+        "code": "FT-HEI-BS",
         "unitTypes": [
-          {
-            "type": "Length",
-            "value": 180
-          }
+          { "type": "Length", "value": 180, "code": "UT-LEN-180" }
         ]
       }
     ],
@@ -258,9 +220,7 @@
       "family": "BookshelfAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-BS" }
       ]
     },
     "children": [
@@ -273,11 +233,9 @@
           "featureTypes": [
             {
               "name": "width",
+              "code": "FT-WID-SP",
               "unitTypes": [
-                {
-                  "type": "Width",
-                  "value": 80
-                }
+                { "type": "Width", "value": 80, "code": "UT-WID-80" }
               ]
             }
           ],
@@ -285,9 +243,7 @@
             "family": "ShelfPanelProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-SP" }
             ]
           },
           "resourceType": {
@@ -295,11 +251,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -315,11 +269,9 @@
           "featureTypes": [
             {
               "name": "height",
+              "code": "FT-HEI-SIP",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 180
-                }
+                { "type": "Length", "value": 180, "code": "UT-LEN-180" }
               ]
             }
           ],
@@ -327,9 +279,7 @@
             "family": "SidePanelProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-SIP" }
             ]
           },
           "resourceType": {
@@ -337,11 +287,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -357,20 +305,16 @@
     "featureTypes": [
       {
         "name": "height",
+        "code": "FT-HEI-WR",
         "unitTypes": [
-          {
-            "type": "Length",
-            "value": 200
-          }
+          { "type": "Length", "value": 200, "code": "UT-LEN-200" }
         ]
       },
       {
         "name": "width",
+        "code": "FT-WID-WR",
         "unitTypes": [
-          {
-            "type": "Width",
-            "value": 150
-          }
+          { "type": "Width", "value": 150, "code": "UT-WID-150" }
         ]
       }
     ],
@@ -378,9 +322,7 @@
       "family": "WardrobeAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-WR" }
       ]
     },
     "children": [
@@ -393,11 +335,9 @@
           "featureTypes": [
             {
               "name": "height",
+              "code": "FT-HEI-WD",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 190
-                }
+                { "type": "Length", "value": 190, "code": "UT-LEN-190" }
               ]
             }
           ],
@@ -405,9 +345,7 @@
             "family": "WardrobeDoorProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-WD" }
             ]
           },
           "resourceType": {
@@ -415,11 +353,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -435,11 +371,9 @@
           "featureTypes": [
             {
               "name": "width",
+              "code": "FT-WID-WS",
               "unitTypes": [
-                {
-                  "type": "Width",
-                  "value": 140
-                }
+                { "type": "Width", "value": 140, "code": "UT-WID-140" }
               ]
             }
           ],
@@ -447,9 +381,7 @@
             "family": "WardrobeShelfProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-WS" }
             ]
           },
           "resourceType": {
@@ -457,11 +389,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -477,20 +407,16 @@
     "featureTypes": [
       {
         "name": "length",
+        "code": "FT-LEN-DK",
         "unitTypes": [
-          {
-            "type": "Length",
-            "value": 140
-          }
+          { "type": "Length", "value": 140, "code": "UT-LEN-140" }
         ]
       },
       {
         "name": "width",
+        "code": "FT-WID-DK",
         "unitTypes": [
-          {
-            "type": "Width",
-            "value": 70
-          }
+          { "type": "Width", "value": 70, "code": "UT-WID-70" }
         ]
       }
     ],
@@ -498,9 +424,7 @@
       "family": "DeskAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-DK" }
       ]
     },
     "children": [
@@ -513,11 +437,9 @@
           "featureTypes": [
             {
               "name": "length",
+              "code": "FT-LEN-DL",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 72
-                }
+                { "type": "Length", "value": 72, "code": "UT-LEN-72" }
               ]
             }
           ],
@@ -525,9 +447,7 @@
             "family": "DeskLegProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-DL" }
             ]
           },
           "resourceType": {
@@ -535,11 +455,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-MB",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -555,11 +473,9 @@
           "featureTypes": [
             {
               "name": "thickness",
+              "code": "FT-THK-DTOP",
               "unitTypes": [
-                {
-                  "type": "Thickness",
-                  "value": 3
-                }
+                { "type": "Thickness", "value": 3, "code": "UT-THK-3" }
               ]
             }
           ],
@@ -567,9 +483,7 @@
             "family": "DeskTopProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-DTOP" }
             ]
           },
           "resourceType": {
@@ -577,11 +491,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -597,11 +509,9 @@
     "featureTypes": [
       {
         "name": "height",
+        "code": "FT-HEI-NS",
         "unitTypes": [
-          {
-            "type": "Length",
-            "value": 55
-          }
+          { "type": "Length", "value": 55, "code": "UT-LEN-55" }
         ]
       }
     ],
@@ -609,9 +519,7 @@
       "family": "NightstandAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-NS" }
       ]
     },
     "children": [
@@ -624,11 +532,9 @@
           "featureTypes": [
             {
               "name": "length",
+              "code": "FT-LEN-NL",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 20
-                }
+                { "type": "Length", "value": 20, "code": "UT-LEN-20" }
               ]
             }
           ],
@@ -636,9 +542,7 @@
             "family": "NightstandLegProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-NL" }
             ]
           },
           "resourceType": {
@@ -646,11 +550,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WB",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -666,11 +568,9 @@
           "featureTypes": [
             {
               "name": "width",
+              "code": "FT-WID-DR",
               "unitTypes": [
-                {
-                  "type": "Width",
-                  "value": 35
-                }
+                { "type": "Width", "value": 35, "code": "UT-WID-35" }
               ]
             }
           ],
@@ -678,9 +578,7 @@
             "family": "DrawerProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-DR" }
             ]
           },
           "resourceType": {
@@ -688,11 +586,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -708,11 +604,9 @@
     "featureTypes": [
       {
         "name": "width",
+        "code": "FT-WID-TVS",
         "unitTypes": [
-          {
-            "type": "Width",
-            "value": 140
-          }
+          { "type": "Width", "value": 140, "code": "UT-WID-140" }
         ]
       }
     ],
@@ -720,9 +614,7 @@
       "family": "TV StandAssembly",
       "featureTypes": [],
       "observationTypes": [
-        {
-          "family": "finalInspection"
-        }
+        { "family": "finalInspection", "code": "OBS-FINAL-TVS" }
       ]
     },
     "children": [
@@ -735,11 +627,9 @@
           "featureTypes": [
             {
               "name": "height",
+              "code": "FT-HEI-TVSP",
               "unitTypes": [
-                {
-                  "type": "Length",
-                  "value": 50
-                }
+                { "type": "Length", "value": 50, "code": "UT-LEN-50" }
               ]
             }
           ],
@@ -747,9 +637,7 @@
             "family": "TVSidePanelProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-TVSP" }
             ]
           },
           "resourceType": {
@@ -757,11 +645,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]
@@ -777,11 +663,9 @@
           "featureTypes": [
             {
               "name": "width",
+              "code": "FT-WID-TVSH",
               "unitTypes": [
-                {
-                  "type": "Width",
-                  "value": 130
-                }
+                { "type": "Width", "value": 130, "code": "UT-WID-130" }
               ]
             }
           ],
@@ -789,9 +673,7 @@
             "family": "TVShelfProcess",
             "featureTypes": [],
             "observationTypes": [
-              {
-                "family": "qualityCheck"
-              }
+              { "family": "qualityCheck", "code": "OBS-QC-TVSH" }
             ]
           },
           "resourceType": {
@@ -799,11 +681,9 @@
             "featureTypes": [
               {
                 "name": "density",
+                "code": "FT-DENS-WP",
                 "unitTypes": [
-                  {
-                    "type": "Density",
-                    "value": 0.6
-                  }
+                  { "type": "Density", "value": 0.6, "code": "UT-DENS-06" }
                 ]
               }
             ]

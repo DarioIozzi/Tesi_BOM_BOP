@@ -1,6 +1,9 @@
 {
-  "name": "specifiche fisiche",
-  "unitsType": {
-    "Weight": {"type": "Weight"}
-  }
+  "type": "FT-LEN-TL",
+  "units": [
+      {
+        "value": 10,
+        "unitCode": "UT-LEN-75"
+      }
+  ]
 }

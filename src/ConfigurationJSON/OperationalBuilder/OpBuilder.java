@@ -82,7 +82,7 @@ public class OpBuilder {
         List<Unit> units = new ArrayList<>();
         for(UnitDTO u: unitdtos){
             for(UnitType ut: utds) {
-                if (u.getUnitType().equals(ut.getCode()))
+                if (u.getUnitCode().equals(ut.getCode()))
                     units.add(new Unit(ut, u.getValue()));
             }
         }

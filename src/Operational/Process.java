@@ -57,7 +57,7 @@ public class Process {
     }
 
     public void removeObservaion(int id){
-        this.observations.remove(id);
+        observations.removeIf(observation -> observation.getId() == id);
     }
 
     public Status getStatus() {

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class FeatureTypeDTO {
 
+    private String code;
     private String name;
     private List<UnitTypeDTO> unitTypes;
 
@@ -24,5 +25,13 @@ public class FeatureTypeDTO {
 
     public void setUnitTypes(List<UnitTypeDTO> unitsType) {
         this.unitTypes = new ArrayList<>(unitsType);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

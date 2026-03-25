@@ -14,8 +14,8 @@ public class UnitTest {
 
     @Test
     public void isValidTest(){
-        UnitType ut = new Length(10d);
-        UnitType ut2 = new Text("ciao");
+        UnitType ut = new Length(10d, "");
+        UnitType ut2 = new Text("ciao", "");
         assertThrows(IllegalArgumentException.class, () -> new Unit(ut, "text"));
         assertThrows(IllegalArgumentException.class, () -> new Unit(ut, Duration.ofSeconds(1)));
         assertThrows(IllegalArgumentException.class, () -> new Unit(ut, Duration.ofSeconds(-1)));
@@ -28,7 +28,7 @@ public class UnitTest {
         assertNotNull(u2);
         assertEquals(ut2, u2.getUnitType());
         assertEquals("text", u2.getValue());
-        UnitType ut3 = new Time(Duration.ofSeconds(4));
+        UnitType ut3 = new Time(Duration.ofSeconds(4), "");
         Duration d = Duration.ofSeconds(5);
         Unit u3 = new Unit(ut3, d);
         assertNotNull(u3);

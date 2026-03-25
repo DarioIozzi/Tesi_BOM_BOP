@@ -84,7 +84,7 @@ public class TypeBuilder {
             uts.add(buildUnitType(u));
         }
 
-        return new FeatureType(ftd.getName(), uts);
+        return new FeatureType(ftd.getName(), uts, ftd.getCode());
     }
 
     public ResourceType buildResourceType(ResourceTypeDTO rtd){
@@ -108,7 +108,7 @@ public class TypeBuilder {
         if (obst == null)
             throw new IllegalArgumentException("ObservationTypeDTO is null");
 
-        return new ObservationType(obst.getFamily());
+        return new ObservationType(obst.getFamily(), obst.getCode());
     }
 
     public UnitType buildUnitType(UnitTypeDTO utd){
@@ -117,28 +117,28 @@ public class TypeBuilder {
             throw new IllegalArgumentException("UnitTypeDTO is null");
 
         if (utd instanceof LengthDTO)
-            return new Length(utd.getValue());
+            return new Length(utd.getValue(), utd.getCode());
 
         if (utd instanceof WeightDTO)
-            return new Weight(utd.getValue());
+            return new Weight(utd.getValue(), utd.getCode());
 
         if (utd instanceof DensityDTO)
-            return new Density(utd.getValue());
+            return new Density(utd.getValue(), utd.getCode());
 
         if (utd instanceof TimeDTO)
-            return new Time(utd.getValue());
+            return new Time(utd.getValue(), utd.getCode());
 
         if (utd instanceof ThicknessDTO)
-            return new Thickness(utd.getValue());
+            return new Thickness(utd.getValue(), utd.getCode());
 
         if (utd instanceof WidthDTO)
-            return new Width(utd.getValue());
+            return new Width(utd.getValue(), utd.getCode());
 
         if (utd instanceof TextDTO)
-            return new Text(utd.getValue());
+            return new Text(utd.getValue(), utd.getCode());
 
         if(utd instanceof PriceDTO)
-            return new Price(utd.getValue());
+            return new Price(utd.getValue(), utd.getCode());
 
         throw new IllegalArgumentException("Unknown UnitTypeDTO");
     }

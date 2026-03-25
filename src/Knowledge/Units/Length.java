@@ -4,9 +4,9 @@ import Knowledge.UnitType;
 
 public class Length extends UnitType{
 
-    public Length(Object value) {
+    public Length(Object value, String code) {
 
-        super(value);
+        super(value, code);
         this.unitOfMeasure = "cm";
         this.unitClass = Double.class;
         this.name = "Length";

@@ -1,7 +1,6 @@
 package Controller;
 
 import ConfigurationJSON.Configuration;
-import ConfigurationJSON.KnowledgeBuilder.FeatureTypeDTO;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
 import ConfigurationJSON.OperationalBuilder.FeatureDTO;
 import ConfigurationJSON.OperationalBuilder.ObservationDTO;
@@ -150,7 +149,7 @@ public class Controller {
         for(UnitDTO u : fd.getUnits()){
             found = false;
             for (UnitType ut : uts)
-                if (ut.getCode().equals(u.getUnitType())) {
+                if (ut.getCode().equals(u.getUnitCode())) {
                     found = true;
                     break;
                 }

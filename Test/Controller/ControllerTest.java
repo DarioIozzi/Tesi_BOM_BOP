@@ -115,15 +115,15 @@ public class ControllerTest {
         controller.addObservation(o.getId(), p.getType().getCode(), "/Observation.json");
         List<Observation> obs = o.getProduct(p.getType().getCode()).getProcess().getObservations();
         assertEquals(1, obs.size());
-        assertEquals(obs.get(0).getText(), "");
+        assertEquals(obs.get(0).getText(), "Length = 0.75m instead of 0.8m");
         controller.removeObservation(o.getId(), p.getType().getCode(), obs.get(0).getId());
-        assertEquals(1, o.getProduct(p.getType().getCode()).getProcess().getObservations().size());
+        assertEquals(0, o.getProduct(p.getType().getCode()).getProcess().getObservations().size());
 
         //Manage product features
         controller.addFeature(o.getId(), p.getType().getCode(), "/Feature.json");
         List<Feature> fs = o.getProduct(p.getType().getCode()).getFeatures();
         assertEquals(1, fs.size());
-        assertEquals(2, fs.get(0).getUnits().size());
+        assertEquals(1, fs.get(0).getUnits().size());
         controller.removeFeature(o.getId(), p.getType().getCode(), fs.get(0).getId());
         assertEquals(0, o.getProduct(p.getType().getCode()).getFeatures().size());
     }

@@ -3,7 +3,7 @@ package ConfigurationJSON.OperationalBuilder;
 public class UnitDTO {
 
     private Object value;
-    private String unitType;
+    private String unitCode;
 
     public Object getValue() {
         return value;
@@ -13,11 +13,11 @@ public class UnitDTO {
         this.value = value;
     }
 
-    public String getUnitType() {
-        return unitType;
+    public String getUnitCode() {
+        return unitCode;
     }
 
-    public void setUnitType(String unitType) {
-        this.unitType = unitType;
+    public void setUnitCode(String unitCode) {
+        this.unitCode = unitCode;
     }
 }
