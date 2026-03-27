@@ -15,7 +15,7 @@ public abstract class Menu {
         this.scanner = new Scanner(System.in);
     }
 
-    public abstract void Display() throws IOException;
+    public abstract void display() throws IOException;
 
     protected int inputInt() {
         String numeroStringa;

@@ -7,7 +7,7 @@ import java.io.IOException;
 public class OrderMenu extends Menu {
 
     @Override
-    public void Display() throws IOException {
+    public void display() throws IOException {
 
         int scelta;
         String code;

@@ -16,7 +16,7 @@ public class MenuFacade extends Menu {
     }
 
     @Override
-    public void Display() throws IOException {
+    public void display() throws IOException {
 
         int scelta;
 
@@ -36,17 +36,17 @@ public class MenuFacade extends Menu {
             switch (scelta) {
                 case 1:
                     menuAttuale = new MenuProductCatalog();
-                    menuAttuale.Display();
+                    menuAttuale.display();
                     break;
 
                 case 2:
                     menuAttuale = new OrderMenu();
-                    menuAttuale.Display();
+                    menuAttuale.display();
                     break;
 
                 case 3:
                     menuAttuale = new MenuWarehouse();
-                    menuAttuale.Display();
+                    menuAttuale.display();
                     break;
 
                 case 4:

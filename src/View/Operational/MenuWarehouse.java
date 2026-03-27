@@ -8,7 +8,7 @@ public class MenuWarehouse extends Menu {
 
 
     @Override
-    public void Display() throws IOException {
+    public void display() throws IOException {
 
         int scelta;
         String family;

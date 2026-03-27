@@ -11,7 +11,7 @@ public class MenuProductCatalog extends Menu {
     }
 
     @Override
-    public void Display() throws IOException {
+    public void display() throws IOException {
         int scelta;
 
         while (true) {
