@@ -31,13 +31,13 @@ public abstract class ProductType {
         counter = 0;
     }
 
-    public abstract void addProductType(IntProductTypeData pt);
+    public abstract void addProductType(RequirementType pt);
 
     public abstract boolean removeProductType(int i, int q);
 
-    public abstract IntProductTypeData getChild(int i);
+    public abstract RequirementType getChild(int i);
 
-    public abstract List<IntProductTypeData> getChildren();
+    public abstract List<RequirementType> getChildren();
 
     public abstract List<ProductType> getAllElement();
 

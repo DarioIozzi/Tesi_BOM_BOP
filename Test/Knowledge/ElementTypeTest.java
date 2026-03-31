@@ -15,7 +15,7 @@ public class ElementTypeTest {
     public void notLegalMethods() {
         ElementType e = new ElementType();
         ElementType et = new ElementType();
-        IntProductTypeData p = new IntProductTypeData(2, et);
+        RequirementType p = new RequirementType(2, et);
         assertThrows(UnsupportedOperationException.class, () -> e.addProductType(p));
         assertThrows(UnsupportedOperationException.class, () -> e.removeProductType(0, 4));
         assertThrows(UnsupportedOperationException.class, () -> e.getChild(0));

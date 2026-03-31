@@ -25,15 +25,15 @@ public class CompositeTest {
 
         Composite comp = new Composite();
         Composite comptest  = new Composite();
-        IntProductData ip = new IntProductData(2, new Element());
-        IntProductData ip2 = new IntProductData(1, new Element());
+        Requirement ip = new Requirement(2, new Element());
+        Requirement ip2 = new Requirement(1, new Element());
         comp.addProduct(ip);
         comptest.addProduct(ip2);
         assertNotNull(comp.getChild(ip.getProduct().getId()));
         assertEquals(2, comp.getChild(ip.getProduct().getId()).getQuantity());
-        comp.addProduct(new IntProductData(1, comptest));
+        comp.addProduct(new Requirement(1, comptest));
         assertEquals(1, comp.getChild(comptest.getId()).getQuantity());
-        comp.addProduct(new IntProductData(1, comptest));
+        comp.addProduct(new Requirement(1, comptest));
         assertEquals(2, comp.getChild(comptest.getId()).getQuantity());
         assertEquals(1, comp.getChild(ip2.getProduct().getId()).getQuantity());
         comp.removeProduct(comptest.getId(), 2);

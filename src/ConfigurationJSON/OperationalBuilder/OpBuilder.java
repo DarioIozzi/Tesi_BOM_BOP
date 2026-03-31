@@ -7,8 +7,8 @@ import Knowledge.ProductType;
 import Knowledge.UnitType;
 import Operational.Process;
 import Operational.*;
-import Operational.IntProductData;
-import Knowledge.IntProductTypeData;
+import Operational.Requirement;
+import Knowledge.RequirementType;
 import Operational.OrderManager.Order;
 
 import java.util.ArrayList;
@@ -22,10 +22,10 @@ public class OpBuilder {
         if (odto == null)
             throw new IllegalArgumentException("OrderDTO is null");
 
-        List<IntProductData> pts= new ArrayList<>();
+        List<Requirement> pts= new ArrayList<>();
 
-        for(IntProductDataDTO ipddto: odto.getProductsList()){
-            pts.add(new IntProductData(ipddto.getQuantity(), buildProduct(ipddto.getProduct())));
+        for(RequirementDTO ipddto: odto.getProductsList()){
+            pts.add(new Requirement(ipddto.getQuantity(), buildProduct(ipddto.getProduct())));
         }
 
         return new Order(new ArrayList<>(pts));
@@ -40,11 +40,11 @@ public class OpBuilder {
         ProductType productType = pc.getProductType(pdto.getTypeCode());
 
         if(productType instanceof CompositeType){
-            List<IntProductData> products = new ArrayList<>();
-            for(IntProductTypeData pt: productType.getChildren()){
+            List<Requirement> products = new ArrayList<>();
+            for(RequirementType pt: productType.getChildren()){
                 ProductDTO p = new ProductDTO();
                 p.setTypeCode(pt.getProductType().getCode());
-                products.add(new IntProductData(pt.getQuantity(), buildProduct(p)));
+                products.add(new Requirement(pt.getQuantity(), buildProduct(p)));
             }
             return new Composite(new Process(productType.getProcessType()), productType, products);
         }

@@ -1,7 +1,7 @@
 package Knowledge.Catalogs;
 
 import Knowledge.CompositeType;
-import Knowledge.IntProductTypeData;
+import Knowledge.RequirementType;
 import Knowledge.ProductType;
 
 import java.util.*;
@@ -43,7 +43,7 @@ public class ProductCatalog {
     private void addChildren(ProductType p) {
 
         if (p instanceof CompositeType) {
-            for (IntProductTypeData child : p.getChildren()) {
+            for (RequirementType child : p.getChildren()) {
                 allChildren.put(child.getProductType().getCode(), child.getProductType());
                 addChildren(child.getProductType());
             }

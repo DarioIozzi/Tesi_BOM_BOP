@@ -18,12 +18,12 @@ public class Element extends Product{
     }
 
     @Override
-    public List<IntProductData> getChildren() {
+    public List<Requirement> getChildren() {
         throw new UnsupportedOperationException("Not a composite.");
     }
 
     @Override
-    public void addProduct(IntProductData pt){
+    public void addProduct(Requirement pt){
         throw new UnsupportedOperationException("Not a composite.");
     }
 
@@ -33,7 +33,7 @@ public class Element extends Product{
     }
 
     @Override
-    public IntProductData getChild(int i){
+    public Requirement getChild(int i){
         throw new UnsupportedOperationException("Not a composite.");
     }
 

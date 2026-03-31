@@ -5,15 +5,15 @@ import java.util.List;
 
 public class OrderDTO {
 
-    private List<IntProductDataDTO> productsList;
+    private List<RequirementDTO> productsList;
 
     public OrderDTO(){}
 
-    public void setProductsList(List<IntProductDataDTO> productslist){
+    public void setProductsList(List<RequirementDTO> productslist){
         this.productsList = new ArrayList<>(productslist);
     }
 
-    public List<IntProductDataDTO> getProductsList(){
+    public List<RequirementDTO> getProductsList(){
         return productsList;
     }
 }

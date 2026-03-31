@@ -5,15 +5,15 @@ import java.util.List;
 
 public class CompositeTypeDTO extends ProductTypeDTO{
 
-    private List<IntProductTypeDataDTO> children;
+    private List<RequirementTypeDTO> children;
 
     public CompositeTypeDTO(){}
 
-    public void setChildren(List<IntProductTypeDataDTO> children) {
+    public void setChildren(List<RequirementTypeDTO> children) {
         this.children = new ArrayList<>(children);
     }
 
-    public List<IntProductTypeDataDTO> getChildren() {
+    public List<RequirementTypeDTO> getChildren() {
         return children;
     }
 }

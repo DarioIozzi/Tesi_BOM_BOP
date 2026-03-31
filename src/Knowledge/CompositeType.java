@@ -4,9 +4,9 @@ import java.util.*;
 
 public class CompositeType extends ProductType{
 
-    private final List<IntProductTypeData> children;
+    private final List<RequirementType> children;
 
-    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<IntProductTypeData> children, String code) {
+    public CompositeType(ProcessType pt, String family, List<FeatureType> ft, List<RequirementType> children, String code) {
 
         super(pt, family, ft, code);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
@@ -18,24 +18,24 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public void addProductType(IntProductTypeData pt) {
+    public void addProductType(RequirementType pt) {
 
-        for(IntProductTypeData child : this.children){
+        for(RequirementType child : this.children){
             if(child.getProductType().getId() == pt.getProductType().getId()){
                 child.modifyQuantity(pt.getQuantity());
                 return;
             }
         }
-        children.add(new IntProductTypeData(pt.getQuantity(), pt.getProductType()));
+        children.add(new RequirementType(pt.getQuantity(), pt.getProductType()));
     }
 
     @Override
     public boolean removeProductType(int i, int q){
 
-        Iterator<IntProductTypeData> it = this.children.iterator();
+        Iterator<RequirementType> it = this.children.iterator();
 
         while (it.hasNext()) {
-            IntProductTypeData child = it.next();
+            RequirementType child = it.next();
             if(child.getProductType().getId() == i){
                 child.modifyQuantity(-q);
                 if(child.getQuantity() == 0) {
@@ -48,12 +48,12 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public IntProductTypeData getChild(int i) {
-        for (IntProductTypeData child : children) {
+    public RequirementType getChild(int i) {
+        for (RequirementType child : children) {
             if(child.getProductType().getId() == i){
                 return child;
             }else if(child.getProductType() instanceof CompositeType){
-                IntProductTypeData result = child.getProductType().getChild(i);
+                RequirementType result = child.getProductType().getChild(i);
                 if (result != null)
                     return result;
             }
@@ -62,7 +62,7 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public List<IntProductTypeData> getChildren(){
+    public List<RequirementType> getChildren(){
         return children;
     }
 
@@ -70,7 +70,7 @@ public class CompositeType extends ProductType{
     public List<ProductType> getAllElement(){
 
         List<ProductType> list = new ArrayList<>();
-        for(IntProductTypeData child : this.children){
+        for(RequirementType child : this.children){
             if(child.getProductType() instanceof ElementType) {
                 list.add(child.getProductType());
             }else {

@@ -3,7 +3,7 @@ package ConfigurationJSON;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
 import ConfigurationJSON.OperationalBuilder.OpBuilder;
 import Knowledge.Catalogs.ProductCatalog;
-import Operational.IntProductData;
+import Operational.Requirement;
 import Operational.OrderManager.Order;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -22,7 +22,7 @@ public class OpBuilderTest {
         pc.addProductType(new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json")));
         Order o = opBuilder.buildOrder(config.readOrderJSON("/Order.json"));
         assertEquals(2, o.getProductslist().size());
-        List<IntProductData> products = o.getProductslist();
+        List<Requirement> products = o.getProductslist();
         assertEquals(2, products.get(0).getQuantity());
         assertEquals(5, products.get(1).getQuantity());
         assertEquals("DT-001", products.get(0).getProduct().getType().getCode());

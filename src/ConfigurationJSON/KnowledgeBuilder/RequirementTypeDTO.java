@@ -1,6 +1,6 @@
 package ConfigurationJSON.KnowledgeBuilder;
 
-public class IntProductTypeDataDTO {
+public class RequirementTypeDTO {
 
     private int quantity;
     private ProductTypeDTO productType;

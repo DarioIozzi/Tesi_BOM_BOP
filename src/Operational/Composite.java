@@ -9,9 +9,9 @@ import java.util.Objects;
 
 public class Composite extends Product{
 
-    private final List<IntProductData> children;
+    private final List<Requirement> children;
 
-    public Composite(Process process, ProductType ct, List<IntProductData> children){
+    public Composite(Process process, ProductType ct, List<Requirement> children){
 
         super(process, ct);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
@@ -23,23 +23,23 @@ public class Composite extends Product{
     }
 
     @Override
-    public void addProduct(IntProductData pt){
-        for(IntProductData child : this.children){
+    public void addProduct(Requirement pt){
+        for(Requirement child : this.children){
             if(child.getProduct().getId() == pt.getProduct().getId()){
                 child.modifyQuantity(pt.getQuantity());
                 return;
             }
         }
-        children.add(new IntProductData(pt.getQuantity(), pt.getProduct()));
+        children.add(new Requirement(pt.getQuantity(), pt.getProduct()));
     }
 
     @Override
     public boolean removeProduct(int i, int q){
 
-        Iterator<IntProductData> it = this.children.iterator();
+        Iterator<Requirement> it = this.children.iterator();
 
         while (it.hasNext()) {
-            IntProductData child = it.next();
+            Requirement child = it.next();
             if(child.getProduct().getId() == i){
                 child.modifyQuantity(-q);
                 if(child.getQuantity() == 0) {
@@ -52,17 +52,17 @@ public class Composite extends Product{
     }
 
     @Override
-    public List<IntProductData> getChildren(){
+    public List<Requirement> getChildren(){
         return children;
     }
 
     @Override
-    public IntProductData getChild(int i) {
-        for (IntProductData child : children) {
+    public Requirement getChild(int i) {
+        for (Requirement child : children) {
             if(child.getProduct().getId() == i){
                 return child;
             }else if(child.getProduct() instanceof Composite){
-                IntProductData result = child.getProduct().getChild(i);
+                Requirement result = child.getProduct().getChild(i);
                 if (result != null) {
                     return result;
                 }

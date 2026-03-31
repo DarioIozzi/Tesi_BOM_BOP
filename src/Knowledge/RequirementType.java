@@ -2,12 +2,12 @@ package Knowledge;
 
 import java.util.Objects;
 
-public class IntProductTypeData {
+public class RequirementType {
 
     private int quantity;
     private ProductType productType;
 
-    public IntProductTypeData(int quantity, ProductType productType) {
+    public RequirementType(int quantity, ProductType productType) {
         if(quantity < 0)
             throw new IllegalArgumentException("Quantity cannot be negative");
         if(productType == null)
@@ -35,8 +35,8 @@ public class IntProductTypeData {
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
-        if (!(obj instanceof IntProductTypeData)) return false;
-        IntProductTypeData other = (IntProductTypeData) obj;
+        if (!(obj instanceof RequirementType)) return false;
+        RequirementType other = (RequirementType) obj;
         return quantity == other.getQuantity() && productType == other.getProductType();
     }
 

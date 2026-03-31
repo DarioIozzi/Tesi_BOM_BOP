@@ -3,7 +3,7 @@ import Knowledge.*;
 import Knowledge.Catalogs.ResourceCatalog;
 import Knowledge.Units.*;
 import ConfigurationJSON.KnowledgeBuilder.Units.*;
-import Knowledge.IntProductTypeData;
+import Knowledge.RequirementType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +47,9 @@ public class TypeBuilder {
             ftds.add(buildFeatureType(f));
         }
         if(p instanceof CompositeTypeDTO){
-            List<IntProductTypeData> iptds = new ArrayList<>();
-            for(IntProductTypeDataDTO ip: ((CompositeTypeDTO) p).getChildren()){
-                iptds.add(new IntProductTypeData(ip.getQuantity(), buildProductType(ip.getProductType())));
+            List<RequirementType> iptds = new ArrayList<>();
+            for(RequirementTypeDTO ip: ((CompositeTypeDTO) p).getChildren()){
+                iptds.add(new RequirementType(ip.getQuantity(), buildProductType(ip.getProductType())));
             }
             return new CompositeType(buildProcessType(p.getProcessType()), p.getFamily(), ftds, iptds, p.getCode());
         }else {

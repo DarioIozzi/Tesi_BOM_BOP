@@ -2,12 +2,12 @@ package Operational;
 
 import java.util.Objects;
 
-public class IntProductData {
+public class Requirement {
 
     private int quantity;
     private Product product;
 
-    public IntProductData(int quantity, Product product) {
+    public Requirement(int quantity, Product product) {
         if(quantity < 0)
             throw new IllegalArgumentException("Quantity cannot be negative");
         if(product == null)
@@ -35,8 +35,8 @@ public class IntProductData {
     @Override
     public boolean equals(Object obj){
         if (this == obj) return true;
-        if (!(obj instanceof IntProductData)) return false;
-        IntProductData other = (IntProductData) obj;
+        if (!(obj instanceof Requirement)) return false;
+        Requirement other = (Requirement) obj;
         return quantity == other.getQuantity() && product == other.getProduct();
     }
 

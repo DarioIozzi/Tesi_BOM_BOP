@@ -1,11 +1,11 @@
 package ConfigurationJSON.OperationalBuilder;
 
-public class IntProductDataDTO {
+public class RequirementDTO {
 
     private int quantity;
     private ProductDTO product;
 
-    public IntProductDataDTO(){}
+    public RequirementDTO(){}
 
     public int getQuantity() {
         return quantity;

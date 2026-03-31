@@ -1,7 +1,7 @@
 package Operational.OrderManager;
 
 import Operational.Composite;
-import Operational.IntProductData;
+import Operational.Requirement;
 import Operational.Process;
 import Operational.Product;
 
@@ -20,9 +20,9 @@ public class Order {
     private Status status;
     private static int counter = 0;
     private final int id;
-    private final List<IntProductData> productslist;
+    private final List<Requirement> productslist;
 
-     public Order(List<IntProductData> productslist) {
+     public Order(List<Requirement> productslist) {
 
          if (productslist == null) {
              throw new NullPointerException("productslist is null");
@@ -33,16 +33,16 @@ public class Order {
          this.status = Status.READY;
      }
 
-    public void addProduct(IntProductData ipd) {
+    public void addProduct(Requirement ipd) {
          productslist.add(ipd);
     }
 
-    public List<IntProductData> getProductslist() {
+    public List<Requirement> getProductslist() {
          return productslist;
     }
 
     public Product getProduct(String code) {
-        for (IntProductData ipd : productslist) {
+        for (Requirement ipd : productslist) {
             Product p = findProduct(ipd.getProduct(), code);
             if (p != null) {
                 return p;
@@ -58,7 +58,7 @@ public class Order {
 
         if (product instanceof Composite) {
             Composite composite = (Composite) product;
-            for (IntProductData childData : composite.getChildren()) {
+            for (Requirement childData : composite.getChildren()) {
                 Product found = findProduct(childData.getProduct(), code);
                 if (found != null) {
                     return found;
@@ -73,12 +73,12 @@ public class Order {
          return id;
     }
 
-    public void removeProduct(IntProductData ipd) {
+    public void removeProduct(Requirement ipd) {
          productslist.remove(ipd);
     }
 
     public void start(){
-         for (IntProductData ipd : productslist) {
+         for (Requirement ipd : productslist) {
              ipd.getProduct().getProcess().start();
          }
 
@@ -86,7 +86,7 @@ public class Order {
     }
 
     public void complete(){
-         for (IntProductData ipd : productslist) {
+         for (Requirement ipd : productslist) {
              ipd.getProduct().getProcess().completed();
          }
 
@@ -94,7 +94,7 @@ public class Order {
     }
 
     public void failed(){
-         for (IntProductData ipd : productslist) {
+         for (Requirement ipd : productslist) {
              if(ipd.getProduct().getProcess().getStatus() != Process.Status.COMPLETE) {
                  ipd.getProduct().getProcess().failed();
              }

@@ -29,13 +29,13 @@ public abstract class Product {
         counter = 0;
     }
 
-    public abstract void addProduct(IntProductData pt);
+    public abstract void addProduct(Requirement pt);
 
     public abstract boolean removeProduct(int i, int q);
 
-    public abstract List<IntProductData> getChildren();
+    public abstract List<Requirement> getChildren();
 
-    public abstract IntProductData getChild(int i);
+    public abstract Requirement getChild(int i);
 
     public int getId(){
         return id;
