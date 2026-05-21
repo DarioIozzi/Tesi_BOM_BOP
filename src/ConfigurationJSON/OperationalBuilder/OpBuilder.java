@@ -28,7 +28,7 @@ public class OpBuilder {
             pts.add(new Requirement(ipddto.getQuantity(), buildProduct(ipddto.getProduct())));
         }
 
-        return new Order(new ArrayList<>(pts));
+        return new Order(new ArrayList<>(pts), odto.getDeadline());
     }
 
     public Product buildProduct(ProductDTO pdto){
