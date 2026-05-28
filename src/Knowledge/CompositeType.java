@@ -89,4 +89,14 @@ public class CompositeType extends ProductType{
     public void setResourceType(ResourceType resourceType){
         throw new UnsupportedOperationException("Not an element.");
     }
+
+    @Override
+    public void setNumberElements(){
+        numElements = getAllElement().size();
+    }
+
+    @Override
+    public int getNumberElements(){
+        return numElements;
+    }
 }

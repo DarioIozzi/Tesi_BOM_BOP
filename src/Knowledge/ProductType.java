@@ -7,6 +7,7 @@ import java.util.Objects;
 public abstract class ProductType {
 
     static int counter = 0;
+    int numElements = 0;
     int id;
     String code;
     ProcessType processType;
@@ -84,6 +85,10 @@ public abstract class ProductType {
     public abstract ResourceType getResourceType();
 
     public abstract void setResourceType(ResourceType resourceType);
+
+    public abstract void setNumberElements();
+
+    public abstract int getNumberElements();
 
     @Override
     public String toString() {
