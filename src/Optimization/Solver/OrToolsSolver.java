@@ -29,17 +29,27 @@ public class OrToolsSolver implements Solver {
                 routing.registerTransitCallback(
                         (long fromIndex, long toIndex) -> {
 
-                            int fromNode =
-                                    manager.indexToNode(fromIndex);
+                            int fromNode = manager.indexToNode(fromIndex);
 
-                            int toNode =
-                                    manager.indexToNode(toIndex);
+                            int toNode = manager.indexToNode(toIndex);
 
                             return costMatrix.getCost(fromNode, toNode);
                         }
                 );
 
         routing.setArcCostEvaluatorOfAllVehicles(transitCallbackIndex);
+
+        int timeCallbackIndex =
+                routing.registerTransitCallback(
+                        (long index, long notUsefull) -> {
+
+                            int node = manager.indexToNode(index);
+
+                            return (long) problem.getNodes().get(node).getRequirement().getProduct().getType().getFeatureType("DUR").getUnitType("DURATION").getUnitValue();
+                        }
+                );
+
+        routing.addDimension(timeCallbackIndex, 0, 10000, true, "TIME");
 
         RoutingSearchParameters params = RoutingSearchParameters.newBuilder().setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC).build();
 
