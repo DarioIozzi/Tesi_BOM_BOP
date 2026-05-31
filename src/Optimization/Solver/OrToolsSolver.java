@@ -37,7 +37,7 @@ public class OrToolsSolver implements Solver {
 
         int timeCallbackIndex =
                 routing.registerTransitCallback(
-                        (long index, long notUsefull) -> {
+                        (long notUsefull, long index) -> {
 
                             int node = manager.indexToNode(index);
 
@@ -74,13 +74,22 @@ public class OrToolsSolver implements Solver {
 
             System.out.println("Percorso ottimizzato");
 
-            while(!routing.isEnd(index)){
+            while (!routing.isEnd(index)) {
+
                 int node = manager.indexToNode(index);
 
-                System.out.println(node + " -> ");
+                long cumulativeTime = solution.value(timeDimension.cumulVar(index));
+
+                long deadline = problem.getNodes().get(node).getDeadline();
+
+                System.out.println("Nodo: " + node + " | Tempo accumulato: " + cumulativeTime + " | Deadline: " + deadline);
 
                 index = solution.value(routing.nextVar(index));
             }
+
+            long finalTime = solution.value(timeDimension.cumulVar(index));
+
+            System.out.println("FINE | Tempo accumulato: " + finalTime);
 
             System.out.println("FINE");
         }

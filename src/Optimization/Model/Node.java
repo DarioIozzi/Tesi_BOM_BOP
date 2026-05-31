@@ -1,7 +1,5 @@
 package Optimization.Model;
 
-import Knowledge.CompositeType;
-import Knowledge.ElementType;
 import Operational.OrderManager.Order;
 import Operational.Requirement;
 
