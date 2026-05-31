@@ -46,18 +46,24 @@ public class CostMatrixBuilder {
 
          int cost = 0;
 
-         if(r1.getQuantity() > r2.getQuantity())
-             cost = r1.getProduct().getType().getNumberElements() * (r1.getQuantity() - r2.getQuantity());
-         else
-             cost = r2.getProduct().getType().getNumberElements() * (r2.getQuantity() - r1.getQuantity());
+         List<ProductType> elements1 = new ArrayList<>(r1.getProduct().getType().getAllElement());
+         List<ProductType> elements2 = new ArrayList<>(r2.getProduct().getType().getAllElement());
 
-         cost += materialChange(r1.getProduct().getType(), r2.getProduct().getType()) * Math.abs(r1.getQuantity() - r2.getQuantity());
+         for(ProductType el1 : elements1){
+             if(elements2.contains(el1)){
+                 if(r1.getQuantity() > r2.getQuantity())
+                     cost += Math.abs(r1.getQuantity() - r2.getQuantity());        //tolgo elemento costo 1 ciascuno
+                 else
+                     cost = 2 * Math.abs(r1.getQuantity() - r2.getQuantity());     //aggiungo elemento costo 2 ciascuno
+             }
+         }
+
+         for(ProductType el2 : elements2){
+             if(!elements1.contains(el2)){
+                 cost += 2 * Math.abs(r1.getQuantity() - r2.getQuantity());       //aggiungo elemento costo 2 ciascuno
+             }
+         }
+
          return cost;
-     }
-
-
-     int materialChange(ProductType prod1, ProductType prod2) {
-
-         return Math.abs(prod1.getNumberElements() - prod2.getNumberElements());
      }
 }
