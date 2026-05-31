@@ -1,5 +1,7 @@
 package Optimization.Model;
 
+import Knowledge.CompositeType;
+import Knowledge.ElementType;
 import Operational.OrderManager.Order;
 import Operational.Requirement;
 
@@ -9,14 +11,25 @@ import java.time.temporal.ChronoUnit;
 public class Node {
 
     private int id;
-    private Order order;
-    private Requirement requirement;
+    private final Order order;
+    private final Requirement requirement;
     private long deadline;
+    private final long productionTime;
 
     Node(Order order, Requirement requirement) {
         this.order = order;
         this.requirement = requirement;
         dateToLong();
+        productionTime = calculateProdTime() * requirement.getQuantity();
+    }
+
+    private long calculateProdTime(){
+        long sum = 0;
+        for(Requirement child : requirement.getProduct().getChildren()){
+            sum += (long) child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR").getUnitValue();
+        }
+
+        return sum;
     }
 
     private void dateToLong(){
@@ -30,5 +43,9 @@ public class Node {
 
     public long getDeadline() {
         return deadline;
+    }
+
+    public long getProductionTime() {
+        return productionTime;
     }
 }

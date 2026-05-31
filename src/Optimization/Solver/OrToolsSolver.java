@@ -14,10 +14,6 @@ public class OrToolsSolver implements Solver {
         costMatrix = cm;
     }
 
-    private void addConstraints(){
-
-    }
-
     @Override
     public void solve(OptimizationProblem problem) {
 
@@ -45,11 +41,28 @@ public class OrToolsSolver implements Solver {
 
                             int node = manager.indexToNode(index);
 
-                            return (long) problem.getNodes().get(node).getRequirement().getProduct().getType().getFeatureType("DUR").getUnitType("DURATION").getUnitValue();
+                            return problem.getNodes().get(node).getProductionTime();
                         }
                 );
 
         routing.addDimension(timeCallbackIndex, 0, 10000, true, "TIME");
+
+        RoutingDimension timeDimension = routing.getMutableDimension("TIME");
+
+        for (int i = 0; i < problem.getNodes().size(); i++) {
+
+            long deadline =
+                    problem.getNodes()
+                            .get(i)
+                            .getDeadline();
+
+            long index =
+                    manager.nodeToIndex(i);
+
+            timeDimension
+                    .cumulVar(index)
+                    .setMax(deadline);
+        }
 
         RoutingSearchParameters params = RoutingSearchParameters.newBuilder().setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC).build();
 

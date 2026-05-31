@@ -46,6 +46,14 @@ public class ProcessType {
         return featureTypes;
     }
 
+    public FeatureType getFeatureType(String code) {
+        for(FeatureType f : featureTypes){
+            if(f.getCode().equals(code))
+                return f;
+        }
+        return null;
+    }
+
     public List<ObservationType> getObservationType() {
         return observationTypes;
     }
