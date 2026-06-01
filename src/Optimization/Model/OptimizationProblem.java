@@ -1,6 +1,5 @@
 package Optimization.Model;
 
-import Optimization.Constraints.Constraint;
 import Optimization.Cost.CostMatrix;
 
 import java.util.List;
@@ -9,12 +8,10 @@ public class OptimizationProblem {
 
     private final List<Node> nodes;
     private final CostMatrix cm;
-    private final List<Constraint> constraints;
 
-    OptimizationProblem(List<Node> nodes, CostMatrix cm, List<Constraint> constraints) {
+    public OptimizationProblem(List<Node> nodes, CostMatrix cm) {
         this.nodes = nodes;
         this.cm = cm;
-        this.constraints = constraints;
     }
 
     public List<Node> getNodes() {
@@ -23,9 +20,5 @@ public class OptimizationProblem {
 
     public CostMatrix getCm() {
         return cm;
-    }
-
-    public List<Constraint> getConstraints() {
-        return constraints;
     }
 }

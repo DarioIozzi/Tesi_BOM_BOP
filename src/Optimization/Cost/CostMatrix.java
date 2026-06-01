@@ -5,7 +5,7 @@ public class CostMatrix {
     private final int n;
     private int costMatrix[];
 
-    CostMatrix(int n) {
+    public CostMatrix(int n) {
 
         this.n = n;
         costMatrix = new int[n * n];
