@@ -88,9 +88,7 @@ public class OrToolsSolver implements Solver {
 
             long finalTime = solution.value(timeDimension.cumulVar(index));
 
-            System.out.println("FINE | Tempo accumulato: " + finalTime);
-
-            System.out.println("Costo totale: " + solution.objectiveValue());
+            System.out.println("FINE | Tempo accumulato: " + finalTime + " ! Costo totale: " + solution.objectiveValue());
         }
     }
 }
