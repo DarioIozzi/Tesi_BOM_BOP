@@ -1,5 +1,6 @@
 package Optimization.Solver;
 
+import Optimization.Model.Node;
 import Optimization.Model.OptimizationProblem;
 import com.google.ortools.Loader;
 import com.google.ortools.constraintsolver.*;
@@ -76,9 +77,11 @@ public class OrToolsSolver implements Solver {
 
                 long cumulativeTime = solution.value(timeDimension.cumulVar(index));
 
-                long deadline = problem.getNodes().get(node).getDeadline();
+                Node n = problem.getNodes().get(node);
 
-                System.out.println("Nodo: " + node + " | Tempo accumulato: " + cumulativeTime + " | Deadline: " + deadline);
+                long deadline = n.getDeadline();
+
+                System.out.println("Requirement: " + n.getRequirement().toString() + " | Ordine: " + n.getOrder().getId() + " | Tempo accumulato: " + cumulativeTime + " | Deadline: " + deadline);
 
                 index = solution.value(routing.nextVar(index));
             }

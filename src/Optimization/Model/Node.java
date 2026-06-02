@@ -52,4 +52,8 @@ public class Node {
     public long getProductionTime() {
         return productionTime;
     }
+
+    public Order getOrder(){
+        return order;
+    }
 }
