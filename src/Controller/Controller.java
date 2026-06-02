@@ -15,12 +15,15 @@ import Operational.*;
 import Operational.OrderManager.Order;
 import Operational.OrderManager.OrderManager;
 import Operational.Process;
+import Optimization.Builder.OptimizationProblemBuilder;
+import Optimization.Model.OptimizationProblem;
+import Optimization.Solver.OrToolsSolver;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 public class Controller {
 
@@ -195,5 +198,24 @@ public class Controller {
 
     public List<Order> getOrderList(){
         return orderManager.getOrders();
+    }
+
+    private List<Order> orderToOptimize(int days) {
+
+        List<Order> orders = new ArrayList<>(orderManager.getOrders());
+
+        orders.removeIf(order -> {
+            long remainingDays = ChronoUnit.DAYS.between(LocalDate.now(), order.getDeadline());
+
+            return remainingDays < 0 || remainingDays > days;
+        });
+
+        return orders;
+    }
+
+    public void optimize(int days){
+        OptimizationProblem op = new OptimizationProblemBuilder(this.orderToOptimize(days)).buildOptimizationProblem();
+        OrToolsSolver ots = new OrToolsSolver();
+        ots.solve(op);
     }
 }

@@ -22,4 +22,8 @@ public class CostMatrix {
     public int getCost(int row, int col) {
         return costMatrix[index(row, col)];
     }
+
+    public int getDimension(){
+        return n;
+    }
 }

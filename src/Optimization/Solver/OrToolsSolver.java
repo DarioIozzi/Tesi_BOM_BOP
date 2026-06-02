@@ -1,23 +1,19 @@
 package Optimization.Solver;
 
-import Optimization.Cost.CostMatrix;
 import Optimization.Model.OptimizationProblem;
 import com.google.ortools.Loader;
 import com.google.ortools.constraintsolver.*;
 
 public class OrToolsSolver implements Solver {
 
-    private CostMatrix costMatrix;
-
-    OrToolsSolver(CostMatrix cm) {
+    public OrToolsSolver() {
         Loader.loadNativeLibraries();
-        costMatrix = cm;
     }
 
     @Override
     public void solve(OptimizationProblem problem) {
 
-        RoutingIndexManager manager = new RoutingIndexManager(problem.getNodes().size(), 1, 0);
+        RoutingIndexManager manager = new RoutingIndexManager(problem.getNodes().size(), 1, 1);
 
         RoutingModel routing = new RoutingModel(manager);
 
@@ -29,7 +25,7 @@ public class OrToolsSolver implements Solver {
 
                             int toNode = manager.indexToNode(toIndex);
 
-                            return costMatrix.getCost(fromNode, toNode);
+                            return problem.getCm().getCost(fromNode, toNode);
                         }
                 );
 
@@ -49,7 +45,7 @@ public class OrToolsSolver implements Solver {
 
         RoutingDimension timeDimension = routing.getMutableDimension("TIME");
 
-        for (int i = 0; i < problem.getNodes().size(); i++) {
+        for (int i = 1; i < problem.getNodes().size(); i++) {
 
             long deadline =
                     problem.getNodes()
@@ -91,7 +87,7 @@ public class OrToolsSolver implements Solver {
 
             System.out.println("FINE | Tempo accumulato: " + finalTime);
 
-            System.out.println("FINE");
+            System.out.println("Costo totale: " + solution.objectiveValue());
         }
     }
 }

@@ -32,22 +32,33 @@ public class OptimizationProblemBuilder {
 
      private CostMatrix buildMatrix(){
 
-         CostMatrix costMatrix = new CostMatrix(requirements.size());
+         CostMatrix costMatrix = new CostMatrix(requirements.size()+1);
 
          for(int i=0; i < requirements.size(); i++) {
              for (int j = 0; j <requirements.size(); j++) {
-                 if(i != j)
-                     costMatrix.setCost(i, j, transitCostCalculate(requirements.get(i), requirements.get(j)));
+                 if(i != j) {
+                     if(i == 0)
+                         costMatrix.setCost(i, j, requirements.get(j).getProduct().getType().getNumberElements() * 2);
+                     else if(j == 0)
+                         costMatrix.setCost(i, j, requirements.get(i).getProduct().getType().getNumberElements() * 2);
+                     else
+                        costMatrix.setCost(i + 1, j + 1, transitCostCalculate(requirements.get(i), requirements.get(j)));
+                 }
                  else
-                     costMatrix.setCost(i, j, 0);
+                     costMatrix.setCost(i+1, j+1, 0);
              }
          }
 
          return costMatrix;
      }
 
+     private Node createStartNode(){
+        return new Node();
+     }
+
      private List<Node> buildNodes(){
          List<Node> ns = new ArrayList<>();
+         ns.add(this.createStartNode());
 
          for(Order o : orders) {
              for(Requirement r : o.getProductslist()) {

@@ -2,6 +2,7 @@ package View;
 
 import View.Knowledge.MenuProductCatalog;
 import View.Operational.MenuWarehouse;
+import View.Operational.OptimizationMenu;
 import View.Operational.OrderMenu;
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class MenuFacade extends Menu {
             System.out.println("4. View orders");
             System.out.println("5. Add an order");
             System.out.println("6. Remove an order");
+            System.out.println("7. Optimize production");
             System.out.println("0. Exit");
 
             scelta = inputInt();
@@ -56,6 +58,9 @@ public class MenuFacade extends Menu {
                 case 5:
                     controller.addOrder("/Order.json");
                     break;
+
+                case 7:
+                    menuAttuale = new OptimizationMenu();
 
                 case 0:
                     System.out.println("Uscita in corso...");

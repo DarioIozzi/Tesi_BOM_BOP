@@ -8,16 +8,23 @@ import java.time.temporal.ChronoUnit;
 
 public class Node {
 
-    private final Order order;
-    private final Requirement requirement;
+    private Order order;
+    private Requirement requirement;
     private long deadline;
     private final long productionTime;
+    private boolean startNode = false;
 
     public Node(Order order, Requirement requirement) {
         this.order = order;
         this.requirement = requirement;
         this.dateToLong();
         productionTime = calculateProdTime() * requirement.getQuantity();
+    }
+
+    public Node(){
+        this.startNode = true;
+        this.productionTime = 0;
+        this.deadline = 1000000;
     }
 
     private long calculateProdTime(){
