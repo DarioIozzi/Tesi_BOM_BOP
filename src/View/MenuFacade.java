@@ -20,6 +20,7 @@ public class MenuFacade extends Menu {
     public void display() throws IOException {
 
         int scelta;
+        int oId;
 
         while (true) {
             System.out.println("Menu");
@@ -59,8 +60,15 @@ public class MenuFacade extends Menu {
                     controller.addOrder("/Order.json");
                     break;
 
+                case 6:
+                    oId = inputInt();
+                    controller.removeOrder(oId);
+                    break;
+
                 case 7:
                     menuAttuale = new OptimizationMenu();
+                    menuAttuale.display();
+                    break;
 
                 case 0:
                     System.out.println("Uscita in corso...");
