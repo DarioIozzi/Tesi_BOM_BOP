@@ -49,6 +49,10 @@ public class Node {
         return deadline;
     }
 
+    public void setDeadline(long deadline) {
+        this.deadline = deadline;
+    }
+
     public long getProductionTime() {
         return productionTime;
     }
