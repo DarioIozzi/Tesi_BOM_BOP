@@ -7,6 +7,7 @@ import ConfigurationJSON.OperationalBuilder.OrderDTO;
 import ConfigurationJSON.OperationalBuilder.ResourceDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +24,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(is, new TypeReference<>() {});
     }
 
@@ -35,6 +37,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(is, ProductTypeDTO.class);
     }
 
@@ -47,6 +50,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(is, ResourceDTO.class);
     }
 
@@ -59,6 +63,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(is, OrderDTO.class);
     }
 
@@ -71,6 +76,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(is, ObservationDTO.class);
     }
 
@@ -83,6 +89,7 @@ public class Configuration {
         }
 
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return mapper.readValue(is, FeatureDTO.class);
     }
 }

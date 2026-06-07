@@ -11,14 +11,13 @@ public class Node {
     private Order order;
     private Requirement requirement;
     private long deadline;
-    private final long productionTime;
+    private long productionTime;
     private boolean startNode = false;
 
     public Node(Order order, Requirement requirement) {
         this.order = order;
         this.requirement = requirement;
         this.dateToLong();
-        productionTime = calculateProdTime() * requirement.getQuantity();
     }
 
     public Node(){
@@ -27,13 +26,25 @@ public class Node {
         this.deadline = 1000000;
     }
 
-    private long calculateProdTime(){
+    public void calculateProdTime(){
         long sum = 0;
         for(Requirement child : requirement.getProduct().getChildren()){
-            sum += (long) child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR").getUnitValue();
+            if(child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC") == null){
+                System.err.println("Feature con codice 'DUR-PROC' mancante");
+                sum += 0;
+            }
+            else if(child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR") == null) {
+                System.err.println("UnitType con codice 'DUR' mancante");
+                sum += 0;
+            }else if(child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR").getUnitValue() == null){
+                System.err.println("UnitValue con codice 'DUR' errato");
+                sum += 0;
+            }else{
+                sum += (long) child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR").getUnitValue();
+            }
         }
 
-        return sum;
+        this.productionTime = sum * requirement.getQuantity();
     }
 
     private void dateToLong(){
@@ -59,5 +70,9 @@ public class Node {
 
     public Order getOrder(){
         return order;
+    }
+
+    public boolean getStartNode() {
+        return startNode;
     }
 }

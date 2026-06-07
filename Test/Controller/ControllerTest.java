@@ -83,7 +83,7 @@ public class ControllerTest {
     public void orderMethodsTest() throws IOException {
 
         //Manage orders and order status
-        controller.addOrder("/Order.json");
+        controller.addOrder("/Orders/Order.json");
         Order o = controller.getOrderList().get(0);
         assertEquals(1, controller.getOrderList().size());
         assertEquals(Order.Status.READY, o.getStatus());
@@ -96,13 +96,13 @@ public class ControllerTest {
         controller.removeOrder(o.getId());
         assertEquals(0, controller.getOrderList().size());
 
-        controller.addOrder("/Order.json");
+        controller.addOrder("/Orders/Order.json");
 
         //Manage product resources
         controller.addResourceToWarehouse("/Resource.json");
         assertEquals(1, controller.getWarehouse().size());
         Resource r = controller.getWarehouse().get("WoodBeam").get(0);
-        controller.addOrder("/Order.json");
+        controller.addOrder("/Orders/Order.json");
         o = controller.getOrderList().get(0);
         Product p = o.getProduct("TL-001");
         assertNotNull(p.getType().getCode());

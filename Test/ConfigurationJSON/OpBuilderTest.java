@@ -20,7 +20,7 @@ public class OpBuilderTest {
         Configuration config = new Configuration();
         OpBuilder opBuilder = new OpBuilder();
         pc.addProductType(new TypeBuilder().buildProductListType(config.readProductListJSON("/ProductCatalog.json")));
-        Order o = opBuilder.buildOrder(config.readOrderJSON("/Order.json"));
+        Order o = opBuilder.buildOrder(config.readOrderJSON("/Orders/Order.json"));
         assertEquals(2, o.getProductslist().size());
         List<Requirement> products = o.getProductslist();
         assertEquals(2, products.get(0).getQuantity());
