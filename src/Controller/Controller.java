@@ -207,7 +207,7 @@ public class Controller {
         orders.removeIf(order -> {
             long remainingDays = ChronoUnit.DAYS.between(LocalDate.now(), order.getDeadline());
 
-            return remainingDays < 0 || remainingDays > days;
+            return remainingDays < 0 || remainingDays > days || order.getStatus() != Order.Status.READY;
         });
 
         return orders;
