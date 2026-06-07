@@ -1,0 +1,23 @@
+{
+  "productsList": [
+    {
+      "quantity": 3,
+      "product": {
+        "typeCode": "DT-001"
+      }
+    },
+    {
+      "quantity": 2,
+      "product": {
+        "typeCode": "BS-001"
+      }
+    },
+    {
+      "quantity": 1,
+      "product": {
+        "typeCode": "NS-001"
+      }
+    }
+  ],
+  "deadline": "2026-06-15"
+}
