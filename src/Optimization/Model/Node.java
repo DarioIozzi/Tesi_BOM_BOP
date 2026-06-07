@@ -17,7 +17,7 @@ public class Node {
     public Node(Order order, Requirement requirement) {
         this.order = order;
         this.requirement = requirement;
-        this.dateToLong();
+        this.dateToLongMinutes();
     }
 
     public Node(){
@@ -47,9 +47,9 @@ public class Node {
         this.productionTime = sum * requirement.getQuantity();
     }
 
-    private void dateToLong(){
+    private void dateToLongMinutes(){
 
-        deadline = ChronoUnit.DAYS.between(LocalDate.now(), order.getDeadline());
+        deadline = ChronoUnit.DAYS.between(LocalDate.now(), order.getDeadline()) * 24 * 60;
     }
 
     public Requirement getRequirement() {
@@ -66,6 +66,10 @@ public class Node {
 
     public long getProductionTime() {
         return productionTime;
+    }
+
+    public void setProductionTime(long productionTime){
+        this.productionTime = productionTime;
     }
 
     public Order getOrder(){

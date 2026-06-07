@@ -34,18 +34,18 @@ public class OptimizationProblemBuilder {
 
          CostMatrix costMatrix = new CostMatrix(requirements.size()+1);
 
-         for(int i=0; i < requirements.size(); i++) {
-             for (int j = 0; j <requirements.size(); j++) {
+         for(int i = 0; i < requirements.size()+1; i++) {
+             for (int j = 0; j <requirements.size()+1; j++) {
                  if(i != j) {
                      if(i == 0)
                          costMatrix.setCost(i, j, requirements.get(j).getProduct().getType().getNumberElements() * 2);
                      else if(j == 0)
                          costMatrix.setCost(i, j, requirements.get(i).getProduct().getType().getNumberElements() * 2);
                      else
-                        costMatrix.setCost(i + 1, j + 1, transitCostCalculate(requirements.get(i), requirements.get(j)));
+                        costMatrix.setCost(i, j, transitCostCalculate(requirements.get(i), requirements.get(j)));
                  }
                  else
-                     costMatrix.setCost(i+1, j+1, 0);
+                     costMatrix.setCost(i, j, 0);
              }
          }
 
