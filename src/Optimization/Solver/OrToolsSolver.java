@@ -48,17 +48,11 @@ public class OrToolsSolver implements Solver {
 
         for (int i = 1; i < problem.getNodes().size(); i++) {
 
-            long deadline =
-                    problem.getNodes()
-                            .get(i)
-                            .getDeadline();
+            long deadline = problem.getNodes().get(i).getDeadline();
 
-            long index =
-                    manager.nodeToIndex(i);
+            long index = manager.nodeToIndex(i);
 
-            timeDimension
-                    .cumulVar(index)
-                    .setMax(deadline);
+            timeDimension.cumulVar(index).setMax(deadline);
         }
 
         RoutingSearchParameters params = RoutingSearchParameters.newBuilder().setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC).build();

@@ -67,12 +67,12 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public List<ProductType> getAllElement(){
+    public List<RequirementType> getAllElement(){
 
-        List<ProductType> list = new ArrayList<>();
+        List<RequirementType> list = new ArrayList<>();
         for(RequirementType child : this.children){
             if(child.getProductType() instanceof ElementType) {
-                list.add(child.getProductType());
+                list.add(child);
             }else {
                 list.addAll((child.getProductType()).getAllElement());
             }
@@ -92,7 +92,8 @@ public class CompositeType extends ProductType{
 
     @Override
     public void setNumberElements(){
-        numElements = getAllElement().size();
+        for(RequirementType rt : getAllElement())
+            numElements += rt.getQuantity();
     }
 
     @Override

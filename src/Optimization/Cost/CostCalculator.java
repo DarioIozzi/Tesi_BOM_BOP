@@ -1,6 +1,7 @@
 package Optimization.Cost;
 
 import Knowledge.ProductType;
+import Knowledge.RequirementType;
 import Operational.Requirement;
 
 import java.util.ArrayList;
@@ -28,21 +29,27 @@ public class CostCalculator {
 
         int cost = 0;
 
-        List<ProductType> elements1 = new ArrayList<>(r1.getProduct().getType().getAllElement());
-        List<ProductType> elements2 = new ArrayList<>(r2.getProduct().getType().getAllElement());
+        List<RequirementType> elements1 = new ArrayList<>(r1.getProduct().getType().getAllElement());
+        List<RequirementType> elements2 = new ArrayList<>(r2.getProduct().getType().getAllElement());
 
-        for(ProductType el1 : elements1){
-            if(elements2.contains(el1)){
-                if(r1.getQuantity() > r2.getQuantity())
-                    cost += Math.abs(r1.getQuantity() - r2.getQuantity());        //tolgo elemento costo 1 ciascuno
-                else
-                    cost = 2 * Math.abs(r1.getQuantity() - r2.getQuantity());     //aggiungo elemento costo 2 ciascuno
+        for(RequirementType el1 : elements1){
+            for(RequirementType el2 : elements2){
+                if(el1.getProductType().getCode().equals(el2.getProductType().getCode())){
+
+                    if(r1.getQuantity() > r2.getQuantity())
+                        cost += Math.abs(r1.getQuantity() - r2.getQuantity());        //tolgo elemento, costo 1 ciascuno
+                    else
+                        cost = 2 * Math.abs(r1.getQuantity() - r2.getQuantity());     //aggiungo elemento, costo 2 ciascuno
+                }
             }
         }
 
-        for(ProductType el2 : elements2){
-            if(!elements1.contains(el2)){
-                cost += 2 * Math.abs(r1.getQuantity() - r2.getQuantity());       //aggiungo elemento costo 2 ciascuno
+        for(RequirementType el2 : elements2){
+            for(RequirementType el1 : elements1){
+                if(!el2.getProductType().getCode().equals(el1.getProductType().getCode())){
+
+                    cost += 2 * Math.abs(r1.getQuantity() - r2.getQuantity());       //aggiungo elemento, costo 2 ciascuno
+                }
             }
         }
 

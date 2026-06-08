@@ -4,10 +4,10 @@ import ConfigurationJSON.Configuration;
 import ConfigurationJSON.KnowledgeBuilder.TypeBuilder;
 import Knowledge.Catalogs.ProductCatalog;
 import Knowledge.ProductType;
-import static org.junit.Assert.*;
 
 import Operational.*;
 import Operational.OrderManager.Order;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;

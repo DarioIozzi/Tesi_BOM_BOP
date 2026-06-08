@@ -40,7 +40,7 @@ public abstract class ProductType {
 
     public abstract List<RequirementType> getChildren();
 
-    public abstract List<ProductType> getAllElement();
+    public abstract List<RequirementType> getAllElement();
 
     public ProcessType getProcessType() {
         return processType;

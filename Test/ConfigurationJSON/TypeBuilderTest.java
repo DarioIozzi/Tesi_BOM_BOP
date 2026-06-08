@@ -23,7 +23,7 @@ public class TypeBuilderTest {
         assertEquals("Length", pt.getFeatureTypes().get(0).getUnitTypes().get(0).getName());
         assertEquals("Dining ChairAssembly", pt.getProcessType().getFamily());
         assertTrue(pt.getProcessType().getFeatureTypes().isEmpty());
-        ProductType el = pt.getAllElement().get(0);
+        ProductType el = pt.getAllElement().get(0).getProductType();
         assertEquals("WoodBeam", ((ElementType) el).getResourceType().getFamily());
     }
 

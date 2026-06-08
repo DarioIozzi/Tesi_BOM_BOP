@@ -36,7 +36,7 @@ public class ElementType extends ProductType{
     }
 
     @Override
-    public List<ProductType> getAllElement(){
+    public List<RequirementType> getAllElement(){
         throw new UnsupportedOperationException("Not a composite.");
     }
 
