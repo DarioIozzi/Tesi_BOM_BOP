@@ -10,6 +10,7 @@ public class CompositeType extends ProductType{
 
         super(pt, family, ft, code);
         this.children = new ArrayList<>(Objects.requireNonNull(children, "children cannot be null"));
+        this.calculateNumberElements();
     }
 
     public CompositeType(){                         //Per test
@@ -91,7 +92,7 @@ public class CompositeType extends ProductType{
     }
 
     @Override
-    public void setNumberElements(){
+    public void calculateNumberElements(){
         for(RequirementType rt : getAllElement())
             numElements += rt.getQuantity();
     }

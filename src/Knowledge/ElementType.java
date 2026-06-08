@@ -51,7 +51,7 @@ public class ElementType extends ProductType{
     }
 
     @Override
-    public void setNumberElements(){
+    public void calculateNumberElements(){
         throw new UnsupportedOperationException("Not a composite.");
     }
 

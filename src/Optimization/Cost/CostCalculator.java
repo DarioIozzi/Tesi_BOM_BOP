@@ -33,23 +33,34 @@ public class CostCalculator {
         List<RequirementType> elements2 = new ArrayList<>(r2.getProduct().getType().getAllElement());
 
         for(RequirementType el1 : elements1){
+            boolean found = false;
             for(RequirementType el2 : elements2){
                 if(el1.getProductType().getCode().equals(el2.getProductType().getCode())){
 
-                    if(r1.getQuantity() > r2.getQuantity())
-                        cost += Math.abs(r1.getQuantity() - r2.getQuantity());        //tolgo elemento, costo 1 ciascuno
+                    found = true;
+                    if(r1.getQuantity() * el1.getQuantity() > r2.getQuantity() * el2.getQuantity())
+                        cost += Math.abs(r1.getQuantity() * el1.getQuantity() - r2.getQuantity() * el2.getQuantity());        //tolgo elemento, costo 1 ciascuno
                     else
-                        cost = 2 * Math.abs(r1.getQuantity() - r2.getQuantity());     //aggiungo elemento, costo 2 ciascuno
+                        cost += 2 * Math.abs(r1.getQuantity() * el1.getQuantity() - r2.getQuantity() * el2.getQuantity());     //aggiungo elemento, costo 2 ciascuno
                 }
             }
+            if(!found)
+                cost += Math.abs(r1.getQuantity() * el1.getQuantity());
         }
 
         for(RequirementType el2 : elements2){
-            for(RequirementType el1 : elements1){
-                if(!el2.getProductType().getCode().equals(el1.getProductType().getCode())){
 
-                    cost += 2 * Math.abs(r1.getQuantity() - r2.getQuantity());       //aggiungo elemento, costo 2 ciascuno
+            boolean found = false;
+            for(RequirementType el1 : elements1){
+
+                if(el2.getProductType().getCode().equals(el1.getProductType().getCode())) {
+                    found = true;
                 }
+            }
+
+            if (!found){
+
+                cost += 2 * r2.getQuantity() * el2.getQuantity();       //aggiungo elemento, costo 2 ciascuno
             }
         }
 

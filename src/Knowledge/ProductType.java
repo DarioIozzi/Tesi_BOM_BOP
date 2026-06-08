@@ -86,7 +86,7 @@ public abstract class ProductType {
 
     public abstract void setResourceType(ResourceType resourceType);
 
-    public abstract void setNumberElements();
+    public abstract void calculateNumberElements();
 
     public abstract int getNumberElements();
 
