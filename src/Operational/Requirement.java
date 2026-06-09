@@ -47,6 +47,6 @@ public class Requirement {
 
     @Override
     public String toString() {
-        return " [product = " + product.getType() + ", quantity = " + quantity + "]\n";
+        return " [product = " + product.getType() + ", quantity = " + quantity + ", code = " + product.getType().getCode() + "]\n";
     }
 }

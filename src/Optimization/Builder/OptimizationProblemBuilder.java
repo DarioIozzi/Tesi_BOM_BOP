@@ -67,7 +67,7 @@ public class OptimizationProblemBuilder {
          }
 
          for(Node n : ns){
-             if(!n.getStartNode())
+             if(!n.isStartNode())
                 n.calculateProdTime();
          }
 

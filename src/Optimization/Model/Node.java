@@ -68,16 +68,12 @@ public class Node {
     public long getProductionTime() {
         return productionTime;
     }
-
-    public void setProductionTime(long productionTime){
-        this.productionTime = productionTime;
-    }
-
+    
     public Order getOrder(){
         return order;
     }
 
-    public boolean getStartNode() {
+    public boolean isStartNode() {
         return startNode;
     }
 }

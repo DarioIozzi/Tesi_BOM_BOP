@@ -45,9 +45,6 @@ public class OptimizationProblemBuilderTest {
         OptimizationProblemBuilder opb = new OptimizationProblemBuilder(orders);
         OptimizationProblem op = opb.buildOptimizationProblem();
 
-        for(Node n : op.getNodes())
-            n.setProductionTime(60 * 10);
-
         int i = 0;
         while (i < op.getCm().getDimension()){
             assertEquals(0, op.getCm().getCost(i, i));

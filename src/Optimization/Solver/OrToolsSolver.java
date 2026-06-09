@@ -14,7 +14,7 @@ public class OrToolsSolver implements Solver {
     @Override
     public void solve(OptimizationProblem problem) {
 
-        RoutingIndexManager manager = new RoutingIndexManager(problem.getNodes().size(), 1, 1);
+        RoutingIndexManager manager = new RoutingIndexManager(problem.getNodes().size(), 1, 0);
 
         RoutingModel routing = new RoutingModel(manager);
 
@@ -34,15 +34,19 @@ public class OrToolsSolver implements Solver {
 
         int timeCallbackIndex =
                 routing.registerTransitCallback(
-                        (long notUsefull, long index) -> {
+                        (long fromIndex, long toIndex) -> {
 
-                            int node = manager.indexToNode(index);
+                        int fromNode = manager.indexToNode(fromIndex);
+                        int toNode = manager.indexToNode(toIndex);
 
-                            return problem.getNodes().get(node).getProductionTime();
-                        }
+                        long travelTime = problem.getCm().getCost(fromNode, toNode);
+                        long productionTime = problem.getNodes().get(toNode).getProductionTime();
+
+                        return travelTime + productionTime;
+                    }
                 );
 
-        routing.addDimension(timeCallbackIndex, 0, 10000, true, "TIME");
+        routing.addDimension(timeCallbackIndex, 0, 1000000, true, "TIME");
 
         RoutingDimension timeDimension = routing.getMutableDimension("TIME");
 
@@ -55,7 +59,7 @@ public class OrToolsSolver implements Solver {
             timeDimension.cumulVar(index).setMax(deadline);
         }
 
-        RoutingSearchParameters params = RoutingSearchParameters.newBuilder().setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC).build();
+        RoutingSearchParameters params = main.defaultRoutingSearchParameters().toBuilder().setFirstSolutionStrategy(FirstSolutionStrategy.Value.PATH_CHEAPEST_ARC).build();
 
         Assignment solution = routing.solveWithParameters(params);
 
@@ -73,10 +77,17 @@ public class OrToolsSolver implements Solver {
 
                 Node n = problem.getNodes().get(node);
 
-                long deadline = n.getDeadline();
+                if(n.isStartNode()){
 
-                System.out.println("Requirement: " + n.getRequirement().toString() + " | Ordine: " + n.getOrder().getId() + " | Tempo accumulato: " + cumulativeTime + " | Deadline: " + deadline);
+                    System.out.println("START");
 
+                }else{
+
+                    long deadline = n.getDeadline();
+
+                    System.out.println("Requirement: " + n.getRequirement().toString() + " | Ordine: " + n.getOrder().getId() + " | Tempo accumulato: " + cumulativeTime + " | Deadline: " + deadline);
+
+                }
                 index = solution.value(routing.nextVar(index));
             }
 
