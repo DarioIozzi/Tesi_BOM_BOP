@@ -40,7 +40,7 @@ public class OptimizationProblemBuilder {
                      if(i == 0)
                          costMatrix.setCost(i, j, requirements.get(j-1).getProduct().getType().getNumberElements() * 2 * requirements.get(j-1).getQuantity());
                      else if(j == 0)
-                         costMatrix.setCost(i, j, requirements.get(i-1).getProduct().getType().getNumberElements() * 2 * requirements.get(i-1).getQuantity());
+                         costMatrix.setCost(i, j, 0);
                      else
                         costMatrix.setCost(i, j, transitCostCalculate(requirements.get(i-1), requirements.get(j-1)));
                  }

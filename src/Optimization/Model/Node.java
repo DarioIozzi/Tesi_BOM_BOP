@@ -40,7 +40,8 @@ public class Node {
                 System.err.println("UnitValue con codice 'DUR' errato");
                 sum += 0;
             }else{
-                sum += (long) child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR").getUnitValue();
+                Object value = child.getProduct().getType().getProcessType().getFeatureType("DUR-PROC").getUnitType("DUR").getUnitValue();
+                sum += ((Number)value).longValue() * child.getQuantity();
             }
         }
 
