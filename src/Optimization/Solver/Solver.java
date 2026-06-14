@@ -4,5 +4,5 @@ import Optimization.Model.OptimizationProblem;
 
 public interface Solver {
 
-    public void solve(OptimizationProblem problem);
+    void solve(OptimizationProblem problem);
 }

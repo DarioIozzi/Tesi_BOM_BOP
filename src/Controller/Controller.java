@@ -18,6 +18,7 @@ import Operational.Process;
 import Optimization.Builder.OptimizationProblemBuilder;
 import Optimization.Model.OptimizationProblem;
 import Optimization.Solver.OrToolsSolver;
+import Optimization.Solver.Solver;
 import Warehouse.Warehouse;
 
 import java.io.IOException;
@@ -215,7 +216,7 @@ public class Controller {
 
     public void optimize(int days){
         OptimizationProblem op = new OptimizationProblemBuilder(this.orderToOptimize(days)).buildOptimizationProblem();
-        OrToolsSolver ots = new OrToolsSolver();
+        Solver ots = new OrToolsSolver();
         ots.solve(op);
     }
 }

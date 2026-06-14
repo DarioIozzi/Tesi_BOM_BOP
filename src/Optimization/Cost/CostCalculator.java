@@ -1,6 +1,5 @@
 package Optimization.Cost;
 
-import Knowledge.ProductType;
 import Knowledge.RequirementType;
 import Operational.Requirement;
 
